@@ -1,0 +1,979 @@
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Study And Work In Germany</title>
+<!-- Inter Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            black: '#000000',
+            red: '#e3000f',
+            gold: '#ffcc00'
+          }
+        }
+      }
+    }
+  }
+</script>
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+.font-sans { font-family: var(--font-sans); }
+.animate-fade-in { animation: fadeIn 1s ease-out forwards; opacity: 0; }
+.animate-slide-up { animation: slideUp 1s ease-out forwards; opacity: 0; transform: translateY(30px); }
+.animate-slide-right { animation: slideRight 1s ease-out forwards; opacity: 0; transform: translateX(-30px); }
+.animate-scale-in { animation: scaleIn 1s ease-out forwards; opacity: 0; transform: scale(0.95); }
+.animate-delay-100 { animation-delay: 0.1s; }
+.animate-delay-200 { animation-delay: 0.2s; }
+.animate-delay-300 { animation-delay: 0.3s; }
+.animate-delay-400 { animation-delay: 0.4s; }
+.animate-delay-500 { animation-delay: 0.5s; }
+.animate-delay-600 { animation-delay: 0.6s; }
+.animate-delay-700 { animation-delay: 0.7s; }
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideRight {
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  to { opacity: 1; transform: scale(1); }
+}
+.glass-effect {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.gradient-border {
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, #ffcc00, #e3000f) border-box;
+  border: 1px solid transparent;
+}
+.dark .gradient-border {
+  background: linear-gradient(#1f2937, #1f2937) padding-box,
+              linear-gradient(135deg, #ffcc00, #e3000f) border-box;
+  border: 1px solid transparent;
+}
+.text-gradient {
+  background: linear-gradient(135deg, #000000, #e3000f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dark .text-gradient {
+  background: linear-gradient(135deg, #ffcc00, #e3000f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.pattern-dots {
+  background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.dark .pattern-dots {
+  background-image: radial-gradient(circle, #374151 1px, transparent 1px);
+}
+.parallax-element {
+  will-change: transform;
+}
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  object-fit: cover;
+  will-change: transform;
+}
+.parallax-content {
+  position: relative;
+  z-index: 2;
+}
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+}
+</style>
+</head>
+<body class="font-sans antialiased bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300 pb-16 md:pb-0">
+  
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50 glass-effect border-b animate-fade-in bg-white/90 dark:bg-gray-950/90 border-gray-100 dark:border-gray-800" style="opacity: 1; transform: translateY(0px);">
+    <nav class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14 md:h-20">
+        <a href="#" class="flex items-center gap-2 md:gap-3 animate-slide-right animate-delay-100">
+          <div class="relative">
+            <img src="images/logo.png" alt="Logo" class="h-8 md:h-10 w-auto object-contain">
+          </div>
+          <span class="font-semibold tracking-tight flex flex-col sm:block justify-center mt-1 sm:mt-0">
+            <span class="text-[11px] sm:text-xl leading-[1.1] sm:leading-normal"><span class="text-brand-red">Study</span>And<span class="text-brand-gold">Work</span></span>
+            <span class="text-[11px] sm:text-xl leading-[1.1] sm:leading-normal">InGermany</span>
+          </span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex md:items-center md:gap-10 animate-slide-up animate-delay-200">
+          <a href="#services" class="text-sm font-medium transition-all duration-300 relative group text-gray-600 dark:text-gray-300 hover:text-brand-red dark:hover:text-brand-red">
+            Services
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-red transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#projects" class="text-sm font-medium transition-all duration-300 relative group text-gray-600 dark:text-gray-300 hover:text-brand-red dark:hover:text-brand-red">
+            Success Stories
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-red transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#about" class="text-sm font-medium transition-all duration-300 relative group text-gray-600 dark:text-gray-300 hover:text-brand-red dark:hover:text-brand-red">
+            About Us
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-red transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#process" class="text-sm font-medium transition-all duration-300 relative group text-gray-600 dark:text-gray-300 hover:text-brand-red dark:hover:text-brand-red">
+            Process
+            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-red transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-4 md:gap-6 animate-slide-right animate-delay-300">
+          
+          <!-- Dark/Light Mode Toggle -->
+          <button id="theme-toggle" class="flex items-center gap-2 focus:outline-none group" aria-label="Toggle Dark Mode">
+            <div class="relative inline-flex items-center w-[3.25rem] h-7 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors duration-300 shadow-inner border border-gray-300 dark:border-gray-700">
+              <!-- Slider Background -->
+              <div class="absolute left-1 top-1 w-5 h-5 bg-white dark:bg-gray-600 rounded-full shadow-sm transition-transform duration-300 transform translate-x-0 dark:translate-x-6 z-0 ring-1 ring-gray-200 dark:ring-gray-700"></div>
+              
+              <!-- Icons -->
+              <div class="w-full flex justify-between px-1.5 z-10 relative pointer-events-none">
+                <svg class="w-4 h-4 text-yellow-500 transition-opacity duration-300" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+                <svg class="w-4 h-4 text-gray-400 dark:text-yellow-300 transition-opacity duration-300" fill="currentColor" viewBox="0 0 20 20"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+              </div>
+            </div>
+            <span id="theme-toggle-text" class="hidden sm:block text-xs font-medium text-gray-600 dark:text-gray-300 group-hover:text-brand-red transition-colors">Dark Mode</span>
+          </button>
+
+          <!-- Language Selector -->
+          <div class="relative">
+            <button id="lang-menu-button" type="button" class="flex items-center gap-1 sm:gap-2 p-1.5 sm:px-3 sm:py-2 rounded-lg text-sm font-medium transition-all duration-200 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+              <span class="hidden sm:block">EN</span>
+            </button>
+            
+            <!-- Creative Dropdown menu -->
+            <div id="lang-dropdown" class="hidden absolute right-0 mt-3 p-2 min-w-max rounded-full glass-effect shadow-xl bg-white/80 dark:bg-gray-900/80 border border-gray-200 dark:border-gray-700 focus:outline-none transition-all duration-300 opacity-0 transform translate-y-4 z-50">
+              <div class="flex items-center gap-1.5" role="menu" aria-orientation="horizontal" aria-labelledby="lang-menu-button">
+                <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-bold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md transition-all hover:-translate-y-1" role="menuitem">
+                  <img src="https://flagcdn.com/w40/fr.png" alt="Français" class="w-6 h-6 rounded-full object-cover shadow-sm ring-2 ring-transparent hover:ring-brand-red transition-all">
+                  <span>FR</span>
+                </a>
+                <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-bold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md transition-all hover:-translate-y-1 relative before:absolute before:inset-0 before:rounded-full before:ring-1 before:ring-gray-200 dark:before:ring-gray-700 bg-white/50 dark:bg-gray-800/50" role="menuitem">
+                  <img src="https://flagcdn.com/w40/gb.png" alt="English" class="w-6 h-6 rounded-full object-cover shadow-sm ring-2 ring-brand-gold transition-all">
+                  <span>EN</span>
+                </a>
+                <a href="#" class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-bold text-gray-700 dark:text-gray-200 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md transition-all hover:-translate-y-1" role="menuitem">
+                  <img src="https://flagcdn.com/w40/de.png" alt="Deutsch" class="w-6 h-6 rounded-full object-cover shadow-sm ring-2 ring-transparent hover:ring-brand-gold transition-all">
+                  <span>DE</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <a href="#contact" class="inline-flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg bg-brand-red text-white hover:bg-red-700">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-3 h-3 md:w-4 md:h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            Apply Now
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Bottom Navbar -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 flex justify-around items-center h-16 pb-safe px-2 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+    <a href="#services" class="flex flex-col items-center justify-center w-full text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-red transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book-open" class="mb-1"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+      <span class="text-[10px] font-medium">Services</span>
+    </a>
+    <a href="#projects" class="flex flex-col items-center justify-center w-full text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-red transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="award" class="mb-1"><circle cx="12" cy="8" r="6"></circle><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"></path></svg>
+      <span class="text-[10px] font-medium">Success</span>
+    </a>
+    <a href="#about" class="flex flex-col items-center justify-center w-full text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-red transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" class="mb-1"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
+      <span class="text-[10px] font-medium">About Us</span>
+    </a>
+    <a href="#process" class="flex flex-col items-center justify-center w-full text-gray-500 dark:text-gray-400 hover:text-brand-red dark:hover:text-brand-red transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plane" class="mb-1"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
+      <span class="text-[10px] font-medium">Process</span>
+    </a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-20 min-h-screen flex items-center parallax-section">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 pattern-dots opacity-30 animate-fade-in animate-delay-200 parallax-element" data-speed="0.3"></div>
+    
+    <!-- Background Image -->
+    <div class="absolute inset-0 animate-fade-in animate-delay-300">
+      <img src="images/hero.png" alt="Students in Germany" class="parallax-bg parallax-element" data-speed="0.5">
+      <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent dark:from-gray-950/95 dark:via-gray-950/80"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center parallax-content">
+      <!-- Left Content -->
+      <div class="lg:col-span-7 animate-slide-up animate-delay-400 parallax-element" data-speed="0.2">
+        <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full text-sm font-medium mb-10 bg-gradient-to-r from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 text-gray-700 dark:text-gray-300 shadow-sm border border-gray-200 dark:border-gray-700">
+          <div class="w-2 h-2 bg-brand-gold rounded-full animate-pulse"></div>
+          From Madagascar to Germany
+        </div>
+        
+        <h1 class="sm:text-7xl lg:text-8xl leading-[0.85] text-6xl tracking-tighter font-extralight mb-8">
+          <span class="text-gradient">Your Future</span><br>
+          <span class="font-semibold text-gray-900 dark:text-white">in Germany</span><br>
+          <span class="sm:text-6xl lg:text-7xl text-5xl text-gray-500 dark:text-gray-400">Starts Here</span>
+        </h1>
+        
+        <div class="max-w-xl">
+          <p class="text-xl font-light leading-relaxed mb-10 text-gray-600 dark:text-gray-300">
+            We guide motivated students and young professionals from Madagascar through every step of studying or finding an Ausbildung in Germany.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row gap-4 mb-12">
+            <button class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
+              <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plane" class="lucide lucide-plane w-5 h-5 group-hover:scale-110 transition-transform duration-300"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
+              </div>
+              Start Your Journey
+            </button>
+            <button class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full border font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-100">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" class="lucide lucide-calendar w-5 h-5"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+              Book Consultation
+            </button>
+          </div>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-8">
+            <div class="text-center">
+              <div class="text-3xl font-light text-gray-900 dark:text-white mb-1">500+</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 font-medium">Students Placed</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-light text-gray-900 dark:text-white mb-1">100%</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 font-medium">Visa Success Rate*</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-light text-gray-900 dark:text-white mb-1">50+</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400 font-medium">Partner Companies</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Featured Project -->
+      <div class="lg:col-span-5 animate-scale-in animate-delay-500 parallax-element" data-speed="-0.1">
+        <div class="relative">
+          <!-- Main Card -->
+          <div class="relative rounded-3xl shadow-2xl p-8 gradient-border floating bg-white dark:bg-gray-900">
+            <!-- Header -->
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-red-100 dark:bg-red-900/30 text-brand-red dark:text-red-400">Ausbildung</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-400">Nursing</span>
+              <span class="px-3 py-1 rounded-full text-xs font-medium bg-gray-900 dark:bg-white text-white dark:text-gray-900">Featured</span>
+            </div>
+
+            <div class="flex items-start justify-between mb-6">
+              <div>
+                <h3 class="text-2xl font-semibold tracking-tight text-gray-900 dark:text-white mb-1">Marie's Success Story</h3>
+                <p class="text-sm text-gray-500 dark:text-gray-400">From Antananarivo to Munich</p>
+              </div>
+              <button class="p-2 rounded-full transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-110">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="bookmark" class="lucide lucide-bookmark w-5 h-5 text-gray-400"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+              </button>
+            </div>
+
+            <!-- Image -->
+            <div class="rounded-2xl overflow-hidden mb-6 group relative">
+              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80" alt="Nursing Student" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/50 to-transparent flex items-end p-4">
+                <span class="text-white font-medium">Read her full story →</span>
+              </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div class="text-center p-3 rounded-xl bg-gray-50 dark:bg-gray-800">
+                <div class="flex items-center justify-center gap-1 text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book" class="lucide lucide-book w-4 h-4"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+                  B2
+                </div>
+                <p class="text-xs text-gray-500 dark:text-gray-400">German Level</p>
+              </div>
+              <div class="text-center p-3 rounded-xl bg-gray-50 dark:bg-gray-800">
+                <div class="flex items-center justify-center gap-1 text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" class="lucide lucide-calendar w-4 h-4"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                  8
+                </div>
+                <p class="text-xs text-gray-500 dark:text-gray-400">Months Prep</p>
+              </div>
+              <div class="text-center p-3 rounded-xl bg-green-50 dark:bg-green-900/20">
+                <div class="flex items-center justify-center gap-1 text-sm font-semibold text-green-700 dark:text-green-400 mb-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle" class="lucide lucide-check-circle w-4 h-4"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>
+                  Hired
+                </div>
+                <p class="text-xs text-green-600 dark:text-green-500">Full-time Contract</p>
+              </div>
+            </div>
+
+            <!-- Action Button -->
+            <button class="w-full py-3 px-4 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium text-sm transition-all duration-200 hover:bg-gray-800 dark:hover:bg-gray-100 hover:shadow-lg">
+              View All Success Stories
+            </button>
+          </div>
+
+          <!-- Floating Info -->
+          <div class="absolute -top-6 -right-6 w-40 animate-slide-up animate-delay-600 parallax-element hidden md:block" data-speed="0.15">
+            <div class="rounded-2xl border shadow-xl overflow-hidden bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+              <div class="text-center text-xs font-semibold py-3 tracking-wide bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 text-gray-700 dark:text-gray-200">
+                PARTNER CLINIC
+              </div>
+              <div class="relative bg-white dark:bg-gray-900 p-4 flex justify-center items-center h-24">
+                <span class="font-bold text-gray-800 dark:text-gray-100 text-center">Klinikum München</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Elements -->
+          <div class="absolute top-1/2 -left-6 w-6 h-6 bg-gradient-to-br from-brand-gold to-yellow-300 rounded-full animate-bounce opacity-70 parallax-element" data-speed="-0.05"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="parallax-section bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 pt-32 pb-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-20 animate-slide-up animate-delay-200 parallax-element" data-speed="0.1">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 bg-red-100 dark:bg-red-900/30 text-brand-red dark:text-red-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="compass" class="lucide lucide-compass w-4 h-4"><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path><circle cx="12" cy="12" r="10"></circle></svg>
+          Our Agency Services
+        </div>
+        <h2 class="text-5xl font-light tracking-tight mb-6 text-gray-900 dark:text-white">
+          Navigating Your Path <span class="font-semibold">to Germany</span>
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          We provide end-to-end support, from choosing the right program to securing your visa and settling into your new life.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
+        <!-- Premium Materials Card -> University Placement Card -->
+        <div class="relative animate-slide-up animate-delay-300 parallax-element" data-speed="0.15">
+          <div class="rounded-3xl p-12 lg:p-16 shadow-xl border bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-800 relative overflow-hidden">
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-full -translate-y-16 translate-x-16 opacity-60 parallax-element" data-speed="0.05"></div>
+            
+            <div class="relative">
+              <div class="flex items-center gap-4 mb-8">
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-red-100 to-red-200 dark:from-red-900/40 dark:to-red-800/40">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="graduation-cap" class="lucide lucide-graduation-cap w-8 h-8 text-brand-red"><path d="M21.42 10.922a2 2 0 0 1-.019 3.836l-8.319 3.039a2 2 0 0 1-1.32-.01l-8.382-3.04a2 2 0 0 1-.02-3.834L11.026 8.35a2 2 0 0 1 1.258-.015l9.136 2.587z"></path><path d="M10 16.5v3.15a2 2 0 0 0 1.25.93l.36.14a2 2 0 0 0 1.48 0l.36-.14a2 2 0 0 0 1.25-.93V16.5"></path><path d="M14 16.5v3.15a2 2 0 0 1-1.25.93l-.36.14a2 2 0 0 1-1.48 0l-.36-.14a2 2 0 0 1-1.25-.93V16.5"></path><path d="M22 12v3"></path></svg>
+                </div>
+                <h3 class="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">University & Ausbildung</h3>
+              </div>
+              
+              <p class="text-lg leading-relaxed mb-10 text-gray-600 dark:text-gray-400">
+                We partner with renowned German institutions and companies to find the perfect match for your skills, ambitions, and academic background.
+              </p>
+              
+              <div class="space-y-4 mb-8">
+                <div class="flex items-center gap-3">
+                  <div class="w-6 h-6 rounded-full bg-gradient-to-r from-brand-red to-red-600 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check w-4 h-4 text-white"><path d="M20 6 9 17l-5-5"></path></svg>
+                  </div>
+                  <span class="text-gray-700 dark:text-gray-300 font-medium">University Placement & Enrollment</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-6 h-6 rounded-full bg-gradient-to-r from-brand-gold to-yellow-500 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check w-4 h-4 text-white"><path d="M20 6 9 17l-5-5"></path></svg>
+                  </div>
+                  <span class="text-gray-700 dark:text-gray-300 font-medium">Ausbildung (Apprenticeship) Matching</span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <div class="w-6 h-6 rounded-full bg-gradient-to-r from-gray-800 to-black flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check" class="lucide lucide-check w-4 h-4 text-white"><path d="M20 6 9 17l-5-5"></path></svg>
+                  </div>
+                  <span class="text-gray-700 dark:text-gray-300 font-medium">Application Optimization & Review</span>
+                </div>
+              </div>
+
+              <button class="inline-flex items-center gap-2 font-medium text-brand-red hover:text-red-700 dark:hover:text-red-400 transition-colors group">
+                Discover Available Programs
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-4 h-4 group-hover:translate-x-1 transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Turnkey Solutions -> Comprehensive Support -->
+        <div class="animate-slide-up animate-delay-400 parallax-element" data-speed="-0.1">
+          <div class="mb-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="layers" class="lucide lucide-layers w-4 h-4"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"></path><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"></path><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"></path></svg>
+              Comprehensive Support
+            </div>
+            <h3 class="text-4xl font-light tracking-tight leading-tight mb-6 text-gray-900 dark:text-white">
+              End-to-End <span class="font-semibold">Relocation Assistance</span>
+            </h3>
+            <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+              From mastering the German language to navigating complex bureaucracy, our team ensures a seamless transition to your new life in Europe.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+            <div class="rounded-2xl p-6 border bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-800 hover:shadow-lg transition-all duration-300 group">
+              <div class="p-3 rounded-xl w-fit mb-4 bg-red-100 dark:bg-red-900/30 group-hover:bg-red-200 dark:group-hover:bg-red-800/40 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="file-text" class="lucide lucide-file-text w-6 h-6 text-brand-red dark:text-red-400"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+              </div>
+              <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">Visa Preparation</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Flawless document preparation and embassy interview coaching.</p>
+            </div>
+            <div class="rounded-2xl p-6 border bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-800 hover:shadow-lg transition-all duration-300 group">
+              <div class="p-3 rounded-xl w-fit mb-4 bg-yellow-100 dark:bg-yellow-900/30 group-hover:bg-yellow-200 dark:group-hover:bg-yellow-800/40 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="message-circle" class="lucide lucide-message-circle w-6 h-6 text-brand-gold dark:text-yellow-500"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"></path></svg>
+              </div>
+              <h4 class="font-semibold mb-2 text-gray-900 dark:text-white">Language Courses</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">Intensive German language training up to B2/C1 levels.</p>
+            </div>
+          </div>
+
+          <a href="#process" class="inline-flex items-center gap-2 font-medium text-lg hover:gap-3 transition-all group text-gray-900 dark:text-white">
+            Explore Our Process
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-5 h-5 group-hover:translate-x-1 transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -> About / Student Stories -->
+  <section id="about" class="bg-gradient-to-br from-gray-900 to-black text-white py-32 relative overflow-hidden parallax-section">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0 parallax-element" data-speed="0.2" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0px); background-size: 40px 40px;"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-20 items-center">
+        <!-- Left Stats -->
+        <div class="animate-slide-up animate-delay-200 parallax-element" data-speed="0.1">
+          <div class="mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8 bg-white/10 text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" class="lucide lucide-users w-4 h-4"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
+              Trusted by Ambitious Students
+            </div>
+            
+            <div class="flex items-center gap-6 mb-10">
+              <div class="flex -space-x-4 parallax-element" data-speed="0.05">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student" class="h-16 w-16 border-gray-400/20 border-4 rounded-full shadow-xl">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Student" class="h-16 w-16 border-gray-400/10 border-4 rounded-full shadow-xl">
+                <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Student" class="h-16 w-16 border-gray-400/10 border-4 rounded-full shadow-xl">
+                <div class="h-16 w-16 flex bg-brand-red border-gray-400/10 border-4 rounded-full shadow-xl items-center justify-center">
+                  <span class="text-sm font-semibold text-white">+500</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8 mb-10">
+              <div>
+                <p class="text-5xl font-light mb-2 text-white">12+</p>
+                <p class="text-lg font-medium text-gray-300">German Cities</p>
+              </div>
+              <div>
+                <p class="text-5xl font-light mb-2 text-white">4.9</p>
+                <div class="flex items-center gap-2">
+                  <div class="flex gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-4 h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-4 h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-4 h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-4 h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-4 h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                  </div>
+                  <span class="text-lg font-medium text-gray-300">Student Rating</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Testimonial -->
+        <div class="animate-slide-up animate-delay-300 parallax-element" data-speed="-0.05">
+          <div class="bg-white/5 backdrop-blur-lg rounded-3xl p-10 border border-white/10">
+            <div class="mb-8">
+              <div class="flex gap-1 mb-6">
+                <!-- Stars -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+              </div>
+              <p class="text-lg italic text-gray-300">"StudyAndWorkInGermany made my dream come true. Their visa assistance and language courses gave me the confidence to move from Madagascar to Berlin and start my IT Ausbildung."</p>
+            </div>
+            
+            <div class="flex items-center gap-4">
+              <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Jean-Luc" class="h-14 w-14 rounded-full border-2 border-brand-red">
+              <div>
+                <p class="font-semibold text-white">Jean-Luc Rakoto</p>
+                <p class="text-gray-300">IT Apprentice, Tech Start-up Berlin</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Projects -> Success Stories -->
+  <section id="projects" class="py-32 bg-white dark:bg-gray-950 parallax-section">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-20 animate-slide-up animate-delay-200 parallax-element" data-speed="0.1">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="briefcase" class="lucide lucide-briefcase w-4 h-4"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          Success Stories & Placements
+        </div>
+        <h2 class="text-5xl font-light tracking-tight mb-6 text-gray-900 dark:text-white">
+          Our Recent <span class="font-semibold text-brand-red">Achievements</span>
+        </h2>
+        <p class="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          Explore where our students from Madagascar are thriving across Germany in universities and top companies.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Story 1 -->
+        <div class="group animate-scale-in animate-delay-300 parallax-element" data-speed="0.1">
+          <div class="bg-white dark:bg-gray-900 rounded-3xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-800 hover:shadow-2xl transition-all duration-500">
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80" alt="University" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-red-100 dark:bg-red-900/40 text-brand-red dark:text-red-400">Engineering</span>
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-white">TU Munich Placement</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-6">Secured a spot in one of Germany's most prestigious technical universities.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                  <span class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="map-pin" class="lucide lucide-map-pin w-4 h-4"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Munich
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="book" class="lucide lucide-book w-4 h-4"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+                    Master's
+                  </span>
+                </div>
+                <button class="text-brand-red hover:text-red-700 dark:hover:text-red-400 font-medium text-sm">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="group animate-scale-in animate-delay-400 parallax-element" data-speed="-0.05">
+          <div class="bg-white dark:bg-gray-900 rounded-3xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-800 hover:shadow-2xl transition-all duration-500">
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" alt="IT Company" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-yellow-100 dark:bg-yellow-900/40 text-yellow-800 dark:text-yellow-500">IT & Tech</span>
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-white">Software Dev Ausbildung</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-6">Matched with a leading software firm for a 3-year dual apprenticeship.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                  <span class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="map-pin" class="lucide lucide-map-pin w-4 h-4"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Berlin
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="monitor" class="lucide lucide-monitor w-4 h-4"><rect width="20" height="14" x="2" y="3" rx="2"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg>
+                    IT
+                  </span>
+                </div>
+                <button class="text-brand-red hover:text-red-700 dark:hover:text-red-400 font-medium text-sm">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story 3 -->
+        <div class="group animate-scale-in animate-delay-500 parallax-element" data-speed="0.05">
+          <div class="bg-white dark:bg-gray-900 rounded-3xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-800 hover:shadow-2xl transition-all duration-500">
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80" alt="Hospital" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div class="absolute top-4 left-4">
+                <span class="px-3 py-1 rounded-full text-xs font-medium bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900">Healthcare</span>
+              </div>
+            </div>
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold mb-2 text-gray-900 dark:text-white">Nursing Placements</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-6">Group of 5 students placed in top German hospitals for nursing Ausbildung.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                  <span class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="map-pin" class="lucide lucide-map-pin w-4 h-4"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Hamburg
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" class="lucide lucide-users w-4 h-4"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                    5 Students
+                  </span>
+                </div>
+                <button class="text-brand-red hover:text-red-700 dark:hover:text-red-400 font-medium text-sm">View Details</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="bg-gray-50 dark:bg-gray-900 py-32 parallax-section border-t border-gray-100 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="text-center mb-24 animate-slide-up animate-delay-200">
+        <h2 class="text-4xl font-light tracking-tight mb-4 text-gray-900 dark:text-white">The Application <span class="font-semibold text-brand-red">Process</span></h2>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Your journey to Germany in 4 clear steps.</p>
+      </div>
+
+      <div class="relative">
+        <!-- Connecting Line -->
+        <div class="absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 dark:bg-gray-700 -translate-y-1/2 hidden md:block"></div>
+
+        <div class="grid md:grid-cols-4 gap-12">
+          <!-- Step 1 -->
+          <div class="relative animate-slide-up animate-delay-300">
+            <div class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center border-2 border-brand-red mb-6 relative z-10 shadow-lg mx-auto md:mx-0">
+              <span class="text-2xl font-bold text-brand-red">01</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center md:text-left">Consultation</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed text-center md:text-left">Initial meeting to assess your profile, goals, and language skills.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative animate-slide-up animate-delay-400">
+            <div class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center border-2 border-brand-gold mb-6 relative z-10 shadow-lg mx-auto md:mx-0">
+              <span class="text-2xl font-bold text-brand-gold">02</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center md:text-left">Preparation</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed text-center md:text-left">Intensive German courses and document translation/certification.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative animate-slide-up animate-delay-500">
+            <div class="bg-white dark:bg-gray-800 w-16 h-16 rounded-2xl flex items-center justify-center border-2 border-gray-900 dark:border-gray-500 mb-6 relative z-10 shadow-lg mx-auto md:mx-0">
+              <span class="text-2xl font-bold text-gray-900 dark:text-white">03</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center md:text-left">Matching</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed text-center md:text-left">Applying to partner universities or Ausbildung employers and interviewing.</p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative animate-slide-up animate-delay-600">
+            <div class="bg-brand-red w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg shadow-red-500/30 mb-6 relative z-10 mx-auto md:mx-0">
+              <span class="text-2xl font-bold text-white">04</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3 text-gray-900 dark:text-white text-center md:text-left">Relocation</h3>
+            <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed text-center md:text-left">Visa approval, booking flights, and settling into your new German home.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-white dark:bg-gray-950 py-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-gray-900 to-black rounded-3xl overflow-hidden shadow-2xl">
+        <div class="grid md:grid-cols-2">
+          <!-- Left Info -->
+          <div class="p-12 lg:p-16 text-white relative">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-red opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+            
+            <h2 class="text-4xl font-light tracking-tight mb-4">Start Your <span class="font-semibold text-brand-red">Journey</span></h2>
+            <p class="text-gray-400 mb-12">Contact us today to schedule your free initial consultation and discover your opportunities in Germany.</p>
+            
+            <div class="space-y-8">
+              <div class="flex items-start gap-4">
+                <div class="p-3 rounded-full bg-white/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin w-5 h-5 text-brand-red"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold mb-1">Our Office</h4>
+                  <p class="text-gray-400">Antananarivo, Madagascar<br>Berlin, Germany</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="p-3 rounded-full bg-white/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone w-5 h-5 text-brand-gold"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold mb-1">Call Us</h4>
+                  <p class="text-gray-400">+261 34 00 000 00</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-4">
+                <div class="p-3 rounded-full bg-white/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail w-5 h-5 text-white"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </div>
+                <div>
+                  <h4 class="font-semibold mb-1">Email</h4>
+                  <p class="text-gray-400">info@studyandwork-germany.mg</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right Form -->
+          <div class="p-12 lg:p-16 bg-white dark:bg-gray-900 border-l border-gray-100 dark:border-gray-800">
+            <form class="space-y-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-all" placeholder="John Doe">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-all" placeholder="john@example.com">
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Interested In</label>
+                <select class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-all">
+                  <option>Ausbildung (Apprenticeship)</option>
+                  <option>University Studies (Bachelor/Master)</option>
+                  <option>Language Course</option>
+                  <option>Work Visa</option>
+                </select>
+              </div>
+              <button type="button" class="w-full py-4 rounded-xl bg-brand-red text-white font-medium hover:bg-red-700 transition-colors shadow-lg shadow-red-500/30">
+                Submit Application Request
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 dark:bg-black text-white py-20 pb-28 md:pb-20 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div class="">
+          <div class="flex items-center gap-3 mb-6">
+            <img src="images/logo.png" alt="Logo" class="h-8 bg-white p-1 rounded-md">
+            <span class="font-semibold text-xl">StudyAndWorkInGermany</span>
+          </div>
+          <p class="text-gray-400 leading-relaxed mb-6">
+            Your trusted agency partner bridging the gap between Madagascar talent and German opportunities.
+          </p>
+          <div class="flex gap-4">
+            <a href="#" class="p-2 rounded-lg bg-gray-800 hover:bg-brand-red transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="facebook" class="lucide lucide-facebook w-5 h-5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="#" class="p-2 rounded-lg bg-gray-800 hover:bg-brand-red transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="instagram" class="lucide lucide-instagram w-5 h-5"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+            </a>
+            <a href="#" class="p-2 rounded-lg bg-gray-800 hover:bg-brand-red transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="linkedin" class="lucide lucide-linkedin w-5 h-5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-6">Services</h3>
+          <ul class="space-y-4 text-gray-400">
+            <li><a href="#" class="hover:text-white transition-colors">Ausbildung Matching</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">University Enrollment</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Language Courses</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Visa Support</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-6">Resources</h3>
+          <ul class="space-y-4 text-gray-400">
+            <li><a href="#" class="hover:text-white transition-colors">Life in Germany</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Success Stories</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Partner Clinics</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold mb-6">Company</h3>
+          <ul class="space-y-4 text-gray-400">
+            <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Our Team</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-gray-400">© 2024 StudyAndWorkInGermany. All rights reserved.</p>
+        <div class="flex gap-6 text-sm text-gray-400">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Dark/Light Mode Toggle Logic
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleText = document.getElementById('theme-toggle-text');
+    const htmlEl = document.documentElement;
+
+    // Default to light mode (already light by default due to no class)
+    // Optional: check localStorage if user previously toggled
+    if (localStorage.getItem('theme') === 'dark') {
+      htmlEl.classList.add('dark');
+      if (themeToggleText) themeToggleText.textContent = 'Light Mode';
+    } else {
+      htmlEl.classList.remove('dark');
+      if (themeToggleText) themeToggleText.textContent = 'Dark Mode';
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', function() {
+        htmlEl.classList.toggle('dark');
+        
+        const isDark = htmlEl.classList.contains('dark');
+        if (isDark) {
+          if (themeToggleText) themeToggleText.textContent = 'Light Mode';
+          localStorage.setItem('theme', 'dark');
+        } else {
+          if (themeToggleText) themeToggleText.textContent = 'Dark Mode';
+          localStorage.setItem('theme', 'light');
+        }
+      });
+    }
+
+    // Parallax scrolling effect
+    window.addEventListener('scroll', function() {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.parallax-element');
+      
+      parallaxElements.forEach(element => {
+        const speed = parseFloat(element.dataset.speed || 0);
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('[class*="animate-"]').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Language Dropdown Logic
+    const langMenuBtn = document.getElementById('lang-menu-button');
+    const langDropdown = document.getElementById('lang-dropdown');
+
+    if (langMenuBtn && langDropdown) {
+      langMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = langDropdown.classList.contains('hidden');
+        if (isHidden) {
+          langDropdown.classList.remove('hidden');
+          setTimeout(() => {
+            langDropdown.classList.remove('opacity-0', 'translate-y-4');
+            langDropdown.classList.add('opacity-100', 'translate-y-0');
+          }, 10);
+        } else {
+          langDropdown.classList.remove('opacity-100', 'translate-y-0');
+          langDropdown.classList.add('opacity-0', 'translate-y-4');
+          setTimeout(() => {
+            langDropdown.classList.add('hidden');
+          }, 300);
+        }
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!langMenuBtn.contains(e.target) && !langDropdown.contains(e.target)) {
+          langDropdown.classList.remove('opacity-100', 'translate-y-0');
+          langDropdown.classList.add('opacity-0', 'translate-y-4');
+          setTimeout(() => {
+            langDropdown.classList.add('hidden');
+          }, 300);
+        }
+      });
+
+      langDropdown.querySelectorAll('a').forEach(item => {
+        item.addEventListener('click', () => {
+          langDropdown.classList.remove('opacity-100', 'translate-y-0');
+          langDropdown.classList.add('opacity-0', 'translate-y-4');
+          setTimeout(() => {
+            langDropdown.classList.add('hidden');
+          }, 300);
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
