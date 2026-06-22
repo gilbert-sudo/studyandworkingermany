@@ -194,10 +194,10 @@
             </div>
           </div>
           
-          <a href="#contact" class="inline-flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg bg-brand-red text-white hover:bg-red-700">
+          <button onclick="openAuthModal('signup')" class="inline-flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-6 md:py-3 rounded-full text-xs md:text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg bg-brand-red text-white hover:bg-red-700">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="arrow-right" class="lucide lucide-arrow-right w-3 h-3 md:w-4 md:h-4"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
             Apply Now
-          </a>
+          </button>
         </div>
       </div>
     </nav>
@@ -266,11 +266,16 @@
           </p>
           
           <div class="flex flex-col sm:flex-row gap-4 mb-12">
-            <button class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
-              <div class="relative">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="plane" class="lucide lucide-plane w-5 h-5 group-hover:scale-110 transition-transform duration-300"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
+            <button onclick="openAuthModal('signup')" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
+              <!-- Icon Container -->
+              <div class="relative w-5 h-5 flex items-center justify-center overflow-hidden">
+                <!-- Plane 1 (Leaves) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 absolute transition-all duration-500 ease-in-out group-hover:translate-x-8 group-hover:-translate-y-8 group-hover:opacity-0"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
+                <!-- Plane 2 (Enters) -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 absolute -translate-x-8 translate-y-8 opacity-0 transition-all duration-500 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
               </div>
-              Start Your Journey
+              
+              <span>Start Your Journey</span>
             </button>
             <button class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full border font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-100">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" class="lucide lucide-calendar w-5 h-5"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
@@ -460,49 +465,49 @@
   </section>
 
   <!-- Testimonials -> About / Student Stories -->
-  <section id="about" class="bg-gradient-to-br from-gray-900 to-black text-white py-32 relative overflow-hidden parallax-section">
+  <section id="about" class="bg-gradient-to-br from-gray-900 to-black text-white py-20 lg:py-32 relative overflow-hidden parallax-section">
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
       <div class="absolute inset-0 parallax-element" data-speed="0.2" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0px); background-size: 40px 40px;"></div>
     </div>
 
     <div class="relative max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-20 items-center">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         <!-- Left Stats -->
         <div class="animate-slide-up animate-delay-200 parallax-element" data-speed="0.1">
-          <div class="mb-12">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-8 bg-white/10 text-white">
+          <div class="mb-10 lg:mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-medium mb-8 bg-white/10 text-white">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" class="lucide lucide-users w-4 h-4"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
               Trusted by Future Professionals
             </div>
             
             <div class="flex items-center gap-6 mb-10">
-              <div class="flex -space-x-4 parallax-element" data-speed="0.05">
-                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student" class="h-16 w-16 border-gray-400/20 border-4 rounded-full shadow-xl">
-                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Student" class="h-16 w-16 border-gray-400/10 border-4 rounded-full shadow-xl">
-                <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Student" class="h-16 w-16 border-gray-400/10 border-4 rounded-full shadow-xl">
-                <div class="h-16 w-16 flex bg-brand-red border-gray-400/10 border-4 rounded-full shadow-xl items-center justify-center">
-                  <span class="text-sm font-semibold text-white">+500</span>
+              <div class="flex -space-x-4">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student" class="h-14 w-14 sm:h-16 sm:w-16 border-gray-400/20 border-4 rounded-full shadow-xl">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Student" class="h-14 w-14 sm:h-16 sm:w-16 border-gray-400/10 border-4 rounded-full shadow-xl">
+                <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Student" class="h-14 w-14 sm:h-16 sm:w-16 border-gray-400/10 border-4 rounded-full shadow-xl">
+                <div class="h-14 w-14 sm:h-16 sm:w-16 flex bg-brand-red border-gray-400/10 border-4 rounded-full shadow-xl items-center justify-center">
+                  <span class="text-xs sm:text-sm font-semibold text-white">+500</span>
                 </div>
               </div>
             </div>
 
-            <div class="grid grid-cols-2 gap-8 mb-10">
+            <div class="grid grid-cols-2 gap-4 sm:gap-8 mb-10">
               <div>
-                <p class="text-5xl font-light mb-2 text-white">12+</p>
-                <p class="text-lg font-medium text-gray-300">German Cities</p>
+                <p class="text-4xl sm:text-5xl font-light mb-1 sm:mb-2 text-white">12+</p>
+                <p class="text-sm sm:text-base md:text-lg font-medium text-gray-300">German Cities</p>
               </div>
               <div>
-                <p class="text-5xl font-light mb-2 text-white">4.9</p>
-                <div class="flex items-center gap-2">
+                <p class="text-4xl sm:text-5xl font-light mb-1 sm:mb-2 text-white">4.9</p>
+                <div class="flex flex-wrap items-center gap-1 sm:gap-2">
                   <div class="flex gap-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-4 h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-4 h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-4 h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-4 h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-4 h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-3 h-3 sm:w-4 sm:h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-3 h-3 sm:w-4 sm:h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-3 h-3 sm:w-4 sm:h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-3 h-3 sm:w-4 sm:h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star w-3 h-3 sm:w-4 sm:h-4 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
                   </div>
-                  <span class="text-lg font-medium text-gray-300">Apprentice Rating</span>
+                  <span class="text-sm sm:text-base md:text-lg font-medium text-gray-300">Apprentice Rating</span>
                 </div>
               </div>
             </div>
@@ -511,24 +516,24 @@
 
         <!-- Right Testimonial -->
         <div class="animate-slide-up animate-delay-300 parallax-element" data-speed="-0.05">
-          <div class="bg-white/5 backdrop-blur-lg rounded-3xl p-10 border border-white/10">
-            <div class="mb-8">
-              <div class="flex gap-1 mb-6">
+          <div class="bg-white/5 backdrop-blur-lg rounded-3xl p-6 sm:p-8 lg:p-10 border border-white/10">
+            <div class="mb-6 sm:mb-8">
+              <div class="flex gap-1 mb-4 sm:mb-6">
                 <!-- Stars -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-5 h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 sm:w-5 sm:h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 sm:w-5 sm:h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 sm:w-5 sm:h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 sm:w-5 sm:h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-star w-4 h-4 sm:w-5 sm:h-5 fill-current text-brand-gold"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path></svg>
               </div>
-              <p class="text-lg italic text-gray-300">"StudyAndWorkInGermany made my dream come true. Their visa assistance and certificate support gave me the confidence to move from Madagascar to Berlin and start my IT Ausbildung."</p>
+              <p class="text-base md:text-lg italic text-gray-300">"StudyAndWorkInGermany made my dream come true. Their visa assistance and certificate support gave me the confidence to move from Madagascar to Berlin and start my IT Ausbildung."</p>
             </div>
             
-            <div class="flex items-center gap-4">
-              <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Jean-Luc" class="h-14 w-14 rounded-full border-2 border-brand-red">
+            <div class="flex items-center gap-3 sm:gap-4">
+              <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="Jean-Luc" class="h-12 w-12 sm:h-14 sm:w-14 rounded-full border-2 border-brand-red">
               <div>
-                <p class="font-semibold text-white">Jean-Luc Rakoto</p>
-                <p class="text-gray-300">IT Apprentice, Tech Start-up Berlin</p>
+                <p class="text-sm sm:text-base font-semibold text-white">Jean-Luc Rakoto</p>
+                <p class="text-xs sm:text-sm text-gray-300">IT Apprentice, Tech Start-up Berlin</p>
               </div>
             </div>
           </div>
@@ -714,34 +719,38 @@
             </div>
           </div>
           
-          <!-- Right Form -->
-          <div class="p-12 lg:p-16 bg-white dark:bg-gray-900 border-l border-gray-100 dark:border-gray-800">
-            <form class="space-y-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
-                <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-all" placeholder="John Doe">
+          <!-- Right: Immersive CTA (Replaced Form) -->
+          <div class="p-12 lg:p-16 bg-white dark:bg-gray-900 border-l border-gray-100 dark:border-gray-800 relative overflow-hidden flex flex-col justify-center items-center text-center group">
+            
+            <!-- Decorative Animated Blobs -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-red/10 dark:bg-brand-red/20 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-brand-gold/10 dark:bg-brand-gold/20 rounded-full blur-2xl group-hover:scale-110 transition-transform duration-700 delay-100"></div>
+
+            <div class="relative z-10 w-full max-w-sm mx-auto">
+              <!-- Floating Icon/Badge -->
+              <div class="mx-auto w-20 h-20 bg-gradient-to-tr from-brand-red to-red-500 rounded-3xl rotate-12 flex items-center justify-center shadow-xl shadow-red-500/30 mb-8 group-hover:rotate-0 transition-all duration-500 hover:scale-105">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white -rotate-12 group-hover:rotate-0 transition-transform duration-500"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
               </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
-                <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-all" placeholder="john@example.com">
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Ausbildung Sector</label>
-                <select class="w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-red transition-all">
-                  <option>Handwerk (Crafts & Trades)</option>
-                  <option>Pflege & Medizin (Healthcare)</option>
-                  <option>Elektrotechnik & IT</option>
-                  <option>Hotellerie & Gastronomie</option>
-                  <option>Kaufmännische Berufe</option>
-                  <option>Logistik & Transport</option>
-                  <option>Baugewerbe & Metall</option>
-                  <option>Other / Not Sure</option>
-                </select>
-              </div>
-              <button type="button" class="w-full py-4 rounded-xl bg-brand-red text-white font-medium hover:bg-red-700 transition-colors shadow-lg shadow-red-500/30">
-                Submit Application Request
+
+              <h3 class="text-3xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">Your Portal Awaits</h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                Join our exclusive network today. Create an account to track your visa process, upload documents securely, and connect with your mentor.
+              </p>
+
+              <!-- Advanced CTA Button -->
+              <button type="button" onclick="openAuthModal('signup')" class="relative inline-flex h-14 w-full items-center justify-center overflow-hidden rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium transition-all hover:scale-[1.02] active:scale-[0.98]">
+                <span class="absolute h-0 w-0 rounded-full bg-brand-red transition-all duration-500 ease-out group-hover:h-56 group-hover:w-full z-0"></span>
+                <span class="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-300">
+                  Create Free Account
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </span>
               </button>
-            </form>
+
+              <div class="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                <span>Already a member?</span>
+                <button type="button" onclick="openAuthModal('login')" class="font-semibold text-brand-red hover:underline focus:outline-none">Sign in</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -813,6 +822,90 @@
       </div>
     </div>
   </footer>
+
+  <!-- Auth Modal -->
+  <div id="auth-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-md transition-opacity duration-300 opacity-0" id="auth-backdrop" onclick="closeAuthModal()"></div>
+    
+    <!-- Modal Content -->
+    <div id="auth-card" class="relative w-full max-w-md mx-4 bg-white dark:bg-gray-900 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-800 overflow-hidden transform scale-95 opacity-0 transition-all duration-500 ease-out">
+      
+      <!-- Decorative Header Gradient -->
+      <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-br from-brand-red to-brand-gold opacity-10 pointer-events-none"></div>
+      <div class="absolute -top-16 -right-16 w-32 h-32 bg-brand-gold rounded-full mix-blend-multiply filter blur-2xl opacity-50 dark:opacity-20 animate-pulse pointer-events-none"></div>
+      <div class="absolute -top-16 -left-16 w-32 h-32 bg-brand-red rounded-full mix-blend-multiply filter blur-2xl opacity-50 dark:opacity-20 animate-pulse pointer-events-none" style="animation-delay: 1s;"></div>
+      
+      <button type="button" onclick="closeAuthModal()" class="absolute top-4 right-4 p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors z-20">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+
+      <div class="p-8 relative z-10 mt-4">
+        <div class="text-center mb-8">
+          <h2 id="auth-title" class="text-3xl font-bold text-gray-900 dark:text-white mb-2">Welcome Back</h2>
+          <p id="auth-subtitle" class="text-gray-500 dark:text-gray-400 text-sm">Sign in to continue your journey</p>
+        </div>
+
+        <!-- Toggle -->
+        <div class="flex p-1 mb-8 bg-gray-100 dark:bg-gray-800 rounded-full relative">
+          <div id="auth-toggle-bg" class="absolute top-1 bottom-1 left-1 w-[calc(50%-0.25rem)] bg-white dark:bg-gray-900 rounded-full shadow-sm transition-transform duration-300 ease-out border border-gray-200 dark:border-gray-700"></div>
+          <button type="button" onclick="switchAuthMode('login')" id="btn-login" class="flex-1 relative z-10 py-2 text-sm font-semibold rounded-full transition-colors text-gray-900 dark:text-white">Login</button>
+          <button type="button" onclick="switchAuthMode('signup')" id="btn-signup" class="flex-1 relative z-10 py-2 text-sm font-semibold rounded-full transition-colors text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">Sign Up</button>
+        </div>
+
+        <form id="auth-form" class="space-y-4" onsubmit="event.preventDefault(); submitAuth();">
+          <!-- Name field (only for signup) -->
+          <div id="field-name" class="hidden opacity-0 transform -translate-y-2 transition-all duration-300 h-0 overflow-hidden">
+            <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Full Name</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <input type="text" id="fullname" class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all text-sm text-gray-900 dark:text-white placeholder-gray-400" placeholder="John Doe">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Email Address</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <input type="email" id="email" required class="w-full pl-10 pr-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all text-sm text-gray-900 dark:text-white placeholder-gray-400" placeholder="you@example.com">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <input type="password" id="password" required class="w-full pl-10 pr-12 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all text-sm text-gray-900 dark:text-white placeholder-gray-400" placeholder="••••••••">
+              <button type="button" onclick="togglePasswordVisibility()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors focus:outline-none" title="Toggle Password Visibility">
+                <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg id="eye-off-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+              </button>
+            </div>
+          </div>
+          
+          <div class="flex justify-end mb-2" id="forgot-password-wrap">
+            <a href="#" class="text-xs font-medium text-brand-red hover:text-red-700 transition-colors">Forgot password?</a>
+          </div>
+
+          <button type="submit" id="auth-submit-btn" class="w-full py-3 px-4 bg-gradient-to-r from-brand-red to-red-600 text-white rounded-xl font-semibold shadow-lg shadow-brand-red/30 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 mt-4">
+            Login
+          </button>
+        </form>
+        
+        <div class="mt-8 text-center" id="auth-footer-text">
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            Don't have an account? <button type="button" onclick="switchAuthMode('signup')" class="font-semibold text-brand-red hover:text-red-700 transition-colors">Sign up</button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Go to Top Button -->
   <a href="#" id="go-to-top" class="fixed right-4 md:right-8 bottom-[5.5rem] md:bottom-8 z-40 p-3 rounded-full bg-brand-red text-white shadow-lg shadow-brand-red/30 hover:bg-red-700 hover:scale-110 active:scale-95 transition-all duration-300 opacity-0 pointer-events-none translate-y-4 flex items-center justify-center" aria-label="Go to top">
@@ -962,6 +1055,130 @@
           behavior: 'smooth'
         });
       });
+    }
+
+    // Auth Modal Logic
+    let currentAuthMode = 'login';
+    
+    function openAuthModal(mode = 'login') {
+      const modal = document.getElementById('auth-modal');
+      const backdrop = document.getElementById('auth-backdrop');
+      const card = document.getElementById('auth-card');
+      
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        backdrop.classList.add('opacity-100');
+        
+        card.classList.remove('opacity-0', 'scale-95');
+        card.classList.add('opacity-100', 'scale-100');
+      }, 10);
+      
+      switchAuthMode(mode);
+    }
+    
+    function closeAuthModal() {
+      const backdrop = document.getElementById('auth-backdrop');
+      const card = document.getElementById('auth-card');
+      
+      backdrop.classList.remove('opacity-100');
+      backdrop.classList.add('opacity-0');
+      
+      card.classList.remove('opacity-100', 'scale-100');
+      card.classList.add('opacity-0', 'scale-95');
+      
+      setTimeout(() => {
+        document.getElementById('auth-modal').classList.add('hidden');
+      }, 300);
+    }
+    
+    function switchAuthMode(mode) {
+      currentAuthMode = mode;
+      const isLogin = mode === 'login';
+      
+      const title = document.getElementById('auth-title');
+      const subtitle = document.getElementById('auth-subtitle');
+      const toggleBg = document.getElementById('auth-toggle-bg');
+      const btnLogin = document.getElementById('btn-login');
+      const btnSignup = document.getElementById('btn-signup');
+      const fieldName = document.getElementById('field-name');
+      const fullnameInput = document.getElementById('fullname');
+      const forgotWrap = document.getElementById('forgot-password-wrap');
+      const submitBtn = document.getElementById('auth-submit-btn');
+      const footerText = document.getElementById('auth-footer-text');
+      
+      if (isLogin) {
+        title.textContent = 'Welcome Back';
+        subtitle.textContent = 'Sign in to continue your journey';
+        toggleBg.style.transform = 'translateX(0)';
+        
+        btnLogin.classList.add('text-gray-900', 'dark:text-white');
+        btnLogin.classList.remove('text-gray-500', 'dark:text-gray-400');
+        btnSignup.classList.remove('text-gray-900', 'dark:text-white');
+        btnSignup.classList.add('text-gray-500', 'dark:text-gray-400');
+        
+        fieldName.classList.remove('h-[72px]', 'opacity-100', 'translate-y-0', 'mb-4');
+        fieldName.classList.add('h-0', 'opacity-0', '-translate-y-2');
+        setTimeout(() => {
+          if (currentAuthMode === 'login') fieldName.classList.add('hidden');
+        }, 300);
+        fullnameInput.required = false;
+        
+        forgotWrap.classList.remove('hidden');
+        submitBtn.textContent = 'Login';
+        
+        footerText.innerHTML = `<p class="text-sm text-gray-500 dark:text-gray-400">Don't have an account? <button type="button" onclick="switchAuthMode('signup')" class="font-semibold text-brand-red hover:text-red-700 transition-colors">Sign up</button></p>`;
+        
+      } else {
+        title.textContent = 'Start Journey';
+        subtitle.textContent = 'Create an account to join us';
+        toggleBg.style.transform = 'translateX(100%)';
+        
+        btnSignup.classList.add('text-gray-900', 'dark:text-white');
+        btnSignup.classList.remove('text-gray-500', 'dark:text-gray-400');
+        btnLogin.classList.remove('text-gray-900', 'dark:text-white');
+        btnLogin.classList.add('text-gray-500', 'dark:text-gray-400');
+        
+        fieldName.classList.remove('hidden');
+        setTimeout(() => {
+          fieldName.classList.remove('h-0', 'opacity-0', '-translate-y-2');
+          fieldName.classList.add('h-[72px]', 'opacity-100', 'translate-y-0', 'mb-4');
+        }, 10);
+        fullnameInput.required = true;
+        
+        forgotWrap.classList.add('hidden');
+        submitBtn.textContent = 'Create Account';
+        
+        footerText.innerHTML = `<p class="text-sm text-gray-500 dark:text-gray-400">Already have an account? <button type="button" onclick="switchAuthMode('login')" class="font-semibold text-brand-red hover:text-red-700 transition-colors">Login</button></p>`;
+      }
+    }
+    
+    function submitAuth() {
+      const submitBtn = document.getElementById('auth-submit-btn');
+      const originalText = submitBtn.textContent;
+      submitBtn.innerHTML = `<svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Processing...`;
+      
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        alert(currentAuthMode === 'login' ? 'Login attempt successful! (Frontend only)' : 'Sign up attempt successful! (Frontend only)');
+        closeAuthModal();
+      }, 1500);
+    }
+
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('password');
+      const eyeIcon = document.getElementById('eye-icon');
+      const eyeOffIcon = document.getElementById('eye-off-icon');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        eyeIcon.classList.add('hidden');
+        eyeOffIcon.classList.remove('hidden');
+      } else {
+        passwordInput.type = 'password';
+        eyeIcon.classList.remove('hidden');
+        eyeOffIcon.classList.add('hidden');
+      }
     }
   </script>
 
