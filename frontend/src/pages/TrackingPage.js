@@ -1,5 +1,154 @@
 import React, { useState } from 'react';
-import { User, Phone, BookOpen, FileText, UploadCloud, Save, CheckCircle2 } from 'lucide-react';
+import { User, Phone, BookOpen, FileText, UploadCloud, Save, CheckCircle2, Globe, Plus, Trash2 } from 'lucide-react';
+
+const LanguageSkillSlider = ({ label, name, value, onChange }) => {
+  const numericLevels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  
+  const getScoreLabel = (val) => {
+    if (val === '' || val === null || val === undefined) return null;
+    const num = parseInt(val, 10);
+    if (num === 0) return 'None';
+    if (num <= 2) return 'Beginner';
+    if (num <= 4) return 'Elementary';
+    if (num <= 6) return 'Intermediate';
+    if (num <= 8) return 'Advanced';
+    return 'Proficient';
+  };
+
+  const currentLabel = getScoreLabel(value);
+  const currentIndex = value !== '' ? parseInt(value, 10) : -1;
+
+  return (
+    <div className="space-y-2">
+      <div className="flex justify-between items-center">
+        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">{label}</label>
+        <span className="text-sm font-medium text-gray-900 dark:text-white h-5">
+          {currentLabel ? (
+            <span>
+              {currentLabel} <span className="text-gray-500 font-normal">({value}/10)</span>
+            </span>
+          ) : (
+            <span className="text-gray-400">Not Selected</span>
+          )}
+        </span>
+      </div>
+      
+      <div className="w-full px-4 pt-3 pb-7 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 relative shadow-sm hover:border-gray-300 dark:hover:border-neutral-700 transition-all">
+        {/* Background Track */}
+        <div className="absolute top-[22px] left-6 right-6 h-1 bg-gray-200 dark:bg-neutral-800 rounded-full overflow-hidden z-0">
+          <div 
+            className="absolute top-0 left-0 h-full bg-gray-900 dark:bg-gray-300 transition-all duration-300 ease-out"
+            style={{ 
+              width: currentIndex !== -1 ? `${(currentIndex / 10) * 100}%` : '0%' 
+            }}
+          />
+        </div>
+        
+        {/* Nodes */}
+        <div className="relative flex justify-between items-center z-10 px-2">
+          <div 
+            className="absolute -top-4 -bottom-4 left-0 right-0 z-20 cursor-pointer touch-none"
+            onPointerDown={(e) => {
+              e.currentTarget.setPointerCapture(e.pointerId);
+              e.currentTarget.dataset.dragging = "true";
+              const rect = e.currentTarget.getBoundingClientRect();
+              const x = e.clientX - rect.left;
+              const percentage = Math.max(0, Math.min(x / rect.width, 1));
+              const index = Math.round(percentage * (numericLevels.length - 1));
+              onChange({ target: { name, value: numericLevels[index].toString() } });
+            }}
+            onPointerMove={(e) => {
+              if (e.currentTarget.dataset.dragging === "true") {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const percentage = Math.max(0, Math.min(x / rect.width, 1));
+                const index = Math.round(percentage * (numericLevels.length - 1));
+                onChange({ target: { name, value: numericLevels[index].toString() } });
+              }
+            }}
+            onPointerUp={(e) => {
+              e.currentTarget.releasePointerCapture(e.pointerId);
+              e.currentTarget.dataset.dragging = "false";
+            }}
+            onPointerCancel={(e) => {
+              e.currentTarget.releasePointerCapture(e.pointerId);
+              e.currentTarget.dataset.dragging = "false";
+            }}
+          />
+          {numericLevels.map((level, index) => {
+            const isPast = currentIndex !== -1 && index <= currentIndex;
+            const isActive = index === currentIndex;
+
+            return (
+              <button
+                key={level}
+                type="button"
+                onClick={() => onChange({ target: { name, value: level.toString() } })}
+                className="relative flex items-center justify-center outline-none group w-6 h-6"
+                title={`${level}/10 - ${getScoreLabel(level)}`}
+              >
+                <div 
+                  className={`w-3 h-3 rounded-full flex items-center justify-center transition-all duration-300 z-10
+                    ${isActive 
+                      ? 'bg-gray-900 dark:bg-white ring-4 ring-gray-200 dark:ring-neutral-800 scale-125' 
+                      : isPast 
+                        ? 'opacity-0 scale-0' 
+                        : 'bg-white dark:bg-neutral-900 border border-gray-300 dark:border-neutral-700 group-hover:border-gray-500'
+                    }
+                  `}
+                />
+                <span className={`absolute top-7 text-[10px] font-medium transition-colors ${
+                  isActive ? 'text-gray-900 dark:text-white font-bold' : 
+                  isPast ? 'text-gray-600 dark:text-gray-400' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-400'
+                }`}>
+                  {level}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+      <input type="text" name={name} value={value} readOnly required className="opacity-0 absolute -z-10 w-0 h-0" tabIndex="-1" />
+    </div>
+  );
+};
+
+const FileUploadField = ({ label, name, accept, description, file, onChange }) => (
+  <div className="flex flex-col gap-2">
+    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">{label}</label>
+    <div className="relative group w-full">
+      <div className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl transition-all ${
+        file 
+          ? 'border-green-500 bg-green-50 dark:bg-green-900/10' 
+          : 'border-gray-300 dark:border-neutral-700 bg-gray-50 dark:bg-neutral-900 hover:bg-gray-100 dark:hover:bg-neutral-800'
+      }`}>
+        <div className="flex flex-col items-center justify-center pt-5 pb-6 pointer-events-none">
+          {file ? (
+            <>
+              <CheckCircle2 className="w-8 h-8 text-green-500 mb-2" />
+              <p className="text-sm font-medium text-green-600 dark:text-green-400 truncate max-w-[200px] sm:max-w-xs px-4">
+                {file.name}
+              </p>
+            </>
+          ) : (
+            <>
+              <UploadCloud className="w-8 h-8 text-gray-400 mb-2 group-hover:text-gray-500 transition-colors" />
+              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Click or drag to upload</p>
+              <p className="text-xs text-gray-400 mt-1">{description}</p>
+            </>
+          )}
+        </div>
+        <input 
+          type="file" 
+          name={name}
+          accept={accept}
+          onChange={onChange}
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
+        />
+      </div>
+    </div>
+  </div>
+);
 
 function TrackingPage() {
   const [formData, setFormData] = useState({
@@ -19,7 +168,8 @@ function TrackingPage() {
     frenchSkills: '',
     englishSkills: '',
     driversLicense: '',
-    workExperience: ''
+    workExperience: '',
+    otherLanguages: []
   });
 
   const [files, setFiles] = useState({
@@ -38,6 +188,28 @@ function TrackingPage() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleAddLanguage = () => {
+    setFormData(prev => ({
+      ...prev,
+      otherLanguages: [...(prev.otherLanguages || []), { language: '', level: '' }]
+    }));
+  };
+
+  const handleRemoveLanguage = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      otherLanguages: prev.otherLanguages.filter((_, i) => i !== index)
+    }));
+  };
+
+  const handleOtherLanguageChange = (index, field, value) => {
+    setFormData(prev => {
+      const newLanguages = [...prev.otherLanguages];
+      newLanguages[index] = { ...newLanguages[index], [field]: value };
+      return { ...prev, otherLanguages: newLanguages };
+    });
+  };
+
   const handleFileChange = (e) => {
     const { name, files: selectedFiles } = e.target;
     if (selectedFiles && selectedFiles.length > 0) {
@@ -54,7 +226,11 @@ function TrackingPage() {
     
     // Append text data
     Object.keys(formData).forEach(key => {
-      payload.append(key, formData[key]);
+      if (Array.isArray(formData[key])) {
+        payload.append(key, JSON.stringify(formData[key]));
+      } else {
+        payload.append(key, formData[key]);
+      }
     });
     
     // Append files
@@ -72,42 +248,7 @@ function TrackingPage() {
     }, 1000);
   };
 
-  const FileUploadField = ({ label, name, accept, description }) => (
-    <div className="flex flex-col gap-2">
-      <label className="text-sm font-medium text-gray-700 dark:text-gray-300">{label}</label>
-      <div className="relative group w-full">
-        <div className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl transition-all ${
-          files[name] 
-            ? 'border-green-500 bg-green-50 dark:bg-green-900/10' 
-            : 'border-gray-300 dark:border-neutral-700 bg-gray-50 dark:bg-neutral-900 hover:bg-gray-100 dark:hover:bg-neutral-800'
-        }`}>
-          <div className="flex flex-col items-center justify-center pt-5 pb-6 pointer-events-none">
-            {files[name] ? (
-              <>
-                <CheckCircle2 className="w-8 h-8 text-green-500 mb-2" />
-                <p className="text-sm font-medium text-green-600 dark:text-green-400 truncate max-w-[200px] sm:max-w-xs px-4">
-                  {files[name].name}
-                </p>
-              </>
-            ) : (
-              <>
-                <UploadCloud className="w-8 h-8 text-gray-400 mb-2 group-hover:text-gray-500 transition-colors" />
-                <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Click or drag to upload</p>
-                <p className="text-xs text-gray-400 mt-1">{description}</p>
-              </>
-            )}
-          </div>
-          <input 
-            type="file" 
-            name={name}
-            accept={accept}
-            onChange={handleFileChange}
-            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
-          />
-        </div>
-      </div>
-    </div>
-  );
+
 
   return (
     <div className="min-h-screen pt-24 pb-16 bg-gray-50 dark:bg-neutral-950 relative overflow-hidden">
@@ -166,13 +307,187 @@ function TrackingPage() {
             </div>
           </div>
 
-          {/* Section 2: Contact Info */}
+          {/* Section 2: Languages & Skills */}
+          <div className="bg-white dark:bg-neutral-900 rounded-3xl p-6 sm:p-10 border border-gray-200 dark:border-neutral-800 shadow-sm">
+            <div className="flex items-center gap-3 mb-6 sm:mb-8 pb-4 border-b border-gray-100 dark:border-neutral-800">
+              <div className="p-2.5 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 rounded-xl">
+                <Globe className="w-5 h-5" />
+              </div>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">2. Languages & Skills</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              
+              {/* --- GERMAN LEVEL COMPONENT --- */}
+              <div className="space-y-4 sm:col-span-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Level of German (Sprachniveau)</label>
+                  {formData.germanLevel && (
+                    <span className="text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-neutral-800 px-2.5 py-1 rounded-md border border-gray-200 dark:border-neutral-700">
+                      {formData.germanLevel} Selected
+                    </span>
+                  )}
+                </div>
+                
+                <div className="relative pt-2 pb-8 px-2 sm:px-4">
+                  {/* Background Track */}
+                  <div className="absolute top-5 sm:top-6 left-5 right-5 sm:left-8 sm:right-8 h-1 bg-gray-200 dark:bg-neutral-800 rounded-full overflow-hidden z-0">
+                    <div 
+                      className="absolute top-0 left-0 h-full bg-gray-900 dark:bg-gray-300 transition-all duration-500 ease-out"
+                      style={{ 
+                        width: formData.germanLevel ? `${(['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].indexOf(formData.germanLevel) / 5) * 100}%` : '0%' 
+                      }}
+                    />
+                  </div>
+                  
+                  {/* Nodes */}
+                  <div className="relative flex justify-between items-center z-10">
+                    <div 
+                      className="absolute -top-4 -bottom-4 left-0 right-0 z-20 cursor-pointer touch-none"
+                      onPointerDown={(e) => {
+                        e.currentTarget.setPointerCapture(e.pointerId);
+                        e.currentTarget.dataset.dragging = "true";
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const percentage = Math.max(0, Math.min(x / rect.width, 1));
+                        const levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+                        const index = Math.round(percentage * (levels.length - 1));
+                        setFormData(prev => ({ ...prev, germanLevel: levels[index] }));
+                      }}
+                      onPointerMove={(e) => {
+                        if (e.currentTarget.dataset.dragging === "true") {
+                          const rect = e.currentTarget.getBoundingClientRect();
+                          const x = e.clientX - rect.left;
+                          const percentage = Math.max(0, Math.min(x / rect.width, 1));
+                          const levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+                          const index = Math.round(percentage * (levels.length - 1));
+                          setFormData(prev => ({ ...prev, germanLevel: levels[index] }));
+                        }
+                      }}
+                      onPointerUp={(e) => {
+                        e.currentTarget.releasePointerCapture(e.pointerId);
+                        e.currentTarget.dataset.dragging = "false";
+                      }}
+                      onPointerCancel={(e) => {
+                        e.currentTarget.releasePointerCapture(e.pointerId);
+                        e.currentTarget.dataset.dragging = "false";
+                      }}
+                    />
+                    {['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map((level, index) => {
+                      const levels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+                      const currentIndex = levels.indexOf(formData.germanLevel);
+                      const isPast = currentIndex !== -1 && index <= currentIndex;
+                      const isActive = index === currentIndex;
+
+                      return (
+                        <button
+                          key={level}
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, germanLevel: level }))}
+                          className="relative flex flex-col items-center justify-center group outline-none w-6 h-6 sm:w-8 sm:h-8"
+                        >
+                          {/* Node Circle */}
+                          <div 
+                            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center transition-all duration-300 z-10
+                              ${isActive 
+                                ? 'bg-gray-900 dark:bg-white ring-4 ring-gray-50 dark:ring-neutral-900 shadow-md scale-125' 
+                                : isPast 
+                                  ? 'opacity-0 scale-0' 
+                                  : 'bg-white dark:bg-neutral-900 border-2 border-gray-300 dark:border-neutral-700 group-hover:border-gray-500 dark:group-hover:border-gray-500'
+                              }
+                            `}
+                          >
+                            {isActive && <div className="w-1.5 h-1.5 rounded-full bg-white dark:bg-gray-900" />}
+                          </div>
+                          
+                          {/* Node Label */}
+                          <span 
+                            className={`absolute top-8 sm:top-10 text-xs sm:text-sm transition-all duration-300
+                              ${isActive 
+                                ? 'text-gray-900 dark:text-white font-bold translate-y-0' 
+                                : isPast
+                                  ? 'text-gray-600 dark:text-gray-400 font-medium'
+                                  : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 font-medium translate-y-0.5'
+                              }
+                            `}
+                          >
+                            {level}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+                <input type="text" name="germanLevel" value={formData.germanLevel} readOnly required className="opacity-0 absolute -z-10 w-0 h-0" tabIndex="-1" />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Date of last language test</label>
+                <input type="date" name="lastLanguageTest" value={formData.lastLanguageTest} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" />
+              </div>
+
+              <div className="space-y-2 sm:col-span-2">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Where did you learn German?</label>
+                <textarea name="germanLearningPlace" value={formData.germanLearningPlace} onChange={handleInputChange} rows="2" className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white resize-none" placeholder="Goethe Institute, Self-taught, etc."></textarea>
+              </div>
+
+              <div>
+                <LanguageSkillSlider label="English Skills" name="englishSkills" value={formData.englishSkills} onChange={handleInputChange} />
+              </div>
+              <div>
+                <LanguageSkillSlider label="French Skills" name="frenchSkills" value={formData.frenchSkills} onChange={handleInputChange} />
+              </div>
+
+              {/* Dynamic Other Languages */}
+              <div className="sm:col-span-2 pt-4 border-t border-gray-100 dark:border-neutral-800 space-y-4">
+                <div className="flex items-center justify-between">
+                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Other Languages</label>
+                  <button type="button" onClick={handleAddLanguage} className="flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 px-3 py-1.5 rounded-lg hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-colors">
+                    <Plus className="w-3.5 h-3.5" />
+                    Add Language
+                  </button>
+                </div>
+
+                {formData.otherLanguages && formData.otherLanguages.map((lang, index) => (
+                  <div key={index} className="flex flex-col sm:flex-row gap-4 p-4 bg-gray-50/50 dark:bg-neutral-900/50 rounded-2xl border border-gray-100 dark:border-neutral-800 relative group">
+                    <div className="flex-1 space-y-2">
+                      <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Language</label>
+                      <input type="text" value={lang.language} onChange={(e) => handleOtherLanguageChange(index, 'language', e.target.value)} required className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white text-sm" placeholder="e.g. Spanish" />
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Level</label>
+                      <select value={lang.level} onChange={(e) => handleOtherLanguageChange(index, 'level', e.target.value)} required className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white text-sm">
+                        <option value="">Select Level</option>
+                        <option value="A1">A1 - Beginner</option>
+                        <option value="A2">A2 - Elementary</option>
+                        <option value="B1">B1 - Intermediate</option>
+                        <option value="B2">B2 - Upper Intermediate</option>
+                        <option value="C1">C1 - Advanced</option>
+                        <option value="C2">C2 - Proficient</option>
+                        <option value="Native">Native</option>
+                      </select>
+                    </div>
+                    <button type="button" onClick={() => handleRemoveLanguage(index)} className="absolute -top-2 -right-2 sm:static sm:mt-8 p-2 bg-white dark:bg-neutral-800 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-full border border-gray-200 dark:border-neutral-700 shadow-sm transition-colors opacity-100 sm:opacity-0 sm:group-hover:opacity-100">
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                ))}
+                {formData.otherLanguages && formData.otherLanguages.length === 0 && (
+                  <div className="text-center py-6 border-2 border-dashed border-gray-200 dark:border-neutral-800 rounded-2xl">
+                    <p className="text-sm text-gray-500 dark:text-gray-400">No additional languages added.</p>
+                  </div>
+                )}
+              </div>
+
+            </div>
+          </div>
+
+          {/* Section 3: Contact Info */}
           <div className="bg-white dark:bg-neutral-900 rounded-3xl p-6 sm:p-10 border border-gray-200 dark:border-neutral-800 shadow-sm">
             <div className="flex items-center gap-3 mb-6 sm:mb-8 pb-4 border-b border-gray-100 dark:border-neutral-800">
               <div className="p-2.5 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 rounded-xl">
                 <Phone className="w-5 h-5" />
               </div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">2. Contact Info</h2>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">3. Contact Info</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
@@ -186,13 +501,13 @@ function TrackingPage() {
             </div>
           </div>
 
-          {/* Section 3: Job Choices & Qualifications */}
+          {/* Section 4: Job Choices & Qualifications */}
           <div className="bg-white dark:bg-neutral-900 rounded-3xl p-6 sm:p-10 border border-gray-200 dark:border-neutral-800 shadow-sm">
             <div className="flex items-center gap-3 mb-6 sm:mb-8 pb-4 border-b border-gray-100 dark:border-neutral-800">
               <div className="p-2.5 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded-xl">
                 <BookOpen className="w-5 h-5" />
               </div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">3. Job Choices & Qualifications</h2>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">4. Job Choices & Qualifications</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
@@ -202,44 +517,6 @@ function TrackingPage() {
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Alternative Job Training 1 (Zweiter Wunsch)</label>
                 <input type="text" name="alternativeJob" value={formData.alternativeJob} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" placeholder="e.g. IT Specialist" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Level of German (Sprachniveau)</label>
-                <select name="germanLevel" value={formData.germanLevel} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white">
-                  <option value="">Select Level</option>
-                  <option value="A1">A1</option>
-                  <option value="A2">A2</option>
-                  <option value="B1">B1</option>
-                  <option value="B2">B2</option>
-                  <option value="C1">C1</option>
-                  <option value="C2">C2</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Date of last language test</label>
-                <input type="date" name="lastLanguageTest" value={formData.lastLanguageTest} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" />
-              </div>
-              <div className="space-y-2 sm:col-span-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Where did you learn German?</label>
-                <textarea name="germanLearningPlace" value={formData.germanLearningPlace} onChange={handleInputChange} rows="2" className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white resize-none" placeholder="Goethe Institute, Self-taught, etc."></textarea>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">French Skills</label>
-                <select name="frenchSkills" value={formData.frenchSkills} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white">
-                  <option value="">Select Option</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                  <option value="A little">A little</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">English Skills</label>
-                <select name="englishSkills" value={formData.englishSkills} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white">
-                  <option value="">Select Option</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                  <option value="A little">A little</option>
-                </select>
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Driver's License (Führerschein)</label>
@@ -256,13 +533,13 @@ function TrackingPage() {
             </div>
           </div>
 
-          {/* Section 4: Document Management & Uploads */}
+          {/* Section 5: Document Management & Uploads */}
           <div className="bg-white dark:bg-neutral-900 rounded-3xl p-6 sm:p-10 border border-gray-200 dark:border-neutral-800 shadow-sm">
             <div className="flex items-center gap-3 mb-6 sm:mb-8 pb-4 border-b border-gray-100 dark:border-neutral-800">
               <div className="p-2.5 bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 rounded-xl">
                 <FileText className="w-5 h-5" />
               </div>
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">4. Documents & Uploads</h2>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">5. Documents & Uploads</h2>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
@@ -271,36 +548,48 @@ function TrackingPage() {
                 name="photo" 
                 accept="image/jpeg, image/png" 
                 description="JPEG or PNG only"
+                file={files.photo}
+                onChange={handleFileChange}
               />
               <FileUploadField 
                 label="Language Certificate" 
                 name="languageCertificate" 
                 accept="application/pdf" 
                 description="PDF only"
+                file={files.languageCertificate}
+                onChange={handleFileChange}
               />
               <FileUploadField 
                 label="Secondary School Degree (Abitur)" 
                 name="secondarySchoolDegree" 
                 accept="application/pdf" 
                 description="PDF only"
+                file={files.secondarySchoolDegree}
+                onChange={handleFileChange}
               />
               <FileUploadField 
                 label="Job Training Certificate (Ausbildung)" 
                 name="jobTrainingCertificate" 
                 accept="application/pdf" 
                 description="PDF only"
+                file={files.jobTrainingCertificate}
+                onChange={handleFileChange}
               />
               <FileUploadField 
                 label="University Degree (Studium)" 
                 name="universityDegree" 
                 accept="application/pdf" 
                 description="PDF only"
+                file={files.universityDegree}
+                onChange={handleFileChange}
               />
               <FileUploadField 
                 label="CV (Lebenslauf)" 
                 name="cv" 
                 accept="application/pdf" 
                 description="PDF only"
+                file={files.cv}
+                onChange={handleFileChange}
               />
             </div>
           </div>
