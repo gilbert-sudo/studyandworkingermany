@@ -1,57 +1,65 @@
 # StudyAndWorkInGermany 🚀
 
-A modern, high-performance landing page for the **StudyAndWorkInGermany** agency, dedicated to guiding motivated young professionals from Madagascar through every step of applying for an Ausbildung in Germany.
+A modern, high-performance web platform for the **StudyAndWorkInGermany** agency, dedicated to guiding motivated young professionals from Madagascar through every step of applying for an Ausbildung in Germany.
 
 ## 🌟 Overview
 
-This project is a static frontend website built to showcase the agency's services, philosophy, and process. The design is engineered to feel premium, human-centric, and highly trustworthy, employing modern web aesthetics like glassmorphism, parallax scrolling, and an asymmetric Bento Grid layout.
+This project has evolved into a full-stack application. It provides a premium, human-centric interface for candidates to explore the agency's services, manage their profile, and submit required documents via the comprehensive Application Manager dashboard.
 
 ## ✨ Features
 
-- **Modern & Responsive Design:** Fully optimized for mobile, tablet, and desktop viewing.
+- **Application Manager Dashboard:** A sleek, fully interactive dashboard where candidates can manage their personal details, vocational choices, and safely upload necessary application documents (PDFs, Images).
+- **Modern & Responsive Design:** Fully optimized for mobile, tablet, and desktop viewing with dynamic layouts and modern floating action bars.
 - **Dark Mode Support:** Built-in seamless toggling between light and dark themes.
-- **Advanced CSS Layouts:** Uses a sophisticated "Bento Grid" to display the agency's core philosophy (Honest Guidance, Mentorship, and Community).
-- **Parallax Animations:** Smooth scroll-triggered animations and floating elements to create a dynamic user experience.
-- **Zero Dependencies:** Built entirely with plain HTML, Tailwind CSS (via CDN), and Vanilla JavaScript for maximum performance and easy hosting.
-- **Multilingual Support UI:** Ready UI for toggling between English and French.
+- **Advanced UI Aesthetics:** Utilizes glassmorphism, clean typography, and premium Tailwind styling for a highly trustworthy user experience.
+- **RESTful API Backend:** A robust Node.js/Express backend to handle user authentication, profiles, and backend logic.
 
 ## 🛠️ Technology Stack
 
-- **HTML5** for semantic structure.
-- **Tailwind CSS** (via CDN) for rapid, utility-first styling.
-- **Vanilla JavaScript** for DOM manipulation, theme toggling, scroll spy, and intersection observers.
-- **Lucide Icons** for clean, crisp SVG iconography.
-- **Google Fonts** (Outfit & Inter) for beautiful typography.
+**Frontend:**
+- **React.js** for building dynamic, state-driven user interfaces.
+- **Tailwind CSS** for rapid, utility-first styling and robust responsive design.
+- **Lucide React** for clean, crisp SVG iconography.
+
+**Backend:**
+- **Node.js & Express** for the REST API architecture.
+- **MongoDB & Mongoose** for database management and schema modeling.
+- **Bcrypt** for secure password hashing.
 
 ## 🚀 Getting Started
 
-Since this is a static website with no build step required, running it locally is incredibly simple:
+To run the full-stack application locally:
 
-1. Clone the repository:
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/gilbert-sudo/studyandworkingermany.git
-   ```
-2. Navigate to the project directory:
-   ```bash
    cd studyandworkingermany
    ```
-3. Open `index.html` in any modern web browser.
-   *(Tip: Use the "Live Server" extension in VS Code for hot-reloading during development).*
 
-## 🎨 Design Philosophy
+2. **Start the Backend:**
+   Open a terminal, navigate to the backend directory, install dependencies, and start the development server.
+   ```bash
+   cd backend
+   npm install
+   npm run dev
+   ```
 
-The aesthetic choices reflect the agency's mission:
-- **Trust & Professionalism:** Clean typography, ample whitespace, and high-quality imagery.
-- **Realistic Expectations:** The copy is carefully crafted to highlight *support* and *guidance* without making absolute guarantees.
-- **Human Connection:** Real faces, warm colors (Brand Red and Gold), and community-focused sections.
+3. **Start the Frontend:**
+   Open a separate terminal, navigate to the frontend directory, install dependencies, and start the React app.
+   ```bash
+   cd frontend
+   npm install
+   npm start
+   ```
+
+4. **View the App:**
+   Open your browser to `http://localhost:3000` (or the port specified by React) to interact with the frontend.
 
 ## 📁 Project Structure
 
-- `index.html` - The main entry point and landing page.
-- `index.md` - Documentation of the 10 professional sectors the agency targets.
-- `backup/` - Contains previous versions of the `index.html` layout for reference.
-- `images/` - Directory for local graphical assets.
+- `frontend/` - Contains the React application, pages (e.g., `HomePage.js`, `TrackingPage.js`, `NotificationsPage.js`), and UI components.
+- `backend/` - Contains the Express server, controllers (e.g., `userController.js`, `authController.js`), database models, and API routes.
 
 ## 📝 License
 
-© 2024 StudyAndWorkInGermany. All rights reserved.
+© 2026 StudyAndWorkInGermany. All rights reserved.
