@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../App.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { openAuthModal } from '../redux/slices/uiSlice';
 
 function HomePage() {
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -72,21 +74,33 @@ function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <button onClick={() => dispatch(openAuthModal('signup'))} className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
-                  {/**/}
-                  <div className="relative w-5 h-5 flex items-center justify-center overflow-hidden">
-                    {/**/}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute transition-all duration-500 ease-in-out group-hover:translate-x-8 group-hover:-translate-y-8 group-hover:opacity-0"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
-                    {/**/}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute -translate-x-8 translate-y-8 opacity-0 transition-all duration-500 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
-                  </div>
+                {user ? (
+                  <Link to="/user/tracking" className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
+                    <div className="relative w-5 h-5 flex items-center justify-center overflow-hidden">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute transition-all duration-500 ease-in-out group-hover:translate-x-8 group-hover:-translate-y-8 group-hover:opacity-0"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute -translate-x-8 translate-y-8 opacity-0 transition-all duration-500 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                    <span>Go to My Space</span>
+                  </Link>
+                ) : (
+                  <>
+                    <button onClick={() => dispatch(openAuthModal('signup'))} className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
+                      {/**/}
+                      <div className="relative w-5 h-5 flex items-center justify-center overflow-hidden">
+                        {/**/}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute transition-all duration-500 ease-in-out group-hover:translate-x-8 group-hover:-translate-y-8 group-hover:opacity-0"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
+                        {/**/}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute -translate-x-8 translate-y-8 opacity-0 transition-all duration-500 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
+                      </div>
 
-                  <span>Start Your Journey</span>
-                </button>
-                <button onClick={() => dispatch(openAuthModal('login'))} className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full border font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-100">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" data-lucide="calendar" className="lucide lucide-calendar w-5 h-5"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
-                  Book Consultation
-                </button>
+                      <span>Start Your Journey</span>
+                    </button>
+                    <button onClick={() => dispatch(openAuthModal('login'))} className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full border font-medium transition-all duration-300 hover:shadow-lg hover:scale-105 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-100">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" data-lucide="calendar" className="lucide lucide-calendar w-5 h-5"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                      Book Consultation
+                    </button>
+                  </>
+                )}
               </div>
 
               {/**/}
@@ -483,50 +497,50 @@ function HomePage() {
       </section>
 
       {/**/}
-      <section id="contact" className="bg-white dark:bg-gray-950 py-32">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <section id="contact" className="bg-white dark:bg-gray-950 py-16 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-gray-900 to-black rounded-3xl overflow-hidden shadow-2xl">
             <div className="grid md:grid-cols-2">
               {/**/}
-              <div className="p-12 lg:p-16 text-white relative">
+              <div className="p-8 lg:p-16 text-white relative">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red opacity-20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
 
-                <h2 className="text-4xl font-light tracking-tight mb-4">Start Your <span className="font-semibold text-brand-red">Journey</span></h2>
-                <p className="text-gray-400 mb-12">Contact us today to schedule your free initial consultation and discover your opportunities in Germany.</p>
+                <h2 className="text-3xl md:text-4xl font-light tracking-tight mb-4">Start Your <span className="font-semibold text-brand-red">Journey</span></h2>
+                <p className="text-gray-400 mb-8 md:mb-12">Contact us today to schedule your free initial consultation and discover your opportunities in Germany.</p>
 
-                <div className="space-y-8">
+                <div className="space-y-6 md:space-y-8">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-full bg-white/10">
+                    <div className="p-3 rounded-full bg-white/10 shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-map-pin w-5 h-5 text-brand-red"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Our Office</h4>
-                      <p className="text-gray-400">Berlin, Germany<br />Antananarivo, Madagascar</p>
+                      <p className="text-gray-400 text-sm md:text-base">Berlin, Germany<br />Antananarivo, Madagascar</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-full bg-white/10">
+                    <div className="p-3 rounded-full bg-white/10 shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone w-5 h-5 text-brand-gold"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Call Us</h4>
-                      <p className="text-gray-400">+49 30 123 456 78</p>
+                      <p className="text-gray-400 text-sm md:text-base">+49 30 123 456 78</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-full bg-white/10">
+                    <div className="p-3 rounded-full bg-white/10 shrink-0">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mail w-5 h-5 text-white"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Email</h4>
-                      <p className="text-gray-400">info@studyandworkingermany.de</p>
+                      <p className="text-gray-400 text-sm md:text-base break-all">info@studyandworkingermany.de</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/**/}
-              <div className="p-12 lg:p-16 bg-white dark:bg-gray-900 border-l border-gray-100 dark:border-gray-800 relative overflow-hidden flex flex-col justify-center items-center text-center group">
+              <div className="p-8 lg:p-16 bg-white dark:bg-gray-900 border-t md:border-t-0 md:border-l border-gray-100 dark:border-gray-800 relative overflow-hidden flex flex-col justify-center items-center text-center group">
 
                 {/**/}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/10 dark:bg-brand-red/20 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700"></div>
@@ -534,28 +548,44 @@ function HomePage() {
 
                 <div className="relative z-10 w-full max-w-sm mx-auto">
                   {/**/}
-                  <div className="mx-auto w-20 h-20 bg-gradient-to-tr from-brand-red to-red-500 rounded-3xl rotate-12 flex items-center justify-center shadow-xl shadow-red-500/30 mb-8 group-hover:rotate-0 transition-all duration-500 hover:scale-105">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white -rotate-12 group-hover:rotate-0 transition-transform duration-500"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
+                  <div className="mx-auto w-16 h-16 md:w-20 md:h-20 bg-gradient-to-tr from-brand-red to-red-500 rounded-3xl rotate-12 flex items-center justify-center shadow-xl shadow-red-500/30 mb-6 md:mb-8 group-hover:rotate-0 transition-all duration-500 hover:scale-105">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white -rotate-12 group-hover:rotate-0 transition-transform duration-500 md:w-[32px] md:h-[32px] w-[24px] h-[24px]"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg>
                   </div>
 
-                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 tracking-tight">Your Portal Awaits</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                    Join our exclusive network today. Create an account to track your visa process, upload documents securely, and connect with your mentor.
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4 tracking-tight">
+                    {user ? `Welcome back, ${user.name}!` : 'Your Portal Awaits'}
+                  </h3>
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-6 md:mb-8 leading-relaxed">
+                    {user 
+                      ? 'Continue tracking your visa process, uploading documents securely, and connecting with your mentor.'
+                      : 'Join our exclusive network today. Create an account to track your visa process, upload documents securely, and connect with your mentor.'}
                   </p>
 
-                  {/**/}
-                  <button type="button" onClick={() => dispatch(openAuthModal('signup'))} className="relative inline-flex h-14 w-full items-center justify-center overflow-hidden rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium transition-all hover:scale-[1.02] active:scale-[0.98]">
-                    <span className="absolute h-0 w-0 rounded-full bg-brand-red transition-all duration-500 ease-out group-hover:h-56 group-hover:w-full z-0"></span>
-                    <span className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-300">
-                      Create Free Account
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-                    </span>
-                  </button>
+                  {user ? (
+                    <Link to="/user/tracking" className="relative inline-flex h-12 md:h-14 w-full items-center justify-center overflow-hidden rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium transition-all hover:scale-[1.02] active:scale-[0.98]">
+                      <span className="absolute h-0 w-0 rounded-full bg-brand-red transition-all duration-500 ease-out group-hover:h-56 group-hover:w-full z-0"></span>
+                      <span className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-300">
+                        Go to My Space
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform w-4 h-4 md:w-5 md:h-5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                      </span>
+                    </Link>
+                  ) : (
+                    <>
+                      {/**/}
+                      <button type="button" onClick={() => dispatch(openAuthModal('signup'))} className="relative inline-flex h-12 md:h-14 w-full items-center justify-center overflow-hidden rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium transition-all hover:scale-[1.02] active:scale-[0.98]">
+                        <span className="absolute h-0 w-0 rounded-full bg-brand-red transition-all duration-500 ease-out group-hover:h-56 group-hover:w-full z-0"></span>
+                        <span className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-300">
+                          Create Free Account
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 transition-transform w-4 h-4 md:w-5 md:h-5"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                        </span>
+                      </button>
 
-                  <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                    <span>Already a member?</span>
-                    <button type="button" onClick={() => dispatch(openAuthModal('login'))} className="font-semibold text-brand-red hover:underline focus:outline-none">Sign in</button>
-                  </div>
+                      <div className="mt-4 md:mt-6 flex items-center justify-center gap-2 text-xs md:text-sm text-gray-500 dark:text-gray-400">
+                        <span>Already a member?</span>
+                        <button type="button" onClick={() => dispatch(openAuthModal('login'))} className="font-semibold text-brand-red hover:underline focus:outline-none">Sign in</button>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
