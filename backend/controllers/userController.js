@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 exports.createUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
     
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -13,10 +13,10 @@ exports.createUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const newUser = new User({ email, password: hashedPassword });
+    const newUser = new User({ name, email, password: hashedPassword });
     await newUser.save();
 
-    res.status(201).json({ message: 'User created successfully', user: { _id: newUser._id, email: newUser.email } });
+    res.status(201).json({ message: 'User created successfully', user: { _id: newUser._id, name: newUser.name, email: newUser.email } });
   } catch (error) {
     res.status(500).json({ error: 'Server error creating user' });
   }
@@ -45,9 +45,10 @@ exports.getUserById = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
     const updateData = {};
     
+    if (name) updateData.name = name;
     if (email) updateData.email = email;
     if (password) {
       const salt = await bcrypt.genSalt(10);

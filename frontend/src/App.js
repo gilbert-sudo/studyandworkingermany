@@ -4,7 +4,9 @@ import './App.css';
 import Navbar from './components/Navbar';
 import AuthModal from './components/AuthModal';
 import HomePage from './pages/HomePage';
-import UserPage from './pages/UserPage';
+import TrackingPage from './pages/TrackingPage';
+import NotificationsPage from './pages/NotificationsPage';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
       
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/user" element={<UserPage />} />
+        <Route path="/user/tracking" element={<TrackingPage />} />
+        <Route path="/user/notifications" element={<NotificationsPage />} />
+        <Route path="/user/profile" element={<ProfilePage />} />
       </Routes>
       
       <AuthModal />
