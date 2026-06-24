@@ -10,6 +10,8 @@ function HomePage() {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+    
     // Parallax scrolling effect
     const handleScroll = () => {
       const scrolled = window.scrollY;

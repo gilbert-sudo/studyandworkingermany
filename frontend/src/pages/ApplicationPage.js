@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { User, Phone, BookOpen, FileText, UploadCloud, Save, CheckCircle2, Globe, Plus, Trash2 } from 'lucide-react';
+import { User, Phone, BookOpen, FileText, UploadCloud, Save, CheckCircle2, Globe, Plus, Trash2, BrainCircuit, ArrowRight } from 'lucide-react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const LanguageSkillSlider = ({ label, name, value, onChange }) => {
   const numericLevels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -151,6 +153,10 @@ const FileUploadField = ({ label, name, accept, description, file, onChange }) =
 );
 
 function ApplicationPage() {
+  const { user } = useSelector((state) => state.auth);
+  const { statements: vocationalStatements } = useSelector((state) => state.vocational);
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     surname: '',
     firstName: '',
@@ -266,6 +272,74 @@ function ApplicationPage() {
 
         <form onSubmit={handleSubmit} className="space-y-8">
           
+          {/* Section 0: Vocational Test Results */}
+          <div className="bg-white dark:bg-neutral-900 rounded-3xl p-6 sm:p-10 border border-[#00A693]/30 dark:border-[#2dd4bf]/30 shadow-sm relative overflow-hidden">
+             <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-[#00A693]/10 dark:bg-[#2dd4bf]/10 rounded-full blur-3xl pointer-events-none"></div>
+             
+             <div className="flex items-center justify-between mb-6 relative z-10">
+               <div className="flex items-center gap-3">
+                 <div className="p-2.5 bg-[#00A693]/10 text-[#00A693] dark:bg-[#2dd4bf]/10 dark:text-[#2dd4bf] rounded-xl">
+                   <BrainCircuit className="w-5 h-5" />
+                 </div>
+                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Vocational Interest Test</h2>
+               </div>
+               
+               {user?.hasCompletedVocationalTest ? (
+                  <span className="flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full text-xs font-medium border border-green-100 dark:border-green-800/50">
+                    <CheckCircle2 className="w-3.5 h-3.5" /> Completed
+                  </span>
+               ) : (
+                  <span className="flex items-center gap-1.5 px-3 py-1 bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 rounded-full text-xs font-medium border border-amber-100 dark:border-amber-800/50">
+                    Pending
+                  </span>
+               )}
+             </div>
+
+             <div className="relative z-10">
+               {user?.hasCompletedVocationalTest ? (
+                 <div className="space-y-4">
+                   <p className="text-sm text-gray-600 dark:text-gray-400">
+                     Based on your test, you showed strong interest in:
+                   </p>
+                   <div className="flex flex-wrap gap-2">
+                     {user.vocationalTestResults?.filter(r => r.answer === 'Ja').slice(0, 5).map((res, i) => (
+                       <span key={i} className="px-3 py-1.5 bg-gray-50 dark:bg-neutral-800 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-medium border border-gray-200 dark:border-neutral-700 shadow-sm">
+                         {vocationalStatements[res.questionId - 1] || res.question}
+                       </span>
+                     ))}
+                     {user.vocationalTestResults?.filter(r => r.answer === 'Ja').length > 5 && (
+                       <span className="px-3 py-1.5 bg-gray-50 dark:bg-neutral-800/50 text-gray-500 dark:text-gray-400 rounded-lg text-xs font-medium border border-transparent">
+                         +{user.vocationalTestResults.filter(r => r.answer === 'Ja').length - 5} more
+                       </span>
+                     )}
+                   </div>
+                   <div className="pt-5 mt-5 border-t border-gray-100 dark:border-neutral-800 flex justify-end">
+                     <button
+                       type="button"
+                       onClick={() => navigate('/onboarding')}
+                       className="flex items-center gap-2 text-sm font-semibold text-[#00A693] dark:text-[#2dd4bf] hover:text-[#008f7d] dark:hover:text-[#14b8a6] transition-colors bg-[#00A693]/5 dark:bg-[#2dd4bf]/10 px-4 py-2 rounded-xl hover:bg-[#00A693]/10 dark:hover:bg-[#2dd4bf]/20"
+                     >
+                       Review & Update Test <ArrowRight className="w-4 h-4" />
+                     </button>
+                   </div>
+                 </div>
+               ) : (
+                 <div className="space-y-5">
+                   <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
+                     Taking the vocational interest test helps us understand your strengths, preferences, and match you with the best suited career paths in Germany.
+                   </p>
+                   <button
+                     type="button"
+                     onClick={() => navigate('/onboarding')}
+                     className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A693] hover:bg-[#008f7d] dark:bg-[#2dd4bf] dark:hover:bg-[#14b8a6] text-white dark:text-neutral-900 rounded-xl font-semibold text-sm transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#00A693]/20 dark:shadow-[#2dd4bf]/20"
+                   >
+                     Take the Test <ArrowRight className="w-4 h-4" />
+                   </button>
+                 </div>
+               )}
+             </div>
+          </div>
+
           {/* Section 1: Personal Details */}
           <div className="bg-white dark:bg-neutral-900 rounded-3xl p-6 sm:p-10 border border-gray-200 dark:border-neutral-800 shadow-sm">
             <div className="flex items-center gap-3 mb-6 sm:mb-8 pb-4 border-b border-gray-100 dark:border-neutral-800">

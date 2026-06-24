@@ -4,43 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { submitVocationalTest } from '../redux/slices/authSlice';
 import { Briefcase, ThumbsUp, ArrowRight, ArrowLeft, Sparkles, CheckCircle2, Home } from 'lucide-react';
 
-const questions = [
-  "Arbeitest du gerne mit deinen Händen?",
-  "Reparierst du gerne Dinge?",
-  "Arbeitest du gerne draußen?",
-  "Interessierst du dich für Maschinen?",
-  "Baust oder bastelst du gerne etwas?",
-  "Hilfst du gerne anderen Menschen?",
-  "Hörst du anderen gerne zu?",
-  "Arbeitest du gerne mit Kindern?",
-  "Möchtest du Menschen gesund machen oder pflegen?",
-  "Arbeitest du gerne im Team?",
-  "Benutzt du gerne Computer?",
-  "Lernst du gerne neue technische Dinge?",
-  "Interessierst du dich für Elektronik?",
-  "Löst du gerne Probleme?",
-  "Arbeitest du gerne genau und sorgfältig?",
-  "Zeichnest oder gestaltest du gerne?",
-  "Fotografierst du gerne?",
-  "Bist du kreativ?",
-  "Hast du oft viele Ideen?",
-  "Machst du gerne Musik oder Kunst?",
-  "Sprichst du gerne mit Menschen?",
-  "Kannst du andere gut überzeugen?",
-  "Verkaufst du gerne etwas?",
-  "Möchtest du später Verantwortung übernehmen?",
-  "Organisierst du gerne Dinge?",
-  "Arbeitest du gerne im Büro?",
-  "Planst du gerne?",
-  "Magst du Ordnung?",
-  "Arbeitest du gerne mit Zahlen?",
-  "Erledigst du Aufgaben zuverlässig?"
-];
-
 function VocationalTestPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.auth);
+  const { questions } = useSelector((state) => state.vocational);
 
   // 'intro' | 'test' | 'outro'
   const [phase, setPhase] = useState('intro');
@@ -113,15 +81,19 @@ function VocationalTestPage() {
             <div className="w-20 h-20 bg-[#00A693]/10 dark:bg-[#2dd4bf]/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <Sparkles className="w-10 h-10 text-[#00A693] dark:text-[#2dd4bf]" />
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Welcome to your Journey!</h1>
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              {user?.hasCompletedVocationalTest ? 'Update Your Career Interests' : 'Welcome to your Journey!'}
+            </h1>
             <p className="text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
-              To help us match you with the perfect opportunity in Germany, we'd like to get to know your professional interests better. It only takes a couple of minutes to answer these 30 quick questions.
+              {user?.hasCompletedVocationalTest 
+                ? "It looks like you've already completed the vocational assessment. If your interests have changed, you can retake the assessment to update your profile and receive better opportunity matches."
+                : "To help us match you with the perfect opportunity in Germany, we'd like to get to know your professional interests better. It only takes a couple of minutes to answer these 30 quick questions."}
             </p>
             <button 
               onClick={startTest}
               className="w-full py-4 sm:py-5 px-8 bg-[#00A693] hover:bg-[#008f7d] dark:bg-[#2dd4bf] dark:hover:bg-[#14b8a6] text-white dark:text-neutral-900 font-bold rounded-full text-lg transition-all hover:scale-[1.02] active:scale-[0.98] flex justify-center items-center gap-2 shadow-lg shadow-[#00A693]/30 dark:shadow-[#2dd4bf]/20"
             >
-              Start Assessment <ArrowRight className="w-5 h-5" />
+              {user?.hasCompletedVocationalTest ? 'Retake Assessment' : 'Start Assessment'} <ArrowRight className="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -251,13 +223,13 @@ function VocationalTestPage() {
         <div className="fixed bottom-0 left-0 right-0 p-4 sm:p-6 z-50 pointer-events-none animate-slide-up animate-delay-300">
           <div className="max-w-md mx-auto pointer-events-auto px-4">
             <button 
-              onClick={() => navigate('/')}
-              className="w-full py-4 sm:py-5 px-6 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl border-none shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] rounded-full flex items-center justify-center gap-3 text-gray-700 dark:text-gray-200 font-bold text-sm sm:text-base hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-all active:scale-[0.98] group"
+              onClick={() => navigate('/user/application')}
+              className="w-full py-4 sm:py-5 px-6 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl border-none shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] rounded-full flex items-center justify-center gap-3 text-gray-700 dark:text-gray-200 font-bold text-sm sm:text-base hover:bg-gray-50 hover:text-gray-900 dark:hover:bg-neutral-800 dark:hover:text-white transition-all active:scale-[0.98] group"
             >
-              <div className="p-1.5 sm:p-2 bg-red-100 dark:bg-red-900/30 rounded-xl group-hover:bg-red-200 dark:group-hover:bg-red-900/50 transition-colors">
-                <Home className="w-4 h-4 sm:w-5 sm:h-5 text-red-600 dark:text-red-400" />
+              <div className="p-1.5 sm:p-2 bg-gray-100 dark:bg-neutral-800 rounded-xl group-hover:bg-gray-200 dark:group-hover:bg-neutral-700 transition-colors">
+                <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" />
               </div>
-              Leave Test & Return Home
+              Leave Test & Return to My Space
             </button>
           </div>
         </div>
