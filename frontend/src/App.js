@@ -9,8 +9,11 @@ import NotificationsPage from './pages/NotificationsPage';
 import ProfilePage from './pages/ProfilePage';
 import VocationalTestPage from './pages/VocationalTestPage';
 import ProtectedRoute from './components/ProtectedRoute';
+import useWakeUpBackend from './hooks/useWakeUpBackend';
 
 function App() {
+  useWakeUpBackend();
+
   return (
     <Router>
       <Navbar />

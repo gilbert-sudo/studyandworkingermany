@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeAuthModal, setAuthModalMode } from '../redux/slices/uiSlice';
-import { loginUser, signupUser, clearError } from '../redux/slices/authSlice';
+import { clearError } from '../redux/slices/authSlice';
+import { useAuthApi } from '../hooks/useAuthApi';
 import { useNavigate } from 'react-router-dom';
 
 const AuthModal = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { loginUser, signupUser } = useAuthApi();
   const { isAuthModalOpen: isOpen, authModalMode } = useSelector((state) => state.ui);
   const { loading, error } = useSelector((state) => state.auth);
   const isLogin = authModalMode === 'login';
@@ -31,11 +33,11 @@ const AuthModal = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (isLogin) {
-      const result = await dispatch(loginUser({ email, password }));
-      if (loginUser.fulfilled.match(result)) onClose();
+      const result = await loginUser({ email, password });
+      if (result.success) onClose();
     } else {
-      const result = await dispatch(signupUser({ name, email, password }));
-      if (signupUser.fulfilled.match(result)) {
+      const result = await signupUser({ name, email, password });
+      if (result.success) {
         onClose();
         navigate('/onboarding');
       }

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { submitVocationalTest } from '../redux/slices/authSlice';
+import { useVocationalApi } from '../hooks/useVocationalApi';
 import { Briefcase, ThumbsUp, ArrowRight, ArrowLeft, Sparkles, CheckCircle2, Home } from 'lucide-react';
 
 function VocationalTestPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { submitVocationalTest } = useVocationalApi();
   const { user } = useSelector((state) => state.auth);
   const { questions } = useSelector((state) => state.vocational);
 
@@ -56,7 +57,7 @@ function VocationalTestPage() {
     setPhase('outro');
     setIsSubmitting(true);
     try {
-      await dispatch(submitVocationalTest({ userId: user.id || user._id, results: finalAnswers })).unwrap();
+      await submitVocationalTest({ userId: user.id || user._id, results: finalAnswers });
     } catch (error) {
       console.error('Failed to submit test:', error);
       // Handle error gracefully
