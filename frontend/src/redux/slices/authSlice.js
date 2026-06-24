@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-const API_URL = `${process.env.REACT_APP_API_URL}/auth`;
+const API_URL = `${process.env.REACT_APP_API_URL}/api/auth`;
 
 // Async thunk for user login
 export const loginUser = createAsyncThunk(

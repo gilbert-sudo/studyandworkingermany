@@ -33,7 +33,7 @@ const LanguageSkillSlider = ({ label, name, value, onChange }) => {
         </span>
       </div>
       
-      <div className="w-full px-4 pt-3 pb-7 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 relative shadow-sm hover:border-gray-300 dark:hover:border-neutral-700 transition-all">
+      <div className="relative w-full px-4 pt-3 pb-8 transition-all">
         {/* Background Track */}
         <div className="absolute top-[22px] left-6 right-6 h-1 bg-gray-200 dark:bg-neutral-800 rounded-full overflow-hidden z-0">
           <div 
@@ -97,9 +97,9 @@ const LanguageSkillSlider = ({ label, name, value, onChange }) => {
                     }
                   `}
                 />
-                <span className={`absolute top-7 text-[10px] font-medium transition-colors ${
-                  isActive ? 'text-gray-900 dark:text-white font-bold' : 
-                  isPast ? 'text-gray-600 dark:text-gray-400' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-400'
+                <span className={`absolute top-7 sm:top-8 text-xs sm:text-sm transition-all duration-300 ${
+                  isActive ? 'text-gray-900 dark:text-white font-bold translate-y-0' : 
+                  isPast ? 'text-gray-600 dark:text-gray-400 font-medium' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 font-medium translate-y-0.5'
                 }`}>
                   {level}
                 </span>
