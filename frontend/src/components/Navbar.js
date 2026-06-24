@@ -65,6 +65,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();
+  const isVocationalTest = location.pathname === '/onboarding';
   const isUserSpace = location.pathname.startsWith('/user');
   const { currentLang, isDarkMode } = useSelector((state) => state.ui);
   const { user } = useSelector((state) => state.auth);
@@ -156,7 +157,7 @@ const Navbar = () => {
       <header className="fixed top-0 left-0 right-0 z-50 glass-effect border-b animate-fade-in bg-white/90 dark:bg-gray-950/90 border-gray-100 dark:border-gray-800" style={{ opacity: 1, transform: 'translateY(0px)' }}>
         <nav className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 md:h-20">
-            <Link to="/" onClick={handleHomeClick} className="flex items-center gap-2 md:gap-3 animate-slide-right animate-delay-100">
+            <Link to={isVocationalTest ? "#" : "/"} onClick={isVocationalTest ? (e) => e.preventDefault() : handleHomeClick} className={`flex items-center gap-2 md:gap-3 animate-slide-right animate-delay-100 ${isVocationalTest ? 'opacity-80 cursor-default' : ''}`}>
               <div className="relative">
                 <img src="images/logo.png" alt="Logo" className="h-8 md:h-10 w-auto object-contain" />
               </div>
@@ -168,7 +169,12 @@ const Navbar = () => {
 
             {/**/}
             <div className="hidden md:flex md:items-center md:gap-10 animate-slide-up animate-delay-200">
-              {!isUserSpace ? (
+              {isVocationalTest ? (
+                <div className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full">
+                  <span className="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
+                  <span className="text-sm font-medium text-gray-600 dark:text-gray-300">Test in Progress</span>
+                </div>
+              ) : !isUserSpace ? (
                 <>
                   <DesktopNavLink href="#services" isActive={isLinkActive('#services')} setActiveHash={setActiveHash}>Services</DesktopNavLink>
                   <DesktopNavLink href="#philosophy" isActive={isLinkActive('#philosophy')} setActiveHash={setActiveHash}>Philosophy</DesktopNavLink>
@@ -281,7 +287,7 @@ const Navbar = () => {
       </header>
 
       {/**/}
-      <nav className="md:hidden fixed bottom-4 left-4 right-4 z-50 glass-effect bg-white/80 dark:bg-gray-900/80 border border-white/50 dark:border-gray-700/50 flex justify-around items-center h-16 px-2 rounded-full shadow-2xl backdrop-blur-xl">
+      <nav className={`md:hidden fixed bottom-4 left-4 right-4 z-50 glass-effect bg-white/80 dark:bg-gray-900/80 border border-white/50 dark:border-gray-700/50 flex justify-around items-center h-16 px-2 rounded-full shadow-2xl backdrop-blur-xl ${isVocationalTest ? 'hidden' : ''}`}>
         {!isUserSpace ? (
           <>
             <MobileNavLink href="#services" label="Services" isActive={isLinkActive('#services')} setActiveHash={setActiveHash} icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>} />
