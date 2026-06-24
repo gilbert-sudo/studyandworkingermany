@@ -37,7 +37,7 @@ const LanguageSkillSlider = ({ label, name, value, onChange }) => {
         {/* Background Track */}
         <div className="absolute top-[22px] left-6 right-6 h-1 bg-gray-200 dark:bg-neutral-800 rounded-full overflow-hidden z-0">
           <div 
-            className="absolute top-0 left-0 h-full bg-gray-900 dark:bg-gray-300 transition-all duration-300 ease-out"
+            className="absolute top-0 left-0 h-full bg-[#00A693] dark:bg-[#2dd4bf] transition-all duration-300 ease-out"
             style={{ 
               width: currentIndex !== -1 ? `${(currentIndex / 10) * 100}%` : '0%' 
             }}
@@ -90,7 +90,7 @@ const LanguageSkillSlider = ({ label, name, value, onChange }) => {
                 <div 
                   className={`w-3 h-3 rounded-full flex items-center justify-center transition-all duration-300 z-10
                     ${isActive 
-                      ? 'bg-gray-900 dark:bg-white ring-4 ring-gray-200 dark:ring-neutral-800 scale-125' 
+                      ? 'bg-[#00A693] dark:bg-[#2dd4bf] ring-4 ring-[#00A693]/20 dark:ring-[#2dd4bf]/20 scale-125' 
                       : isPast 
                         ? 'opacity-0 scale-0' 
                         : 'bg-white dark:bg-neutral-900 border border-gray-300 dark:border-neutral-700 group-hover:border-gray-500'
@@ -98,7 +98,7 @@ const LanguageSkillSlider = ({ label, name, value, onChange }) => {
                   `}
                 />
                 <span className={`absolute top-7 sm:top-8 text-xs sm:text-sm transition-all duration-300 ${
-                  isActive ? 'text-gray-900 dark:text-white font-bold translate-y-0' : 
+                  isActive ? 'text-[#00A693] dark:text-[#2dd4bf] font-bold translate-y-0' : 
                   isPast ? 'text-gray-600 dark:text-gray-400 font-medium' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 font-medium translate-y-0.5'
                 }`}>
                   {level}
@@ -150,7 +150,7 @@ const FileUploadField = ({ label, name, accept, description, file, onChange }) =
   </div>
 );
 
-function TrackingPage() {
+function ApplicationPage() {
   const [formData, setFormData] = useState({
     surname: '',
     firstName: '',
@@ -277,23 +277,23 @@ function TrackingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Surname (Familienname)</label>
-                <input type="text" name="surname" value={formData.surname} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" placeholder="Doe" />
+                <input type="text" name="surname" value={formData.surname} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="Doe" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">First Name (Vorname)</label>
-                <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" placeholder="John" />
+                <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="John" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Nickname (Rufname) <span className="text-gray-400 font-normal">(Optional)</span></label>
-                <input type="text" name="nickname" value={formData.nickname} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" placeholder="Johnny" />
+                <input type="text" name="nickname" value={formData.nickname} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="Johnny" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Date of Birth (Geburtsdatum)</label>
-                <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" />
+                <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Gender (Geschlecht)</label>
-                <select name="gender" value={formData.gender} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white">
+                <select name="gender" value={formData.gender} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white">
                   <option value="">Select Gender</option>
                   <option value="Female">Female</option>
                   <option value="Male">Male</option>
@@ -302,7 +302,7 @@ function TrackingPage() {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Place of Residence (Wohnort)</label>
-                <input type="text" name="residence" value={formData.residence} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" placeholder="City, Country" />
+                <input type="text" name="residence" value={formData.residence} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="City, Country" />
               </div>
             </div>
           </div>
@@ -332,7 +332,7 @@ function TrackingPage() {
                   {/* Background Track */}
                   <div className="absolute top-5 sm:top-6 left-5 right-5 sm:left-8 sm:right-8 h-1 bg-gray-200 dark:bg-neutral-800 rounded-full overflow-hidden z-0">
                     <div 
-                      className="absolute top-0 left-0 h-full bg-gray-900 dark:bg-gray-300 transition-all duration-500 ease-out"
+                      className="absolute top-0 left-0 h-full bg-[#00A693] dark:bg-[#2dd4bf] transition-all duration-500 ease-out"
                       style={{ 
                         width: formData.germanLevel ? `${(['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].indexOf(formData.germanLevel) / 5) * 100}%` : '0%' 
                       }}
@@ -389,7 +389,7 @@ function TrackingPage() {
                           <div 
                             className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center transition-all duration-300 z-10
                               ${isActive 
-                                ? 'bg-gray-900 dark:bg-white ring-4 ring-gray-50 dark:ring-neutral-900 shadow-md scale-125' 
+                                ? 'bg-[#00A693] dark:bg-[#2dd4bf] ring-4 ring-[#00A693]/20 dark:ring-[#2dd4bf]/20 shadow-md scale-125' 
                                 : isPast 
                                   ? 'opacity-0 scale-0' 
                                   : 'bg-white dark:bg-neutral-900 border-2 border-gray-300 dark:border-neutral-700 group-hover:border-gray-500 dark:group-hover:border-gray-500'
@@ -403,7 +403,7 @@ function TrackingPage() {
                           <span 
                             className={`absolute top-8 sm:top-10 text-xs sm:text-sm transition-all duration-300
                               ${isActive 
-                                ? 'text-gray-900 dark:text-white font-bold translate-y-0' 
+                                ? 'text-[#00A693] dark:text-[#2dd4bf] font-bold translate-y-0' 
                                 : isPast
                                   ? 'text-gray-600 dark:text-gray-400 font-medium'
                                   : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 font-medium translate-y-0.5'
@@ -422,12 +422,12 @@ function TrackingPage() {
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Date of last language test</label>
-                <input type="date" name="lastLanguageTest" value={formData.lastLanguageTest} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" />
+                <input type="date" name="lastLanguageTest" value={formData.lastLanguageTest} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" />
               </div>
 
               <div className="space-y-2 sm:col-span-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Where did you learn German?</label>
-                <textarea name="germanLearningPlace" value={formData.germanLearningPlace} onChange={handleInputChange} rows="2" className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white resize-none" placeholder="Goethe Institute, Self-taught, etc."></textarea>
+                <textarea name="germanLearningPlace" value={formData.germanLearningPlace} onChange={handleInputChange} rows="2" className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white resize-none" placeholder="Goethe Institute, Self-taught, etc."></textarea>
               </div>
 
               <div>
@@ -451,11 +451,11 @@ function TrackingPage() {
                   <div key={index} className="flex flex-col sm:flex-row gap-4 p-4 bg-gray-50/50 dark:bg-neutral-900/50 rounded-2xl border border-gray-100 dark:border-neutral-800 relative group">
                     <div className="flex-1 space-y-2">
                       <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Language</label>
-                      <input type="text" value={lang.language} onChange={(e) => handleOtherLanguageChange(index, 'language', e.target.value)} required className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white text-sm" placeholder="e.g. Spanish" />
+                      <input type="text" value={lang.language} onChange={(e) => handleOtherLanguageChange(index, 'language', e.target.value)} required className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white text-sm" placeholder="e.g. Spanish" />
                     </div>
                     <div className="flex-1 space-y-2">
                       <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Level</label>
-                      <select value={lang.level} onChange={(e) => handleOtherLanguageChange(index, 'level', e.target.value)} required className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white text-sm">
+                      <select value={lang.level} onChange={(e) => handleOtherLanguageChange(index, 'level', e.target.value)} required className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white text-sm">
                         <option value="">Select Level</option>
                         <option value="A1">A1 - Beginner</option>
                         <option value="A2">A2 - Elementary</option>
@@ -492,11 +492,11 @@ function TrackingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">WhatsApp Number</label>
-                <input type="text" name="whatsapp" value={formData.whatsapp} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" placeholder="+49 123 4567890" />
+                <input type="text" name="whatsapp" value={formData.whatsapp} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="+49 123 4567890" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">E-Mail</label>
-                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" placeholder="you@example.com" />
+                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="you@example.com" />
               </div>
             </div>
           </div>
@@ -512,15 +512,15 @@ function TrackingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Preferred Job Training (Erster Wunsch)</label>
-                <input type="text" name="preferredJob" value={formData.preferredJob} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" placeholder="e.g. Nursing (Pflegefachkraft)" />
+                <input type="text" name="preferredJob" value={formData.preferredJob} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="e.g. Nursing (Pflegefachkraft)" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Alternative Job Training 1 (Zweiter Wunsch)</label>
-                <input type="text" name="alternativeJob" value={formData.alternativeJob} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white" placeholder="e.g. IT Specialist" />
+                <input type="text" name="alternativeJob" value={formData.alternativeJob} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="e.g. IT Specialist" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Driver's License (Führerschein)</label>
-                <select name="driversLicense" value={formData.driversLicense} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white">
+                <select name="driversLicense" value={formData.driversLicense} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white">
                   <option value="">Select Option</option>
                   <option value="Ja">Ja (Yes)</option>
                   <option value="Nein">Nein (No)</option>
@@ -528,7 +528,7 @@ function TrackingPage() {
               </div>
               <div className="space-y-2 sm:col-span-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Work Experience (Berufserfahrung)</label>
-                <textarea name="workExperience" value={formData.workExperience} onChange={handleInputChange} rows="3" className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:outline-none transition-all dark:text-white resize-none" placeholder="Briefly describe your relevant work experience..."></textarea>
+                <textarea name="workExperience" value={formData.workExperience} onChange={handleInputChange} rows="3" className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white resize-none" placeholder="Briefly describe your relevant work experience..."></textarea>
               </div>
             </div>
           </div>
@@ -604,7 +604,7 @@ function TrackingPage() {
               <button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="group relative flex justify-center items-center gap-2 sm:gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-semibold text-sm sm:text-lg transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100 overflow-hidden shrink-0 whitespace-nowrap"
+                className="group relative flex justify-center items-center gap-2 sm:gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-[#00A693] dark:bg-[#2dd4bf] text-white dark:text-neutral-900 rounded-full font-semibold text-sm sm:text-lg transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100 overflow-hidden shrink-0 whitespace-nowrap"
               >
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 dark:via-black/20 to-transparent z-0"></div>
                 
@@ -633,4 +633,4 @@ function TrackingPage() {
   );
 }
 
-export default TrackingPage;
+export default ApplicationPage;

@@ -178,7 +178,7 @@ const Navbar = () => {
               ) : (
                 <>
                   <DesktopNavLink href="/" isRouterLink={true} onClick={handleHomeClick} isActive={isLinkActive('/')}>Home</DesktopNavLink>
-                  <DesktopNavLink href="/user/tracking" isRouterLink={true} isActive={isLinkActive('/user/tracking')}>Tracking</DesktopNavLink>
+                  <DesktopNavLink href="/user/application" isRouterLink={true} isActive={isLinkActive('/user/application')}>Application</DesktopNavLink>
                   <DesktopNavLink href="/user/notifications" isRouterLink={true} isActive={isLinkActive('/user/notifications')}>Notifications</DesktopNavLink>
                   <DesktopNavLink href="/user/profile" isRouterLink={true} isActive={isLinkActive('/user/profile')}>My Profile</DesktopNavLink>
                 </>
@@ -254,7 +254,7 @@ const Navbar = () => {
                       <p className="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">ID: {user.clientId}</p>
                     </div>
                     <div className="p-2 flex flex-col gap-1">
-                      <Link to="/user/tracking" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                      <Link to="/user/application" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                         My Space
                       </Link>
@@ -288,7 +288,7 @@ const Navbar = () => {
         ) : (
           <>
             <MobileNavLink href="/" isRouterLink={true} onClick={handleHomeClick} label="Home" isActive={isLinkActive('/')} icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>} />
-            <MobileNavLink href="/user/tracking" isRouterLink={true} label="Tracking" isActive={isLinkActive('/user/tracking')} icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>} />
+            <MobileNavLink href="/user/application" isRouterLink={true} label="Application" isActive={isLinkActive('/user/application')} icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>} />
             <MobileNavLink href="/user/notifications" isRouterLink={true} label="Notifications" isActive={isLinkActive('/user/notifications')} icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>} />
             <MobileNavLink href="/user/profile" isRouterLink={true} label="My Profile" isActive={isLinkActive('/user/profile')} icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>} />
           </>

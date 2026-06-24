@@ -75,7 +75,7 @@ function HomePage() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 {user ? (
-                  <Link to="/user/tracking" className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
+                  <Link to="/user/application" className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
                     <div className="relative w-5 h-5 flex items-center justify-center overflow-hidden">
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute transition-all duration-500 ease-in-out group-hover:translate-x-8 group-hover:-translate-y-8 group-hover:opacity-0"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute -translate-x-8 translate-y-8 opacity-0 transition-all duration-500 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
@@ -557,12 +557,12 @@ function HomePage() {
                   </h3>
                   <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-6 md:mb-8 leading-relaxed">
                     {user 
-                      ? 'Continue tracking your visa process, uploading documents securely, and connecting with your mentor.'
-                      : 'Join our exclusive network today. Create an account to track your visa process, upload documents securely, and connect with your mentor.'}
+                      ? 'Continue your application process, uploading documents securely, and connecting with your mentor.'
+                      : 'Create your account today and let us guide you every step of the way – from your first German lesson to your first day at work.'}
                   </p>
 
                   {user ? (
-                    <Link to="/user/tracking" className="relative inline-flex h-12 md:h-14 w-full items-center justify-center overflow-hidden rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium transition-all hover:scale-[1.02] active:scale-[0.98]">
+                    <Link to="/user/application" className="relative inline-flex h-12 md:h-14 w-full items-center justify-center overflow-hidden rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-medium transition-all hover:scale-[1.02] active:scale-[0.98]">
                       <span className="absolute h-0 w-0 rounded-full bg-brand-red transition-all duration-500 ease-out group-hover:h-56 group-hover:w-full z-0"></span>
                       <span className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-300">
                         Go to My Space
