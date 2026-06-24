@@ -18,6 +18,14 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  hasCompletedVocationalTest: {
+    type: Boolean,
+    default: false
+  },
+  vocationalTestResults: {
+    type: Array,
+    default: []
   }
 });
 

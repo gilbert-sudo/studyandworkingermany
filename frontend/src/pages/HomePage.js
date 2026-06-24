@@ -13,7 +13,7 @@ function HomePage() {
     // Parallax scrolling effect
     const handleScroll = () => {
       const scrolled = window.scrollY;
-      
+
       if (scrolled > 300) {
         setShowScrollTop(true);
       } else {
@@ -21,7 +21,7 @@ function HomePage() {
       }
 
       const parallaxElements = document.querySelectorAll('.parallax-element');
-      
+
       parallaxElements.forEach((el) => {
         const speed = el.getAttribute('data-speed');
         if (speed) {
@@ -32,9 +32,9 @@ function HomePage() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    
+
     // Interactive vanilla JS scripts omitted for now since we'll refactor to React state next.
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -75,12 +75,21 @@ function HomePage() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 {user ? (
-                  <Link to="/user/application" className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
+                  <Link to={user.hasCompletedVocationalTest ? "/user/application" : "/onboarding"} className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
                     <div className="relative w-5 h-5 flex items-center justify-center overflow-hidden">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute transition-all duration-500 ease-in-out group-hover:translate-x-8 group-hover:-translate-y-8 group-hover:opacity-0"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute -translate-x-8 translate-y-8 opacity-0 transition-all duration-500 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                      {user.hasCompletedVocationalTest ? (
+                        <>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute transition-all duration-500 ease-in-out group-hover:translate-x-8 group-hover:-translate-y-8 group-hover:opacity-0"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute -translate-x-8 translate-y-8 opacity-0 transition-all duration-500 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </>
+                      ) : (
+                        <>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute transition-all duration-500 ease-in-out group-hover:translate-x-8 group-hover:-translate-y-8 group-hover:opacity-0"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 absolute -translate-x-8 translate-y-8 opacity-0 transition-all duration-500 ease-in-out group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
+                        </>
+                      )}
                     </div>
-                    <span>Go to My Space</span>
+                    <span>{user.hasCompletedVocationalTest ? 'Go to My Space' : 'Start my journey'}</span>
                   </Link>
                 ) : (
                   <>
@@ -556,7 +565,7 @@ function HomePage() {
                     {user ? `Welcome back, ${user.name}!` : 'Your Portal Awaits'}
                   </h3>
                   <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 mb-6 md:mb-8 leading-relaxed">
-                    {user 
+                    {user
                       ? 'Continue your application process, uploading documents securely, and connecting with your mentor.'
                       : 'Create your account today and let us guide you every step of the way – from your first German lesson to your first day at work.'}
                   </p>
@@ -660,14 +669,14 @@ function HomePage() {
       </footer>
 
       {/**/}
-      <a 
-        href="#" 
+      <a
+        href="#"
         onClick={(e) => {
           e.preventDefault();
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
-        id="go-to-top" 
-        className={`fixed right-4 md:right-8 bottom-[5.5rem] md:bottom-8 z-40 p-3 rounded-full bg-brand-red text-white shadow-lg shadow-brand-red/30 hover:bg-red-700 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center ${showScrollTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'}`} 
+        id="go-to-top"
+        className={`fixed right-4 md:right-8 bottom-[5.5rem] md:bottom-8 z-40 p-3 rounded-full bg-brand-red text-white shadow-lg shadow-brand-red/30 hover:bg-red-700 hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center ${showScrollTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'}`}
         aria-label="Go to top"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="m18 15-6-6-6 6" /></svg>

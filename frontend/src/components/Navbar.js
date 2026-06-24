@@ -254,9 +254,13 @@ const Navbar = () => {
                       <p className="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">ID: {user.clientId}</p>
                     </div>
                     <div className="p-2 flex flex-col gap-1">
-                      <Link to="/user/application" onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                        My Space
+                      <Link to={user.hasCompletedVocationalTest ? "/user/application" : "/onboarding"} onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        {user.hasCompletedVocationalTest ? (
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        ) : (
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.6L2.5 8.5l6 4.5-3.5 3.5-2.5-.5-1.5 1.5 3 3 3 3 1.5-1.5-.5-2.5 3.5-3.5 4.5 6 1.7-1.2c.4-.2.7-.6.6-1.1z"></path></svg>
+                        )}
+                        {user.hasCompletedVocationalTest ? 'My Space' : 'Start my journey'}
                       </Link>
                       <button onClick={() => { dispatch(logout()); setIsUserMenuOpen(false); if (location.pathname !== '/') navigate('/'); }} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg>

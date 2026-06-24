@@ -7,6 +7,8 @@ import HomePage from './pages/HomePage';
 import ApplicationPage from './pages/ApplicationPage';
 import NotificationsPage from './pages/NotificationsPage';
 import ProfilePage from './pages/ProfilePage';
+import VocationalTestPage from './pages/VocationalTestPage';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -15,9 +17,26 @@ function App() {
       
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/user/application" element={<ApplicationPage />} />
-        <Route path="/user/notifications" element={<NotificationsPage />} />
-        <Route path="/user/profile" element={<ProfilePage />} />
+        <Route path="/onboarding" element={
+          <ProtectedRoute>
+            <VocationalTestPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/user/application" element={
+          <ProtectedRoute>
+            <ApplicationPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/user/notifications" element={
+          <ProtectedRoute>
+            <NotificationsPage />
+          </ProtectedRoute>
+        } />
+        <Route path="/user/profile" element={
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        } />
       </Routes>
       
       <AuthModal />

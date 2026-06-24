@@ -36,7 +36,7 @@ exports.signup = async (req, res) => {
     res.status(201).json({ 
       message: 'User created successfully',
       token,
-      user: { id: newUser._id, clientId: newUser.clientId, name: newUser.name, email: newUser.email }
+      user: { id: newUser._id, clientId: newUser.clientId, name: newUser.name, email: newUser.email, hasCompletedVocationalTest: newUser.hasCompletedVocationalTest, vocationalTestResults: newUser.vocationalTestResults }
     });
   } catch (error) {
     res.status(500).json({ error: 'Server error during signup' });
@@ -64,7 +64,7 @@ exports.login = async (req, res) => {
     res.json({ 
       message: 'Logged in successfully',
       token,
-      user: { id: user._id, clientId: user.clientId, name: user.name, email: user.email }
+      user: { id: user._id, clientId: user.clientId, name: user.name, email: user.email, hasCompletedVocationalTest: user.hasCompletedVocationalTest, vocationalTestResults: user.vocationalTestResults }
     });
   } catch (error) {
     res.status(500).json({ error: 'Server error during login' });

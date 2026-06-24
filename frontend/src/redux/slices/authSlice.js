@@ -58,6 +58,38 @@ export const signupUser = createAsyncThunk(
   }
 );
 
+// Async thunk to submit vocational test
+export const submitVocationalTest = createAsyncThunk(
+  'auth/submitVocationalTest',
+  async ({ userId, results }, { rejectWithValue }) => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/users/${userId}/vocational-test`, {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}` // assuming auth middleware uses it, or just for future-proofing
+        },
+        body: JSON.stringify({ results }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        return rejectWithValue(data.error || 'Failed to submit test');
+      }
+
+      // Update local storage user object
+      const storedUser = JSON.parse(localStorage.getItem('user')) || {};
+      const updatedUser = { ...storedUser, hasCompletedVocationalTest: true, vocationalTestResults: results };
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+
+      return data.user;
+    } catch (error) {
+      return rejectWithValue(error.message || 'Failed to submit test');
+    }
+  }
+);
+
 const initialState = {
   user: JSON.parse(localStorage.getItem('user')) || null,
   token: localStorage.getItem('token') || null,
@@ -109,6 +141,10 @@ const authSlice = createSlice({
       .addCase(signupUser.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      // Submit Vocational Test
+      .addCase(submitVocationalTest.fulfilled, (state, action) => {
+        state.user = { ...state.user, ...action.payload };
       });
   },
 });
