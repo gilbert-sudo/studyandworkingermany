@@ -13,7 +13,7 @@ const ProtectedRoute = ({ children }) => {
 
   // If user is logged in but hasn't completed the vocational test, force redirect to /onboarding
   if (!user.hasCompletedVocationalTest && location.pathname !== '/onboarding') {
-    return <Navigate to="/onboarding" replace />;
+    return <Navigate to="/onboarding" replace state={{ from: location.pathname }} />;
   }
 
   return children;

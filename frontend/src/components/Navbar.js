@@ -260,7 +260,7 @@ const Navbar = () => {
                       <p className="text-xs font-mono text-gray-500 dark:text-gray-400 mt-1">ID: {user.clientId}</p>
                     </div>
                     <div className="p-2 flex flex-col gap-1">
-                      <Link to={user.hasCompletedVocationalTest ? "/user/application" : "/onboarding"} onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                      <Link to={user.hasCompletedVocationalTest ? "/user/application" : "/onboarding"} state={{ from: location.pathname }} onClick={() => setIsUserMenuOpen(false)} className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl text-sm font-semibold text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
                         {user.hasCompletedVocationalTest ? (
                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                         ) : (

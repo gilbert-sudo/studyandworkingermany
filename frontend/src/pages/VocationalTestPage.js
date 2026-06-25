@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useVocationalApi } from '../hooks/useVocationalApi';
 import { Briefcase, ThumbsUp, ArrowRight, ArrowLeft, Sparkles, CheckCircle2, Home } from 'lucide-react';
 
 function VocationalTestPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { submitVocationalTest } = useVocationalApi();
   const { user } = useSelector((state) => state.auth);
   const { questions } = useSelector((state) => state.vocational);
@@ -69,6 +70,16 @@ function VocationalTestPage() {
   const goToSpace = () => {
     navigate('/user/application');
   };
+
+  const getReturnInfo = () => {
+    const fromPath = location.state?.from;
+    if (fromPath === '/user/application') {
+      return { path: '/user/application', label: 'My Space' };
+    }
+    return { path: '/', label: 'Homepage' };
+  };
+
+  const returnInfo = getReturnInfo();
 
   const progress = ((currentIndex) / questions.length) * 100;
 
@@ -224,13 +235,13 @@ function VocationalTestPage() {
         <div className="fixed bottom-0 left-0 right-0 p-4 sm:p-6 z-50 pointer-events-none animate-slide-up animate-delay-300">
           <div className="max-w-md mx-auto pointer-events-auto px-4">
             <button 
-              onClick={() => navigate('/user/application')}
+              onClick={() => navigate(returnInfo.path)}
               className="w-full py-4 sm:py-5 px-6 bg-white/90 dark:bg-neutral-900/90 backdrop-blur-xl border-none shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] rounded-full flex items-center justify-center gap-3 text-gray-700 dark:text-gray-200 font-bold text-sm sm:text-base hover:bg-gray-50 hover:text-gray-900 dark:hover:bg-neutral-800 dark:hover:text-white transition-all active:scale-[0.98] group"
             >
               <div className="p-1.5 sm:p-2 bg-gray-100 dark:bg-neutral-800 rounded-xl group-hover:bg-gray-200 dark:group-hover:bg-neutral-700 transition-colors">
                 <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 dark:text-gray-400" />
               </div>
-              Leave Test & Return to My Space
+              Leave Test & Return to {returnInfo.label}
             </button>
           </div>
         </div>

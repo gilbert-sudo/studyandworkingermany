@@ -70,3 +70,21 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: 'Server error during login' });
   }
 };
+
+exports.getMe = async (req, res) => {
+  try {
+    const user = req.user; // Set by authMiddleware
+    res.json({
+      user: { 
+        id: user._id, 
+        clientId: user.clientId, 
+        name: user.name, 
+        email: user.email, 
+        hasCompletedVocationalTest: user.hasCompletedVocationalTest, 
+        vocationalTestResults: user.vocationalTestResults 
+      }
+    });
+  } catch (error) {
+    res.status(500).json({ error: 'Server error fetching user profile' });
+  }
+};

@@ -316,7 +316,7 @@ function ApplicationPage() {
                    <div className="pt-5 mt-5 border-t border-gray-100 dark:border-neutral-800 flex justify-end">
                      <button
                        type="button"
-                       onClick={() => navigate('/onboarding')}
+                       onClick={() => navigate('/onboarding', { state: { from: '/user/application' } })}
                        className="flex items-center gap-2 text-sm font-semibold text-[#00A693] dark:text-[#2dd4bf] hover:text-[#008f7d] dark:hover:text-[#14b8a6] transition-colors bg-[#00A693]/5 dark:bg-[#2dd4bf]/10 px-4 py-2 rounded-xl hover:bg-[#00A693]/10 dark:hover:bg-[#2dd4bf]/20"
                      >
                        Review & Update Test <ArrowRight className="w-4 h-4" />
@@ -330,7 +330,7 @@ function ApplicationPage() {
                    </p>
                    <button
                      type="button"
-                     onClick={() => navigate('/onboarding')}
+                     onClick={() => navigate('/onboarding', { state: { from: '/user/application' } })}
                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A693] hover:bg-[#008f7d] dark:bg-[#2dd4bf] dark:hover:bg-[#14b8a6] text-white dark:text-neutral-900 rounded-xl font-semibold text-sm transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#00A693]/20 dark:shadow-[#2dd4bf]/20"
                    >
                      Take the Test <ArrowRight className="w-4 h-4" />

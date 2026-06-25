@@ -77,7 +77,7 @@ function HomePage() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 {user ? (
-                  <Link to={user.hasCompletedVocationalTest ? "/user/application" : "/onboarding"} className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
+                  <Link to={user.hasCompletedVocationalTest ? "/user/application" : "/onboarding"} state={{ from: '/' }} className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full font-medium transition-all duration-300 hover:scale-105 hover:shadow-xl group bg-brand-red text-white hover:bg-red-700">
                     <div className="relative w-5 h-5 flex items-center justify-center overflow-hidden">
                       {user.hasCompletedVocationalTest ? (
                         <>

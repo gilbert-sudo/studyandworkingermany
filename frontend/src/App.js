@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -10,14 +10,21 @@ import ProfilePage from './pages/ProfilePage';
 import VocationalTestPage from './pages/VocationalTestPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import useWakeUpBackend from './hooks/useWakeUpBackend';
+import { useAuthApi } from './hooks/useAuthApi';
 
 function App() {
   useWakeUpBackend();
+  const { fetchCurrentUser } = useAuthApi();
+
+  useEffect(() => {
+    fetchCurrentUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Router>
       <Navbar />
-      
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/onboarding" element={
@@ -41,7 +48,7 @@ function App() {
           </ProtectedRoute>
         } />
       </Routes>
-      
+
       <AuthModal />
     </Router>
   );

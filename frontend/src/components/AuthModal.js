@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { closeAuthModal, setAuthModalMode } from '../redux/slices/uiSlice';
 import { clearError } from '../redux/slices/authSlice';
 import { useAuthApi } from '../hooks/useAuthApi';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const AuthModal = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { loginUser, signupUser } = useAuthApi();
   const { isAuthModalOpen: isOpen, authModalMode } = useSelector((state) => state.ui);
   const { loading, error } = useSelector((state) => state.auth);
@@ -39,7 +40,7 @@ const AuthModal = () => {
       const result = await signupUser({ name, email, password });
       if (result.success) {
         onClose();
-        navigate('/onboarding');
+        navigate('/onboarding', { state: { from: location.pathname } });
       }
     }
   };
