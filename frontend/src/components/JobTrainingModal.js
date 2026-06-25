@@ -78,7 +78,7 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
   return (
     <div className="fixed inset-0 z-50 h-[100dvh] w-full flex flex-col bg-white dark:bg-neutral-950 animate-in fade-in duration-300">
       {/* Header */}
-      <div className="shrink-0 w-full sticky top-0 z-20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 px-4 sm:px-6 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] bg-white dark:bg-neutral-950 border-b border-gray-200 dark:border-neutral-800">
+      <div className="shrink-0 w-full flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 px-4 sm:px-6 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] bg-white dark:bg-neutral-950 border-b border-gray-200 dark:border-neutral-800">
 
         {/* Left: Title & Mobile Close */}
         <div className="flex-1 flex items-start sm:items-center justify-between min-w-0">
