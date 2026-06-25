@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { User, Phone, BookOpen, FileText, UploadCloud, Save, CheckCircle2, Globe, Plus, Trash2, BrainCircuit, ArrowRight } from 'lucide-react';
+import { User, Phone, BookOpen, FileText, UploadCloud, Save, CheckCircle2, XCircle, Globe, Plus, Trash2, BrainCircuit, ArrowRight, Briefcase, X } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import JobTrainingModal from '../components/JobTrainingModal';
 
 const LanguageSkillSlider = ({ label, name, value, onChange }) => {
   const numericLevels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -118,37 +119,48 @@ const LanguageSkillSlider = ({ label, name, value, onChange }) => {
 };
 
 const FileUploadField = ({ label, name, accept, description, file, onChange }) => (
-  <div className="flex flex-col gap-2">
-    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">{label}</label>
-    <div className="relative group w-full">
-      <div className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl transition-all ${file
-        ? 'border-green-500 bg-green-50 dark:bg-green-900/10'
-        : 'border-gray-300 dark:border-neutral-700 bg-gray-50 dark:bg-neutral-900 hover:bg-gray-100 dark:hover:bg-neutral-800'
-        }`}>
-        <div className="flex flex-col items-center justify-center pt-5 pb-6 pointer-events-none">
-          {file ? (
-            <>
-              <CheckCircle2 className="w-8 h-8 text-green-500 mb-2" />
-              <p className="text-sm font-medium text-green-600 dark:text-green-400 truncate max-w-[200px] sm:max-w-xs px-4">
+  <div className="relative group w-full">
+    <div className={`flex items-center w-full p-3 border-2 border-dashed rounded-xl transition-all ${file
+      ? 'border-green-500 bg-green-50 dark:bg-green-900/10'
+      : 'border-gray-300 dark:border-neutral-700 bg-gray-50 dark:bg-neutral-900 hover:bg-gray-100 dark:hover:bg-neutral-800'
+      }`}>
+      <div className="flex items-center gap-3 pointer-events-none w-full px-2">
+        {file ? (
+          <>
+            <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center shrink-0">
+              <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-gray-900 dark:text-white truncate">{label}</p>
+              <p className="text-xs font-medium text-green-600 dark:text-green-400 truncate">
                 {file.name}
               </p>
-            </>
-          ) : (
-            <>
-              <UploadCloud className="w-8 h-8 text-gray-400 mb-2 group-hover:text-gray-500 transition-colors" />
-              <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Click or drag to upload</p>
-              <p className="text-xs text-gray-400 mt-1">{description}</p>
-            </>
-          )}
-        </div>
-        <input
-          type="file"
-          name={name}
-          accept={accept}
-          onChange={onChange}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-        />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-neutral-800 flex items-center justify-center shrink-0 group-hover:bg-gray-300 dark:group-hover:bg-neutral-700 transition-colors">
+              <UploadCloud className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200 truncate">{label}</p>
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5">
+                <span className="text-xs text-gray-500 dark:text-gray-400">Click or drag</span>
+                {description && (
+                  <span className="text-[10px] text-gray-400 bg-gray-100 dark:bg-neutral-800 px-1.5 py-0.5 rounded">{description}</span>
+                )}
+              </div>
+            </div>
+          </>
+        )}
       </div>
+      <input
+        type="file"
+        name={name}
+        accept={accept}
+        onChange={onChange}
+        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+      />
     </div>
   </div>
 );
@@ -205,7 +217,7 @@ const JobTrainingSelector = ({ selectedJobs, onChange }) => {
           placeholder="Search for your desired job trainings..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-4 py-3 pl-11 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white"
+          className="w-full px-4 py-3 pl-11 rounded-full bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white"
         />
         <div className="absolute left-3.5 top-3.5 text-gray-400">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -239,8 +251,8 @@ const JobTrainingSelector = ({ selectedJobs, onChange }) => {
                           type="button"
                           onClick={() => handleToggleJob(job)}
                           className={`text-left px-3.5 py-2.5 rounded-xl text-sm transition-all border ${isSelected
-                              ? 'bg-[#00A693]/10 border-[#00A693] text-[#00A693] dark:bg-[#2dd4bf]/10 dark:border-[#2dd4bf] dark:text-[#2dd4bf] shadow-sm'
-                              : 'bg-white border-gray-200 text-gray-600 hover:border-[#00A693]/50 hover:bg-gray-50 dark:bg-neutral-950 dark:border-neutral-800 dark:text-gray-400 dark:hover:border-[#2dd4bf]/50 dark:hover:bg-neutral-900'
+                            ? 'bg-[#00A693]/10 border-[#00A693] text-[#00A693] dark:bg-[#2dd4bf]/10 dark:border-[#2dd4bf] dark:text-[#2dd4bf] shadow-sm'
+                            : 'bg-white border-gray-200 text-gray-600 hover:border-[#00A693]/50 hover:bg-gray-50 dark:bg-neutral-950 dark:border-neutral-800 dark:text-gray-400 dark:hover:border-[#2dd4bf]/50 dark:hover:bg-neutral-900'
                             } focus:outline-none focus:ring-2 focus:ring-[#00A693]/20 dark:focus:ring-[#2dd4bf]/20`}
                         >
                           <div className="flex items-start gap-3">
@@ -277,6 +289,7 @@ function ApplicationPage() {
   const navigate = useNavigate();
 
   const [showAllResults, setShowAllResults] = useState(false);
+  const [isJobModalOpen, setIsJobModalOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     surname: '',
@@ -288,11 +301,11 @@ function ApplicationPage() {
     whatsapp: '',
     email: '',
     preferredJobs: [],
-    germanLevel: '',
+    germanLevel: 'A1',
     germanLearningPlace: '',
     lastLanguageTest: '',
-    frenchSkills: '',
-    englishSkills: '',
+    frenchSkills: '0',
+    englishSkills: '0',
     driversLicense: '',
     workExperience: '',
     otherLanguages: []
@@ -304,7 +317,9 @@ function ApplicationPage() {
     secondarySchoolDegree: null,
     jobTrainingCertificate: null,
     universityDegree: null,
-    cv: null
+    cv: null,
+    driversLicenseFront: null,
+    driversLicenseBack: null
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -317,7 +332,7 @@ function ApplicationPage() {
   const handleAddLanguage = () => {
     setFormData(prev => ({
       ...prev,
-      otherLanguages: [...(prev.otherLanguages || []), { language: '', level: '' }]
+      otherLanguages: [...(prev.otherLanguages || []), { language: '', level: '0' }]
     }));
   };
 
@@ -499,33 +514,62 @@ function ApplicationPage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Surname (Familienname)</label>
-                <input type="text" name="surname" value={formData.surname} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="Doe" />
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Surname</label>
+                <input type="text" name="surname" value={formData.surname} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-full bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="Doe" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">First Name (Vorname)</label>
-                <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="John" />
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">First Name</label>
+                <input type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-full bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="John" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Nickname (Rufname) <span className="text-gray-400 font-normal">(Optional)</span></label>
-                <input type="text" name="nickname" value={formData.nickname} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="Johnny" />
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Nickname <span className="text-gray-400 font-normal">(Optional)</span></label>
+                <input type="text" name="nickname" value={formData.nickname} onChange={handleInputChange} className="w-full px-4 py-3 rounded-full bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="Johnny" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Date of Birth (Geburtsdatum)</label>
-                <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" />
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Date of Birth</label>
+                <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-full bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" />
+              </div>
+              <div className="space-y-3">
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Gender</label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => handleInputChange({ target: { name: 'gender', value: 'Female' } })}
+                    className={`flex items-center justify-center gap-2 p-3 rounded-full border-2 transition-all ${
+                      formData.gender === 'Female'
+                        ? 'border-pink-500 bg-pink-50 dark:border-pink-500/50 dark:bg-pink-500/10 text-pink-600 dark:text-pink-400 shadow-sm'
+                        : 'border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-950 text-gray-500 hover:border-pink-200 dark:hover:border-pink-900/50 hover:bg-pink-50/50 dark:hover:bg-neutral-900'
+                    }`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`w-5 h-5 transition-transform duration-300 ${formData.gender === 'Female' ? 'scale-110 text-pink-500 dark:text-pink-400' : 'text-gray-400'}`}>
+                      <circle cx="12" cy="10" r="6"/>
+                      <line x1="12" x2="12" y1="16" y2="22"/>
+                      <line x1="9" x2="15" y1="19" y2="19"/>
+                    </svg>
+                    <span className="font-semibold text-sm">Female</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleInputChange({ target: { name: 'gender', value: 'Male' } })}
+                    className={`flex items-center justify-center gap-2 p-3 rounded-full border-2 transition-all ${
+                      formData.gender === 'Male'
+                        ? 'border-blue-500 bg-blue-50 dark:border-blue-500/50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400 shadow-sm'
+                        : 'border-gray-200 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-950 text-gray-500 hover:border-blue-200 dark:hover:border-blue-900/50 hover:bg-blue-50/50 dark:hover:bg-neutral-900'
+                    }`}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`w-5 h-5 transition-transform duration-300 ${formData.gender === 'Male' ? 'scale-110 text-blue-500 dark:text-blue-400' : 'text-gray-400'}`}>
+                      <circle cx="10" cy="14" r="6"/>
+                      <line x1="14.24" x2="21" y1="9.76" y2="3"/>
+                      <line x1="16" x2="21" y1="3" y2="3"/>
+                      <line x1="21" x2="21" y1="3" y2="8"/>
+                    </svg>
+                    <span className="font-semibold text-sm">Male</span>
+                  </button>
+                </div>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Gender (Geschlecht)</label>
-                <select name="gender" value={formData.gender} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white">
-                  <option value="">Select Gender</option>
-                  <option value="Female">Female</option>
-                  <option value="Male">Male</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Place of Residence (Wohnort)</label>
-                <input type="text" name="residence" value={formData.residence} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="City, Country" />
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Place of Residence</label>
+                <input type="text" name="residence" value={formData.residence} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-full bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="City, Country" />
               </div>
             </div>
           </div>
@@ -543,7 +587,7 @@ function ApplicationPage() {
               {/* --- GERMAN LEVEL COMPONENT --- */}
               <div className="space-y-4 sm:col-span-2">
                 <div className="flex items-center justify-between">
-                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Level of German (Sprachniveau)</label>
+                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Level of German</label>
                   {formData.germanLevel && (
                     <span className="text-xs font-mono text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-neutral-800 px-2.5 py-1 rounded-md border border-gray-200 dark:border-neutral-700">
                       {formData.germanLevel} Selected
@@ -645,12 +689,12 @@ function ApplicationPage() {
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Date of last language test</label>
-                <input type="date" name="lastLanguageTest" value={formData.lastLanguageTest} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" />
+                <input type="date" name="lastLanguageTest" value={formData.lastLanguageTest} onChange={handleInputChange} className="w-full px-4 py-3 rounded-full bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" />
               </div>
 
               <div className="space-y-2 sm:col-span-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Where did you learn German?</label>
-                <textarea name="germanLearningPlace" value={formData.germanLearningPlace} onChange={handleInputChange} rows="2" className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white resize-none" placeholder="Goethe Institute, Self-taught, etc."></textarea>
+                <textarea name="germanLearningPlace" value={formData.germanLearningPlace} onChange={handleInputChange} rows="2" className="w-full px-4 py-3 rounded-full bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white resize-none" placeholder="Goethe Institute, Self-taught, etc."></textarea>
               </div>
 
               <div>
@@ -674,11 +718,11 @@ function ApplicationPage() {
                   <div key={index} className="flex flex-col sm:flex-row gap-4 p-4 bg-gray-50/50 dark:bg-neutral-900/50 rounded-2xl border border-gray-100 dark:border-neutral-800 relative group">
                     <div className="flex-1 space-y-2">
                       <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Language</label>
-                      <input type="text" value={lang.language} onChange={(e) => handleOtherLanguageChange(index, 'language', e.target.value)} required className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white text-sm" placeholder="e.g. Spanish" />
+                      <input type="text" value={lang.language} onChange={(e) => handleOtherLanguageChange(index, 'language', e.target.value)} required className="w-full px-4 py-2.5 rounded-full bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white text-sm" placeholder="e.g. Spanish" />
                     </div>
                     <div className="flex-1 space-y-2">
                       <label className="text-xs font-medium text-gray-500 dark:text-gray-400">Level</label>
-                      <select value={lang.level} onChange={(e) => handleOtherLanguageChange(index, 'level', e.target.value)} required className="w-full px-4 py-2.5 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white text-sm">
+                      <select value={lang.level} onChange={(e) => handleOtherLanguageChange(index, 'level', e.target.value)} required className="w-full px-4 py-2.5 rounded-full bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white text-sm">
                         <option value="">Select Level</option>
                         <option value="A1">A1 - Beginner</option>
                         <option value="A2">A2 - Elementary</option>
@@ -715,11 +759,11 @@ function ApplicationPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">WhatsApp Number</label>
-                <input type="text" name="whatsapp" value={formData.whatsapp} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="+49 123 4567890" />
+                <input type="text" name="whatsapp" value={formData.whatsapp} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-full bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="+49 123 4567890" />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">E-Mail</label>
-                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="you@example.com" />
+                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-full bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="you@example.com" />
               </div>
             </div>
           </div>
@@ -733,21 +777,137 @@ function ApplicationPage() {
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">4. Job Choices & Qualifications</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <JobTrainingSelector
-                selectedJobs={formData.preferredJobs || []}
-                onChange={(jobs) => setFormData(prev => ({ ...prev, preferredJobs: jobs }))}
-              />
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Driver's License (Führerschein)</label>
-                <select name="driversLicense" value={formData.driversLicense} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white">
-                  <option value="">Select Option</option>
-                  <option value="Ja">Ja (Yes)</option>
-                  <option value="Nein">Nein (No)</option>
-                </select>
+              <div className="space-y-3 sm:col-span-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Preferred Job Trainings</label>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Select up to 6 professional sectors you want to apply for.</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setIsJobModalOpen(true)}
+                    className="px-4 py-2 bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 text-[#00A693] dark:text-[#2dd4bf] text-sm font-medium rounded-xl hover:bg-gray-50 dark:hover:bg-neutral-900 transition-colors shadow-sm"
+                  >
+                    {formData.preferredJobs && formData.preferredJobs.length > 0 ? `Edit Selections (${formData.preferredJobs.length}/6)` : 'Select Jobs'}
+                  </button>
+                </div>
+                {formData.preferredJobs && formData.preferredJobs.length > 0 ? (
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {formData.preferredJobs.map(job => (
+                      <span
+                        key={job}
+                        className="px-3.5 py-1.5 rounded-full text-xs font-medium border shadow-sm flex items-center gap-1.5 bg-gray-50 dark:bg-neutral-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-neutral-700"
+                      >
+                        {job}
+                        <button
+                          type="button"
+                          onClick={() => setFormData(prev => ({ ...prev, preferredJobs: prev.preferredJobs.filter(j => j !== job) }))}
+                          className="hover:bg-gray-200 dark:hover:bg-neutral-700 rounded-full p-0.5 transition-colors focus:outline-none ml-1 -mr-1"
+                          title="Remove job"
+                        >
+                          <X className="w-3.5 h-3.5 text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors" />
+                        </button>
+                      </span>
+                    ))}
+                    {formData.preferredJobs.length < 6 && (
+                      <button
+                        type="button"
+                        onClick={() => setIsJobModalOpen(true)}
+                        className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 rounded-full text-[10px] font-medium shadow-sm border-none transition-all cursor-pointer flex items-center gap-1 focus:outline-none"
+                        title="Add another job"
+                      >
+                        <Plus className="w-3 h-3" />
+                        Add Job
+                      </button>
+                    )}
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => setIsJobModalOpen(true)}
+                    className="group w-full mt-2 flex flex-col items-center justify-center p-8 rounded-2xl bg-gray-50/50 dark:bg-neutral-950/50 border border-gray-100 dark:border-neutral-800 hover:border-[#00A693]/50 dark:hover:border-[#2dd4bf]/50 hover:bg-gray-50 dark:hover:bg-neutral-900 transition-all duration-300"
+                  >
+                    <div className="w-12 h-12 bg-[#00A693]/10 dark:bg-[#2dd4bf]/10 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-[#00A693]/20 dark:group-hover:bg-[#2dd4bf]/20 transition-all duration-300">
+                      <Briefcase className="w-6 h-6 text-[#00A693] dark:text-[#2dd4bf]" />
+                    </div>
+                    <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">No Jobs Selected</h3>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 text-center max-w-[250px]">
+                      Click here to browse and select the professional sectors you're interested in applying for.
+                    </p>
+                  </button>
+                )}
               </div>
+
               <div className="space-y-2 sm:col-span-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Work Experience (Berufserfahrung)</label>
-                <textarea name="workExperience" value={formData.workExperience} onChange={handleInputChange} rows="3" className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white resize-none" placeholder="Briefly describe your relevant work experience..."></textarea>
+                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Work Experience</label>
+                <textarea name="workExperience" value={formData.workExperience} onChange={handleInputChange} rows="3" className="w-full px-4 py-3 rounded-3xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white resize-none" placeholder="Briefly describe your relevant work experience..."></textarea>
+              </div>
+
+              <div className="space-y-3 sm:col-span-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex-1 space-y-1">
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Driver's License</label>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      Optional but highly recommended. Please upload both sides if you select 'Yes'.
+                    </p>
+                  </div>
+                  
+                  <div className="inline-flex bg-gray-100 dark:bg-neutral-800 p-1 rounded-full shrink-0 self-start sm:self-center border border-gray-200 dark:border-neutral-700/50">
+                    <button
+                      type="button"
+                      onClick={() => handleInputChange({ target: { name: 'driversLicense', value: 'Ja' } })}
+                      className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                        formData.driversLicense === 'Ja'
+                          ? 'bg-white dark:bg-neutral-950 text-[#00A693] dark:text-[#2dd4bf] shadow-sm ring-1 ring-black/5 dark:ring-white/10'
+                          : 'text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-neutral-700/50 dark:hover:text-white'
+                      }`}
+                    >
+                      <CheckCircle2 className={`w-4 h-4 transition-transform duration-300 ${formData.driversLicense === 'Ja' ? 'scale-110' : 'opacity-60 group-hover:opacity-100'}`} />
+                      Yes
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleInputChange({ target: { name: 'driversLicense', value: 'Nein' } });
+                        if (files.driversLicenseFront || files.driversLicenseBack) {
+                          setFiles(prev => ({ ...prev, driversLicenseFront: null, driversLicenseBack: null }));
+                        }
+                      }}
+                      className={`relative flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                        formData.driversLicense === 'Nein'
+                          ? 'bg-white dark:bg-neutral-950 text-red-600 dark:text-red-400 shadow-sm ring-1 ring-black/5 dark:ring-white/10'
+                          : 'text-gray-600 hover:bg-gray-200/50 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-neutral-700/50 dark:hover:text-white'
+                      }`}
+                    >
+                      <XCircle className={`w-4 h-4 transition-transform duration-300 ${formData.driversLicense === 'Nein' ? 'scale-110' : 'opacity-60 group-hover:opacity-100'}`} />
+                      No
+                    </button>
+                  </div>
+                </div>
+                
+                {/* Upload Fields for Driver's License */}
+                {formData.driversLicense === 'Ja' && (
+                  <div className="pt-2 animate-in fade-in slide-in-from-top-2 duration-300">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <FileUploadField
+                        label="Front Side"
+                        name="driversLicenseFront"
+                        accept="image/jpeg, image/png, application/pdf"
+                        description="JPEG, PNG or PDF"
+                        file={files.driversLicenseFront}
+                        onChange={handleFileChange}
+                      />
+                      <FileUploadField
+                        label="Back Side"
+                        name="driversLicenseBack"
+                        accept="image/jpeg, image/png, application/pdf"
+                        description="JPEG, PNG or PDF"
+                        file={files.driversLicenseBack}
+                        onChange={handleFileChange}
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -763,7 +923,7 @@ function ApplicationPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
               <FileUploadField
-                label="Candidate Photo (Foto)"
+                label="Candidate Photo"
                 name="photo"
                 accept="image/jpeg, image/png"
                 description="JPEG or PNG only"
@@ -779,7 +939,7 @@ function ApplicationPage() {
                 onChange={handleFileChange}
               />
               <FileUploadField
-                label="Secondary School Degree (Abitur)"
+                label="Secondary School Degree"
                 name="secondarySchoolDegree"
                 accept="application/pdf"
                 description="PDF only"
@@ -787,7 +947,7 @@ function ApplicationPage() {
                 onChange={handleFileChange}
               />
               <FileUploadField
-                label="Job Training Certificate (Ausbildung)"
+                label="Job Training Certificate"
                 name="jobTrainingCertificate"
                 accept="application/pdf"
                 description="PDF only"
@@ -795,7 +955,7 @@ function ApplicationPage() {
                 onChange={handleFileChange}
               />
               <FileUploadField
-                label="University Degree (Studium)"
+                label="University Degree"
                 name="universityDegree"
                 accept="application/pdf"
                 description="PDF only"
@@ -803,7 +963,7 @@ function ApplicationPage() {
                 onChange={handleFileChange}
               />
               <FileUploadField
-                label="CV (Lebenslauf)"
+                label="CV"
                 name="cv"
                 accept="application/pdf"
                 description="PDF only"
@@ -848,6 +1008,12 @@ function ApplicationPage() {
 
         </form>
       </div>
+      <JobTrainingModal
+        isOpen={isJobModalOpen}
+        onClose={() => setIsJobModalOpen(false)}
+        initialSelectedJobs={formData.preferredJobs || []}
+        onSave={(jobs) => setFormData(prev => ({ ...prev, preferredJobs: jobs }))}
+      />
     </div>
   );
 }
