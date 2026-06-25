@@ -786,7 +786,7 @@ function ApplicationPage() {
                   <button
                     type="button"
                     onClick={() => setIsJobModalOpen(true)}
-                    className="px-4 py-2 bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 text-[#00A693] dark:text-[#2dd4bf] text-sm font-medium rounded-xl hover:bg-gray-50 dark:hover:bg-neutral-900 transition-colors shadow-sm"
+                    className="px-5 py-2.5 bg-[#00A693] hover:bg-[#008f7d] dark:bg-[#2dd4bf] dark:hover:bg-[#14b8a6] text-white dark:text-neutral-900 text-sm font-bold rounded-full transition-all active:scale-95 shadow-md shadow-[#00A693]/30 dark:shadow-[#2dd4bf]/20"
                   >
                     {formData.preferredJobs && formData.preferredJobs.length > 0 ? `Edit Selections (${formData.preferredJobs.length}/6)` : 'Select Jobs'}
                   </button>
@@ -796,16 +796,16 @@ function ApplicationPage() {
                     {formData.preferredJobs.map(job => (
                       <span
                         key={job}
-                        className="px-3.5 py-1.5 rounded-full text-xs font-medium border shadow-sm flex items-center gap-1.5 bg-gray-50 dark:bg-neutral-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-neutral-700"
+                        className="px-3.5 py-1.5 rounded-full text-sm font-medium border shadow-sm flex items-center gap-1.5 bg-[#00A693]/10 dark:bg-[#2dd4bf]/10 text-[#008f7d] dark:text-[#2dd4bf] border-[#00A693]/20 dark:border-[#2dd4bf]/20"
                       >
                         {job}
                         <button
                           type="button"
                           onClick={() => setFormData(prev => ({ ...prev, preferredJobs: prev.preferredJobs.filter(j => j !== job) }))}
-                          className="hover:bg-gray-200 dark:hover:bg-neutral-700 rounded-full p-0.5 transition-colors focus:outline-none ml-1 -mr-1"
+                          className="hover:bg-[#00A693]/20 dark:hover:bg-[#2dd4bf]/20 rounded-full p-0.5 transition-colors focus:outline-none ml-1 -mr-1"
                           title="Remove job"
                         >
-                          <X className="w-3.5 h-3.5 text-gray-400 hover:text-red-500 dark:hover:text-red-400 transition-colors" />
+                          <X className="w-4 h-4 text-[#00A693]/70 dark:text-[#2dd4bf]/70 hover:text-red-500 dark:hover:text-red-400 transition-colors" />
                         </button>
                       </span>
                     ))}
@@ -825,15 +825,15 @@ function ApplicationPage() {
                   <button
                     type="button"
                     onClick={() => setIsJobModalOpen(true)}
-                    className="group w-full mt-2 flex flex-col items-center justify-center p-8 rounded-2xl bg-gray-50/50 dark:bg-neutral-950/50 border border-gray-100 dark:border-neutral-800 hover:border-[#00A693]/50 dark:hover:border-[#2dd4bf]/50 hover:bg-gray-50 dark:hover:bg-neutral-900 transition-all duration-300"
+                    className="w-full mt-2 flex items-center justify-between p-3.5 sm:p-4 rounded-2xl bg-gray-50/50 dark:bg-neutral-950/50 border border-dashed border-gray-300 dark:border-neutral-700 hover:border-[#00A693] dark:hover:border-[#2dd4bf] hover:bg-[#00A693]/5 dark:hover:bg-[#2dd4bf]/5 active:border-[#00A693] active:bg-[#00A693]/10 dark:active:border-[#2dd4bf] dark:active:bg-[#2dd4bf]/10 transition-all group active:scale-[0.99] touch-manipulation"
                   >
-                    <div className="w-12 h-12 bg-[#00A693]/10 dark:bg-[#2dd4bf]/10 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-[#00A693]/20 dark:group-hover:bg-[#2dd4bf]/20 transition-all duration-300">
-                      <Briefcase className="w-6 h-6 text-[#00A693] dark:text-[#2dd4bf]" />
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-gray-100 dark:bg-neutral-900 rounded-full flex items-center justify-center group-hover:bg-[#00A693]/10 dark:group-hover:bg-[#2dd4bf]/10 group-active:bg-[#00A693]/20 dark:group-active:bg-[#2dd4bf]/20 transition-colors">
+                        <Briefcase className="w-5 h-5 text-gray-400 group-hover:text-[#00A693] dark:group-hover:text-[#2dd4bf] group-active:text-[#00A693] dark:group-active:text-[#2dd4bf] transition-colors" />
+                      </div>
+                      <span className="text-sm font-medium text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white group-active:text-gray-900 dark:group-active:text-white transition-colors">No jobs selected yet</span>
                     </div>
-                    <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-1">No Jobs Selected</h3>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 text-center max-w-[250px]">
-                      Click here to browse and select the professional sectors you're interested in applying for.
-                    </p>
+                    <span className="text-xs font-bold text-gray-400 dark:text-gray-500 group-hover:text-[#00A693] dark:group-hover:text-[#2dd4bf] group-active:text-[#00A693] dark:group-active:text-[#2dd4bf] pr-2 transition-colors">Browse</span>
                   </button>
                 )}
               </div>

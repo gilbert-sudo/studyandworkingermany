@@ -167,31 +167,30 @@ function VocationalTestPage() {
                     "{questions[currentIndex]}"
                   </h2>
 
-                  <div className="w-full flex flex-col gap-3 sm:gap-4 mt-auto">
+                  <div className="w-full flex gap-2 sm:gap-3 mt-auto">
                     <button 
                       onClick={() => handleAnswer('Ja')}
-                      className="w-full py-4 sm:py-5 px-6 rounded-full bg-white dark:bg-neutral-800 border-2 border-[#00A693] dark:border-[#2dd4bf] text-[#00A693] dark:text-[#2dd4bf] font-bold text-base sm:text-lg hover:bg-[#00A693] hover:text-white dark:hover:bg-[#2dd4bf] dark:hover:text-neutral-900 transition-all active:scale-95 flex justify-center items-center gap-2 group"
+                      className="flex-1 py-3.5 sm:py-4 rounded-[1.5rem] bg-gray-50 dark:bg-neutral-800/50 border-2 border-gray-200 dark:border-neutral-700/50 shadow-sm hover:border-[#00A693] hover:bg-[#00A693]/5 hover:text-[#00A693] active:border-[#00A693] active:bg-[#00A693]/10 active:text-[#00A693] dark:hover:border-[#2dd4bf] dark:hover:bg-[#2dd4bf]/10 dark:hover:text-[#2dd4bf] dark:active:border-[#2dd4bf] dark:active:bg-[#2dd4bf]/20 dark:active:text-[#2dd4bf] text-gray-600 dark:text-gray-300 font-medium transition-all active:scale-95 flex flex-col items-center justify-center group touch-manipulation"
                     >
-                      <ThumbsUp className="w-5 h-5 group-hover:-translate-y-0.5 transition-transform" /> 
-                      Ja <span className="text-xs font-normal opacity-75">(Yes)</span>
+                      <span className="text-sm sm:text-base group-hover:font-semibold group-active:font-semibold">Ja</span>
+                      <span className="text-[10px] sm:text-xs text-gray-400">(Yes)</span>
                     </button>
                     
-                    <div className="flex gap-3 sm:gap-4 w-full">
-                      <button 
-                        onClick={() => handleAnswer('Vielleicht')}
-                        className="flex-1 py-3.5 sm:py-4 rounded-[2rem] bg-gray-50 dark:bg-neutral-800/50 border-none text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all active:scale-95 flex flex-col items-center justify-center"
-                      >
-                        <span className="text-sm sm:text-base">Vielleicht</span>
-                        <span className="text-[10px] sm:text-xs text-gray-400">(Maybe)</span>
-                      </button>
-                      <button 
-                        onClick={() => handleAnswer('Nein')}
-                        className="flex-1 py-3.5 sm:py-4 rounded-[2rem] bg-gray-50 dark:bg-neutral-800/50 border-none text-gray-600 dark:text-gray-300 font-medium hover:bg-red-50 hover:text-red-600 dark:hover:bg-red-900/20 dark:hover:text-red-400 transition-all active:scale-95 flex flex-col items-center justify-center"
-                      >
-                        <span className="text-sm sm:text-base">Nein</span>
-                        <span className="text-[10px] sm:text-xs text-gray-400">(No)</span>
-                      </button>
-                    </div>
+                    <button 
+                      onClick={() => handleAnswer('Vielleicht')}
+                      className="flex-1 py-3.5 sm:py-4 rounded-[1.5rem] bg-gray-50 dark:bg-neutral-800/50 border-2 border-gray-200 dark:border-neutral-700/50 shadow-sm hover:border-yellow-500 hover:bg-yellow-500/5 hover:text-yellow-600 active:border-yellow-500 active:bg-yellow-500/10 active:text-yellow-600 dark:hover:border-yellow-400 dark:hover:bg-yellow-400/10 dark:hover:text-yellow-400 dark:active:border-yellow-400 dark:active:bg-yellow-400/20 dark:active:text-yellow-400 text-gray-600 dark:text-gray-300 font-medium transition-all active:scale-95 flex flex-col items-center justify-center group touch-manipulation"
+                    >
+                      <span className="text-sm sm:text-base group-hover:font-semibold group-active:font-semibold">Vielleicht</span>
+                      <span className="text-[10px] sm:text-xs text-gray-400">(Maybe)</span>
+                    </button>
+
+                    <button 
+                      onClick={() => handleAnswer('Nein')}
+                      className="flex-1 py-3.5 sm:py-4 rounded-[1.5rem] bg-gray-50 dark:bg-neutral-800/50 border-2 border-gray-200 dark:border-neutral-700/50 shadow-sm hover:border-red-500 hover:bg-red-500/5 hover:text-red-600 active:border-red-500 active:bg-red-500/10 active:text-red-600 dark:hover:border-red-400 dark:hover:bg-red-400/10 dark:hover:text-red-400 dark:active:border-red-400 dark:active:bg-red-400/20 dark:active:text-red-400 text-gray-600 dark:text-gray-300 font-medium transition-all active:scale-95 flex flex-col items-center justify-center group touch-manipulation"
+                    >
+                      <span className="text-sm sm:text-base group-hover:font-semibold group-active:font-semibold">Nein</span>
+                      <span className="text-[10px] sm:text-xs text-gray-400">(No)</span>
+                    </button>
                   </div>
 
                 </div>

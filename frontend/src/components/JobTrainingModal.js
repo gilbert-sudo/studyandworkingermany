@@ -36,9 +36,9 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
     } else {
       document.body.style.overflow = 'auto';
     }
-    
-    return () => { 
-      document.body.style.overflow = 'auto'; 
+
+    return () => {
+      document.body.style.overflow = 'auto';
       window.removeEventListener('popstate', handlePopState);
     };
   }, [isOpen, initialSelectedJobs, onClose]);
@@ -75,41 +75,48 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
   })).filter(cat => cat.jobs.length > 0 || cat.category.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-white dark:bg-neutral-950 animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-50 h-[100dvh] w-full flex flex-col bg-white dark:bg-neutral-950 animate-in fade-in duration-300">
       {/* Header */}
-      <div className="sticky top-0 z-20 flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 px-4 sm:px-6 py-3 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl border-b border-gray-200 dark:border-neutral-800">
-        <div className="flex items-center justify-between sm:justify-start w-full sm:w-auto">
-          <div>
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-              <Briefcase className="w-5 h-5 text-[#00A693] dark:text-[#2dd4bf]" />
-              Select Job Trainings
+      <div className="shrink-0 w-full sticky top-0 z-20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 px-4 sm:px-6 py-3 pt-[max(0.75rem,env(safe-area-inset-top))] bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl border-b border-gray-200 dark:border-neutral-800">
+
+        {/* Left: Title & Mobile Close */}
+        <div className="flex-1 flex items-start sm:items-center justify-between min-w-0">
+          <div className="min-w-0 pr-2">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2 truncate">
+              <Briefcase className="w-5 h-5 shrink-0 text-[#00A693] dark:text-[#2dd4bf]" />
+              <span className="truncate">Select Job Trainings</span>
             </h2>
-            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5">
+            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-0.5 truncate">
               Choose all the professions you are interested in.
             </p>
           </div>
           <button
             onClick={handleManualClose}
-            className="sm:hidden p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-full transition-colors"
+            className="sm:hidden p-2 -mr-2 shrink-0 text-gray-500 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-full transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="flex items-center gap-3 w-full sm:w-auto">
-          <div className="relative flex-1 sm:w-72">
+        {/* Center: Search Input */}
+        <div className="flex-[1.5] flex justify-center w-full">
+          <div className="relative w-full max-w-lg sm:max-w-md group">
             <input
               type="text"
               placeholder="Search professions or sectors..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 sm:py-2.5 text-sm bg-gray-100 dark:bg-neutral-900 border-none rounded-full focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] outline-none text-gray-900 dark:text-white transition-all"
+              className="w-full pl-11 pr-4 py-3 sm:py-3.5 text-base bg-white dark:bg-neutral-900 border-2 border-gray-300 dark:border-neutral-600 rounded-full shadow-md hover:shadow-lg focus:shadow-lg focus:ring-4 focus:ring-[#00A693]/10 dark:focus:ring-[#2dd4bf]/10 focus:border-[#00A693] dark:focus:border-[#2dd4bf] outline-none text-gray-900 dark:text-white transition-all"
             />
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-[#00A693] dark:group-focus-within:text-[#2dd4bf] transition-colors" />
           </div>
+        </div>
+
+        {/* Right: Desktop Close Button */}
+        <div className="hidden sm:flex flex-1 justify-end">
           <button
             onClick={handleManualClose}
-            className="hidden sm:flex p-2.5 text-gray-500 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-full transition-colors"
+            className="p-2.5 -mr-2.5 text-gray-500 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded-full transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -117,7 +124,7 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
       </div>
 
       {/* Content Area */}
-      <div className="flex-1 overflow-y-auto p-3 sm:p-5 bg-gray-50 dark:bg-neutral-950/50">
+      <div className="flex-1 overflow-y-auto min-h-0 w-full p-3 sm:p-5 bg-gray-50 dark:bg-neutral-950/50">
         <div className="max-w-7xl mx-auto">
           {filteredCategories.length > 0 ? (
             <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4 sm:gap-5">
@@ -134,7 +141,7 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
                       {cat.category}
                     </h3>
                   </div>
-                  <div className="p-2.5 sm:p-3 flex-1 flex flex-col gap-1.5 bg-white dark:bg-neutral-900">
+                  <div className="p-2 sm:p-3 flex-1 flex flex-col gap-1 sm:gap-1.5 bg-white dark:bg-neutral-900">
                     {cat.jobs.map(job => {
                       const isSelected = selectedJobs.includes(job);
                       const isDisabled = !isSelected && selectedJobs.length >= 6;
@@ -143,21 +150,21 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
                           key={job}
                           onClick={() => !isDisabled && handleToggleJob(job)}
                           disabled={isDisabled}
-                          className={`w-full flex items-center justify-between text-left px-3 py-2 rounded-xl transition-all duration-200 ${isSelected
-                              ? 'bg-[#00A693]/10 dark:bg-[#2dd4bf]/10 border border-[#00A693]/20 dark:border-[#2dd4bf]/20'
-                              : isDisabled
+                          className={`w-full flex items-center justify-between text-left px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl transition-all duration-200 ${isSelected
+                            ? 'bg-[#00A693]/10 dark:bg-[#2dd4bf]/10 border border-[#00A693]/20 dark:border-[#2dd4bf]/20'
+                            : isDisabled
                               ? 'bg-gray-50/50 dark:bg-neutral-950/20 border border-transparent opacity-50 cursor-not-allowed'
                               : 'bg-gray-50 dark:bg-neutral-950/50 border border-transparent hover:bg-gray-100 dark:hover:bg-neutral-800'
                             }`}
                         >
-                          <span className={`text-xs sm:text-sm ${isSelected ? 'text-[#00A693] dark:text-[#2dd4bf] font-medium' : isDisabled ? 'text-gray-400 dark:text-gray-600' : 'text-gray-700 dark:text-gray-300'}`}>
+                          <span className={`text-sm leading-tight pr-2 sm:text-base ${isSelected ? 'text-[#00A693] dark:text-[#2dd4bf] font-medium' : isDisabled ? 'text-gray-400 dark:text-gray-600' : 'text-gray-700 dark:text-gray-300'}`}>
                             {job}
                           </span>
-                          <div className={`shrink-0 w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors ${isSelected
-                              ? 'bg-[#00A693] border-[#00A693] dark:bg-[#2dd4bf] dark:border-[#2dd4bf]'
-                              : 'border-gray-300 dark:border-neutral-600'
+                          <div className={`shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${isSelected
+                            ? 'bg-[#00A693] border-[#00A693] dark:bg-[#2dd4bf] dark:border-[#2dd4bf]'
+                            : 'border-gray-300 dark:border-neutral-600'
                             }`}>
-                            {isSelected && <CheckCircle2 className="w-2.5 h-2.5 text-white" />}
+                            {isSelected && <CheckCircle2 className="w-3.5 h-3.5 text-white" />}
                           </div>
                         </button>
                       );
@@ -179,7 +186,7 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
       </div>
 
       {/* Footer */}
-      <div className="sticky bottom-0 z-20 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl border-t border-gray-200 dark:border-neutral-800 px-4 sm:px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div className="shrink-0 w-full sticky bottom-0 z-20 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl border-t border-gray-200 dark:border-neutral-800 px-4 sm:px-6 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <div className="flex -space-x-2">
             <div className="w-8 h-8 rounded-full bg-[#00A693]/10 flex items-center justify-center text-[#00A693] font-bold border-2 border-white dark:border-neutral-950 shadow-sm text-sm">
