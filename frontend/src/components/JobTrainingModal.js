@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Search, CheckCircle2, ChevronRight, Briefcase, ChevronDown } from 'lucide-react';
+import { X, Search, CheckCircle2, ChevronRight, Briefcase, ChevronDown, AlertCircle } from 'lucide-react';
 import { useSelector } from 'react-redux';
 
 const CATEGORY_IMAGES = {
@@ -110,7 +110,7 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
               className="w-full pl-11 pr-11 py-3 sm:py-3.5 text-base bg-white dark:bg-neutral-900 border-2 border-gray-300 dark:border-neutral-600 rounded-full shadow-md hover:shadow-lg focus:shadow-lg focus:ring-4 focus:ring-[#00A693]/10 dark:focus:ring-[#2dd4bf]/10 focus:border-[#00A693] dark:focus:border-[#2dd4bf] outline-none text-gray-900 dark:text-white transition-all"
             />
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-[#00A693] dark:group-focus-within:text-[#2dd4bf] transition-colors pointer-events-none" />
-            
+
             {searchTerm && (
               <button
                 type="button"
@@ -137,21 +137,28 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
       </div>
 
       {/* Content Area */}
-      <div className="flex-1 min-h-0 w-full p-4 sm:p-6 bg-white dark:bg-neutral-950 flex flex-col">
-        <div className="flex-1 overflow-y-auto bg-gray-50 dark:bg-neutral-900/50 rounded-[2rem] border border-gray-100 dark:border-neutral-800/80 shadow-inner p-4 sm:p-6">
-          <div className="max-w-7xl mx-auto">
-            {filteredCategories.length > 0 ? (
-              <div className="columns-1 lg:columns-2 xl:columns-3 gap-4 sm:gap-6">
-                {filteredCategories.map((cat, idx) => {
-                  const isExpanded = expandedCategory === cat.category || searchTerm !== '';
-                  const selectedCount = cat.jobs.filter(job => selectedJobs.includes(job)).length;
-                  
-                  return (
+      <div className="flex-1 overflow-y-auto min-h-0 w-full p-4 sm:p-6 bg-gray-50 dark:bg-neutral-950/50">
+        <div className="max-w-7xl mx-auto">
+          {selectedJobs.length >= 6 && (
+            <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50 rounded-2xl flex items-start sm:items-center gap-3 animate-in slide-in-from-top-2 fade-in duration-300 shadow-sm">
+              <AlertCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5 sm:mt-0" />
+              <p className="text-sm text-amber-800 dark:text-amber-300">
+                You have reached the maximum limit of <strong>6 job trainings</strong>. To select a different one, please unselect an existing choice first.
+              </p>
+            </div>
+          )}
+          {filteredCategories.length > 0 ? (
+            <div className="columns-1 lg:columns-2 xl:columns-3 gap-4 sm:gap-6">
+              {filteredCategories.map((cat, idx) => {
+                const isExpanded = expandedCategory === cat.category || searchTerm !== '';
+                const selectedCount = cat.jobs.filter(job => selectedJobs.includes(job)).length;
+
+                return (
                   <div key={idx} className={`break-inside-avoid mb-4 sm:mb-6 bg-white dark:bg-neutral-900 rounded-3xl overflow-hidden border-2 shadow-sm transition-all duration-300 flex flex-col ${isExpanded ? 'border-[#00A693]/30 dark:border-[#2dd4bf]/30 ring-4 ring-[#00A693]/5 dark:ring-[#2dd4bf]/5' : 'border-gray-100 dark:border-neutral-800 hover:border-gray-200 dark:hover:border-neutral-700'}`}>
                     {/* Image Header / Accordion Trigger */}
-                    <button 
+                    <button
                       onClick={() => setExpandedCategory(isExpanded && !searchTerm ? null : cat.category)}
-                      className="relative w-full h-32 sm:h-40 overflow-hidden group focus:outline-none text-left flex shrink-0"
+                      className="relative w-full h-48 sm:h-56 overflow-hidden group focus:outline-none text-left flex shrink-0"
                     >
                       <img
                         src={CATEGORY_IMAGES[cat.category] || "https://image.pollinations.ai/prompt/professional%20workplace,realistic?width=800&height=600&nologo=true"}
@@ -159,7 +166,7 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
                         className={`absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 ${isExpanded ? 'scale-105' : ''}`}
                       />
                       <div className={`absolute inset-0 bg-gradient-to-t transition-opacity duration-300 ${isExpanded ? 'from-black/90 via-black/40 to-black/10' : 'from-black/80 via-black/30 to-black/10 group-hover:from-black/90 group-hover:via-black/40'}`} />
-                      
+
                       <div className="absolute inset-0 p-4 sm:p-5 flex flex-col justify-end">
                         <div className="flex items-end justify-between gap-4">
                           <div>
@@ -167,9 +174,10 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
                               {cat.category}
                             </h3>
                             {selectedCount > 0 && (
-                              <p className="text-[#00A693] dark:text-[#2dd4bf] text-sm font-semibold mt-1">
-                                {selectedCount} selected
-                              </p>
+                              <div className="inline-flex items-center gap-1.5 bg-[#00A693] text-white px-3 py-1 rounded-full text-xs sm:text-sm font-bold shadow-lg mt-2 border border-white/20 backdrop-blur-md">
+                                <CheckCircle2 className="w-3.5 h-3.5" />
+                                <span>{selectedCount} selected</span>
+                              </div>
                             )}
                           </div>
                           <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center backdrop-blur-md transition-colors ${isExpanded ? 'bg-white/30 text-white' : 'bg-white/20 text-white group-hover:bg-white/30'}`}>
@@ -178,7 +186,7 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
                         </div>
                       </div>
                     </button>
-                    
+
                     {/* Accordion Content */}
                     <div className={`transition-all duration-300 ease-in-out origin-top overflow-hidden flex flex-col ${isExpanded ? 'opacity-100 max-h-[2000px]' : 'opacity-0 max-h-0'}`}>
                       <div className="p-3 sm:p-4 bg-white dark:bg-neutral-900 border-t border-gray-100 dark:border-neutral-800 flex flex-col gap-1.5 sm:gap-2">
@@ -212,18 +220,18 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
                       </div>
                     </div>
                   </div>
-                )})}
+                )
+              })}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+              <div className="w-20 h-20 bg-gray-100 dark:bg-neutral-900 rounded-full flex items-center justify-center mb-6">
+                <Search className="w-10 h-10 text-gray-400" />
               </div>
-            ) : (
-              <div className="flex flex-col items-center justify-center py-20 text-center">
-                <div className="w-20 h-20 bg-gray-100 dark:bg-neutral-900 rounded-full flex items-center justify-center mb-6">
-                  <Search className="w-10 h-10 text-gray-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">No results found</h3>
-                <p className="text-gray-500 dark:text-gray-400">We couldn't find any job trainings matching "{searchTerm}".</p>
-              </div>
-            )}
-          </div>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">No results found</h3>
+              <p className="text-gray-500 dark:text-gray-400">We couldn't find any job trainings matching "{searchTerm}".</p>
+            </div>
+          )}
         </div>
       </div>
 
@@ -231,7 +239,7 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
       <div className="shrink-0 w-full sticky bottom-0 z-20 bg-white dark:bg-neutral-950 border-t border-gray-200 dark:border-neutral-800 px-4 sm:px-6 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] flex flex-col sm:flex-row items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <div className="flex -space-x-2">
-            <div className="w-8 h-8 rounded-full bg-[#00A693]/10 flex items-center justify-center text-[#00A693] font-bold border-2 border-white dark:border-neutral-950 shadow-sm text-sm">
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold border-2 shadow-sm text-sm transition-colors ${selectedJobs.length >= 6 ? 'bg-amber-100 text-amber-600 border-amber-200 dark:bg-amber-900/40 dark:text-amber-400 dark:border-amber-800' : 'bg-[#00A693]/10 text-[#00A693] border-white dark:border-neutral-950'}`}>
               {selectedJobs.length}
             </div>
           </div>
@@ -239,9 +247,12 @@ const JobTrainingModal = ({ isOpen, onClose, initialSelectedJobs, onSave }) => {
             <p className="text-sm font-medium text-gray-900 dark:text-white leading-tight">
               {selectedJobs.length === 0 ? 'No jobs selected' : `${selectedJobs.length} training${selectedJobs.length !== 1 ? 's' : ''} selected`}
             </p>
-            <p className="text-[11px] sm:text-xs text-gray-500 dark:text-gray-400 leading-tight">
-              {selectedJobs.length >= 6 ? 'Maximum of 6 jobs selected.' : `You can select up to 6 jobs. (${6 - selectedJobs.length} remaining)`}
-            </p>
+            <div className="flex items-center gap-1 mt-0.5">
+              {selectedJobs.length >= 6 && <AlertCircle className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />}
+              <p className={`text-[11px] sm:text-xs leading-tight transition-colors ${selectedJobs.length >= 6 ? 'text-amber-600 dark:text-amber-400 font-medium' : 'text-gray-500 dark:text-gray-400'}`}>
+                {selectedJobs.length >= 6 ? 'Maximum limit reached.' : `You can select up to 6 jobs. (${6 - selectedJobs.length} remaining)`}
+              </p>
+            </div>
           </div>
         </div>
 
