@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const LanguageSkillSlider = ({ label, name, value, onChange }) => {
   const numericLevels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  
+
   const getScoreLabel = (val) => {
     if (val === '' || val === null || val === undefined) return null;
     const num = parseInt(val, 10);
@@ -34,21 +34,21 @@ const LanguageSkillSlider = ({ label, name, value, onChange }) => {
           )}
         </span>
       </div>
-      
-      <div className="relative w-full px-4 pt-3 pb-8 transition-all">
+
+      <div className="relative w-full px-4 pt-2 pb-8 transition-all">
         {/* Background Track */}
-        <div className="absolute top-[22px] left-6 right-6 h-1 bg-gray-200 dark:bg-neutral-800 rounded-full overflow-hidden z-0">
-          <div 
+        <div className="absolute top-[18px] sm:top-[22px] left-6 right-6 h-1 bg-gray-200 dark:bg-neutral-800 rounded-full overflow-hidden z-0">
+          <div
             className="absolute top-0 left-0 h-full bg-[#00A693] dark:bg-[#2dd4bf] transition-all duration-300 ease-out"
-            style={{ 
-              width: currentIndex !== -1 ? `${(currentIndex / 10) * 100}%` : '0%' 
+            style={{
+              width: currentIndex !== -1 ? `${(currentIndex / 10) * 100}%` : '0%'
             }}
           />
         </div>
-        
+
         {/* Nodes */}
         <div className="relative flex justify-between items-center z-10 px-2">
-          <div 
+          <div
             className="absolute -top-4 -bottom-4 left-0 right-0 z-20 cursor-pointer touch-none"
             onPointerDown={(e) => {
               e.currentTarget.setPointerCapture(e.pointerId);
@@ -86,24 +86,26 @@ const LanguageSkillSlider = ({ label, name, value, onChange }) => {
                 key={level}
                 type="button"
                 onClick={() => onChange({ target: { name, value: level.toString() } })}
-                className="relative flex items-center justify-center outline-none group w-6 h-6"
+                className="relative flex flex-col items-center justify-center group outline-none w-6 h-6 sm:w-8 sm:h-8"
                 title={`${level}/10 - ${getScoreLabel(level)}`}
               >
-                <div 
-                  className={`w-3 h-3 rounded-full flex items-center justify-center transition-all duration-300 z-10
-                    ${isActive 
-                      ? 'bg-[#00A693] dark:bg-[#2dd4bf] ring-4 ring-[#00A693]/20 dark:ring-[#2dd4bf]/20 scale-125' 
-                      : isPast 
-                        ? 'opacity-0 scale-0' 
-                        : 'bg-white dark:bg-neutral-900 border border-gray-300 dark:border-neutral-700 group-hover:border-gray-500'
+                <div
+                  className={`rounded-full flex items-center justify-center transition-all duration-300 z-10
+                    ${(level % 2 === 0 || isActive) ? 'w-4 h-4 sm:w-5 sm:h-5' : 'w-2 h-2 sm:w-2.5 sm:h-2.5'}
+                    ${isActive
+                      ? 'bg-[#00A693] dark:bg-[#2dd4bf] ring-4 ring-[#00A693]/20 dark:ring-[#2dd4bf]/20 shadow-md scale-125'
+                      : isPast
+                        ? 'opacity-0 scale-0'
+                        : 'bg-white dark:bg-neutral-900 border-2 border-gray-300 dark:border-neutral-700 group-hover:border-gray-500 dark:group-hover:border-gray-500'
                     }
                   `}
-                />
-                <span className={`absolute top-7 sm:top-8 text-xs sm:text-sm transition-all duration-300 ${
-                  isActive ? 'text-[#00A693] dark:text-[#2dd4bf] font-bold translate-y-0' : 
+                >
+                  {isActive && <div className="w-1.5 h-1.5 rounded-full bg-white dark:bg-gray-900" />}
+                </div>
+                <span className={`absolute top-8 sm:top-10 text-xs sm:text-sm transition-all duration-300 ${isActive ? 'text-[#00A693] dark:text-[#2dd4bf] font-bold translate-y-0' :
                   isPast ? 'text-gray-600 dark:text-gray-400 font-medium' : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 font-medium translate-y-0.5'
-                }`}>
-                  {level}
+                  }`}>
+                  {level % 2 === 0 ? level : ''}
                 </span>
               </button>
             );
@@ -119,11 +121,10 @@ const FileUploadField = ({ label, name, accept, description, file, onChange }) =
   <div className="flex flex-col gap-2">
     <label className="text-sm font-medium text-gray-700 dark:text-gray-300">{label}</label>
     <div className="relative group w-full">
-      <div className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl transition-all ${
-        file 
-          ? 'border-green-500 bg-green-50 dark:bg-green-900/10' 
-          : 'border-gray-300 dark:border-neutral-700 bg-gray-50 dark:bg-neutral-900 hover:bg-gray-100 dark:hover:bg-neutral-800'
-      }`}>
+      <div className={`flex flex-col items-center justify-center w-full h-32 border-2 border-dashed rounded-xl transition-all ${file
+        ? 'border-green-500 bg-green-50 dark:bg-green-900/10'
+        : 'border-gray-300 dark:border-neutral-700 bg-gray-50 dark:bg-neutral-900 hover:bg-gray-100 dark:hover:bg-neutral-800'
+        }`}>
         <div className="flex flex-col items-center justify-center pt-5 pb-6 pointer-events-none">
           {file ? (
             <>
@@ -140,22 +141,142 @@ const FileUploadField = ({ label, name, accept, description, file, onChange }) =
             </>
           )}
         </div>
-        <input 
-          type="file" 
+        <input
+          type="file"
           name={name}
           accept={accept}
           onChange={onChange}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" 
+          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
         />
       </div>
     </div>
   </div>
 );
 
+const JobTrainingSelector = ({ selectedJobs, onChange }) => {
+  const { categories: AUSBILDUNG_CATEGORIES } = useSelector((state) => state.vocational);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [expandedCategory, setExpandedCategory] = useState(null);
+
+  const handleToggleJob = (job) => {
+    if (selectedJobs.includes(job)) {
+      onChange(selectedJobs.filter(j => j !== job));
+    } else {
+      onChange([...selectedJobs, job]);
+    }
+  };
+
+  const filteredCategories = AUSBILDUNG_CATEGORIES.map(cat => ({
+    ...cat,
+    jobs: cat.jobs.filter(job => job.toLowerCase().includes(searchTerm.toLowerCase()))
+  })).filter(cat => cat.jobs.length > 0 || cat.category.toLowerCase().includes(searchTerm.toLowerCase()));
+
+  return (
+    <div className="space-y-4 sm:col-span-2">
+      <div className="flex justify-between items-center mb-2">
+        <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Preferred Job Trainings (Select as many as you like)</label>
+        <span className="text-xs px-2.5 py-1 bg-[#00A693]/10 text-[#00A693] dark:bg-[#2dd4bf]/10 dark:text-[#2dd4bf] rounded-full font-medium">
+          {selectedJobs.length} selected
+        </span>
+      </div>
+
+      {/* Selected Pills */}
+      {selectedJobs.length > 0 && (
+        <div className="flex flex-wrap gap-2 mb-4 p-3 bg-gray-50/50 dark:bg-neutral-900/50 rounded-xl border border-gray-100 dark:border-neutral-800">
+          {selectedJobs.map(job => (
+            <span key={job} className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#00A693] text-white text-sm font-medium rounded-full shadow-sm">
+              {job}
+              <button
+                type="button"
+                onClick={() => handleToggleJob(job)}
+                className="ml-1 p-0.5 hover:bg-white/20 rounded-full transition-colors focus:outline-none"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+
+      {/* Search Bar */}
+      <div className="relative">
+        <input
+          type="text"
+          placeholder="Search for your desired job trainings..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full px-4 py-3 pl-11 rounded-xl bg-white dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white"
+        />
+        <div className="absolute left-3.5 top-3.5 text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </div>
+      </div>
+
+      {/* Categories Accordion */}
+      <div className="space-y-3 mt-4 max-h-[400px] overflow-y-auto pr-1">
+        {filteredCategories.length > 0 ? (
+          filteredCategories.map((cat, idx) => {
+            const isExpanded = expandedCategory === idx || searchTerm !== '';
+            return (
+              <div key={idx} className="border border-gray-100 dark:border-neutral-800 rounded-xl overflow-hidden bg-white dark:bg-neutral-900 shadow-sm transition-all">
+                <button
+                  type="button"
+                  onClick={() => setExpandedCategory(isExpanded && searchTerm === '' ? null : idx)}
+                  className="w-full px-4 py-3.5 flex justify-between items-center bg-gray-50/30 hover:bg-gray-50 dark:bg-neutral-950 dark:hover:bg-neutral-900 transition-colors focus:outline-none"
+                >
+                  <span className="font-semibold text-gray-700 dark:text-gray-200 text-left">{cat.category}</span>
+                  <span className={`transform transition-transform ${isExpanded ? 'rotate-180' : ''} text-gray-400`}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </span>
+                </button>
+                {isExpanded && (
+                  <div className="p-4 grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white dark:bg-neutral-900 border-t border-gray-50 dark:border-neutral-800">
+                    {cat.jobs.map(job => {
+                      const isSelected = selectedJobs.includes(job);
+                      return (
+                        <button
+                          key={job}
+                          type="button"
+                          onClick={() => handleToggleJob(job)}
+                          className={`text-left px-3.5 py-2.5 rounded-xl text-sm transition-all border ${isSelected
+                              ? 'bg-[#00A693]/10 border-[#00A693] text-[#00A693] dark:bg-[#2dd4bf]/10 dark:border-[#2dd4bf] dark:text-[#2dd4bf] shadow-sm'
+                              : 'bg-white border-gray-200 text-gray-600 hover:border-[#00A693]/50 hover:bg-gray-50 dark:bg-neutral-950 dark:border-neutral-800 dark:text-gray-400 dark:hover:border-[#2dd4bf]/50 dark:hover:bg-neutral-900'
+                            } focus:outline-none focus:ring-2 focus:ring-[#00A693]/20 dark:focus:ring-[#2dd4bf]/20`}
+                        >
+                          <div className="flex items-start gap-3">
+                            <div className={`mt-0.5 w-4 h-4 shrink-0 rounded border flex items-center justify-center transition-colors ${isSelected ? 'bg-[#00A693] border-[#00A693] dark:bg-[#2dd4bf] dark:border-[#2dd4bf]' : 'border-gray-300 dark:border-neutral-600'}`}>
+                              {isSelected && <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>}
+                            </div>
+                            <span className="flex-1 leading-snug">{job}</span>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })
+        ) : (
+          <div className="text-center py-10 px-4">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-gray-100 dark:bg-neutral-800 mb-3 text-gray-400">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            </div>
+            <p className="text-gray-500 dark:text-gray-400 font-medium">No job trainings found for "{searchTerm}"</p>
+            <p className="text-sm text-gray-400 dark:text-gray-500 mt-1">Try adjusting your search terms</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 function ApplicationPage() {
   const { user } = useSelector((state) => state.auth);
   const { statements: vocationalStatements } = useSelector((state) => state.vocational);
   const navigate = useNavigate();
+
+  const [showAllResults, setShowAllResults] = useState(false);
 
   const [formData, setFormData] = useState({
     surname: '',
@@ -166,8 +287,7 @@ function ApplicationPage() {
     residence: '',
     whatsapp: '',
     email: '',
-    preferredJob: '',
-    alternativeJob: '',
+    preferredJobs: [],
     germanLevel: '',
     germanLearningPlace: '',
     lastLanguageTest: '',
@@ -226,10 +346,10 @@ function ApplicationPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Create FormData object
     const payload = new FormData();
-    
+
     // Append text data
     Object.keys(formData).forEach(key => {
       if (Array.isArray(formData[key])) {
@@ -238,7 +358,7 @@ function ApplicationPage() {
         payload.append(key, formData[key]);
       }
     });
-    
+
     // Append files
     Object.keys(files).forEach(key => {
       if (files[key]) {
@@ -259,7 +379,7 @@ function ApplicationPage() {
   return (
     <div className="min-h-screen pt-24 pb-16 bg-gray-50 dark:bg-neutral-950 relative overflow-hidden">
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header Section */}
         <div className="mb-6 sm:mb-8 text-center">
           <h1 className="text-2xl sm:text-3xl font-light text-gray-900 dark:text-white tracking-tight mb-2">
@@ -271,73 +391,102 @@ function ApplicationPage() {
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-8">
-          
+
           {/* Section 0: Vocational Test Results */}
           <div className="bg-white dark:bg-neutral-900 rounded-3xl p-6 sm:p-10 border border-[#00A693]/30 dark:border-[#2dd4bf]/30 shadow-sm relative overflow-hidden">
-             <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-[#00A693]/10 dark:bg-[#2dd4bf]/10 rounded-full blur-3xl pointer-events-none"></div>
-             
-             <div className="flex items-center justify-between mb-6 relative z-10">
-               <div className="flex items-center gap-3">
-                 <div className="p-2.5 bg-[#00A693]/10 text-[#00A693] dark:bg-[#2dd4bf]/10 dark:text-[#2dd4bf] rounded-xl">
-                   <BrainCircuit className="w-5 h-5" />
-                 </div>
-                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Vocational Interest Test</h2>
-               </div>
-               
-               {user?.hasCompletedVocationalTest ? (
-                  <span className="flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full text-xs font-medium border border-green-100 dark:border-green-800/50">
-                    <CheckCircle2 className="w-3.5 h-3.5" /> Completed
-                  </span>
-               ) : (
-                  <span className="flex items-center gap-1.5 px-3 py-1 bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 rounded-full text-xs font-medium border border-amber-100 dark:border-amber-800/50">
-                    Pending
-                  </span>
-               )}
-             </div>
+            <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-[#00A693]/10 dark:bg-[#2dd4bf]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-             <div className="relative z-10">
-               {user?.hasCompletedVocationalTest ? (
-                 <div className="space-y-4">
-                   <p className="text-sm text-gray-600 dark:text-gray-400">
-                     Based on your test, you showed strong interest in:
-                   </p>
-                   <div className="flex flex-wrap gap-2">
-                     {user.vocationalTestResults?.filter(r => r.answer === 'Ja').slice(0, 5).map((res, i) => (
-                       <span key={i} className="px-3 py-1.5 bg-gray-50 dark:bg-neutral-800 text-gray-700 dark:text-gray-300 rounded-lg text-xs font-medium border border-gray-200 dark:border-neutral-700 shadow-sm">
-                         {vocationalStatements[res.questionId - 1] || res.question}
-                       </span>
-                     ))}
-                     {user.vocationalTestResults?.filter(r => r.answer === 'Ja').length > 5 && (
-                       <span className="px-3 py-1.5 bg-gray-50 dark:bg-neutral-800/50 text-gray-500 dark:text-gray-400 rounded-lg text-xs font-medium border border-transparent">
-                         +{user.vocationalTestResults.filter(r => r.answer === 'Ja').length - 5} more
-                       </span>
-                     )}
-                   </div>
-                   <div className="pt-5 mt-5 border-t border-gray-100 dark:border-neutral-800 flex justify-end">
-                     <button
-                       type="button"
-                       onClick={() => navigate('/onboarding', { state: { from: '/user/application' } })}
-                       className="flex items-center gap-2 text-sm font-semibold text-[#00A693] dark:text-[#2dd4bf] hover:text-[#008f7d] dark:hover:text-[#14b8a6] transition-colors bg-[#00A693]/5 dark:bg-[#2dd4bf]/10 px-4 py-2 rounded-xl hover:bg-[#00A693]/10 dark:hover:bg-[#2dd4bf]/20"
-                     >
-                       Review & Update Test <ArrowRight className="w-4 h-4" />
-                     </button>
-                   </div>
-                 </div>
-               ) : (
-                 <div className="space-y-5">
-                   <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
-                     Taking the vocational interest test helps us understand your strengths, preferences, and match you with the best suited career paths in Germany.
-                   </p>
-                   <button
-                     type="button"
-                     onClick={() => navigate('/onboarding', { state: { from: '/user/application' } })}
-                     className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A693] hover:bg-[#008f7d] dark:bg-[#2dd4bf] dark:hover:bg-[#14b8a6] text-white dark:text-neutral-900 rounded-xl font-semibold text-sm transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#00A693]/20 dark:shadow-[#2dd4bf]/20"
-                   >
-                     Take the Test <ArrowRight className="w-4 h-4" />
-                   </button>
-                 </div>
-               )}
-             </div>
+            <div className="flex items-center justify-between mb-6 relative z-10">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 bg-[#00A693]/10 text-[#00A693] dark:bg-[#2dd4bf]/10 dark:text-[#2dd4bf] rounded-xl">
+                  <BrainCircuit className="w-5 h-5" />
+                </div>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Vocational Interest Test</h2>
+              </div>
+
+              {user?.hasCompletedVocationalTest ? (
+                <span className="flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full text-xs font-medium border border-green-100 dark:border-green-800/50">
+                  <CheckCircle2 className="w-3.5 h-3.5" /> Completed
+                </span>
+              ) : (
+                <span className="flex items-center gap-1.5 px-3 py-1 bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400 rounded-full text-xs font-medium border border-amber-100 dark:border-amber-800/50">
+                  Pending
+                </span>
+              )}
+            </div>
+
+            <div className="relative z-10">
+              {user?.hasCompletedVocationalTest ? (
+                <div className="space-y-4">
+                  {user.vocationalTestResults?.some(r => r.answer === 'Ja' || r.answer === 'Vielleicht') ? (
+                    <>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                        Based on your test, you showed strong or potential interest in:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {user.vocationalTestResults
+                          ?.filter(r => r.answer === 'Ja' || r.answer === 'Vielleicht')
+                          .sort((a, b) => a.answer === 'Ja' ? -1 : 1)
+                          .slice(0, showAllResults ? undefined : 7)
+                          .map((res, i) => (
+                            <span
+                              key={i}
+                              className={`px-3.5 py-1.5 rounded-full text-xs font-medium border shadow-sm flex items-center gap-1.5 ${res.answer === 'Ja'
+                                ? 'bg-gray-50 dark:bg-neutral-800 text-gray-700 dark:text-gray-300 border-gray-200 dark:border-neutral-700'
+                                : 'bg-amber-50 text-amber-700 border-amber-200 dark:bg-amber-900/20 dark:text-amber-400 dark:border-amber-800/30'
+                                }`}
+                            >
+                              {vocationalStatements[res.questionId - 1] || res.question}
+                              {res.answer === 'Vielleicht' && <span className="text-[10px] uppercase tracking-wider opacity-70 border-l border-amber-200 dark:border-amber-700/50 pl-1.5 ml-0.5">Vielleicht</span>}
+                            </span>
+                          ))}
+                        {user.vocationalTestResults?.filter(r => r.answer === 'Ja' || r.answer === 'Vielleicht').length > 7 && (
+                          <button
+                            type="button"
+                            onClick={() => setShowAllResults(!showAllResults)}
+                            className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 rounded-full text-[10px] font-medium shadow-sm border-none transition-all cursor-pointer"
+                          >
+                            {showAllResults ? 'Show less' : `+${user.vocationalTestResults.filter(r => r.answer === 'Ja' || r.answer === 'Vielleicht').length - 7} more`}
+                          </button>
+                        )}
+                      </div>
+                    </>
+                  ) : (
+                    <div className="p-5 bg-gray-50 dark:bg-neutral-800/30 rounded-2xl border border-gray-100 dark:border-neutral-800/50 flex flex-col items-center justify-center text-center space-y-2">
+                      <div className="w-10 h-10 bg-gray-100 dark:bg-neutral-800 rounded-full flex items-center justify-center mb-1 text-gray-400">
+                        <BrainCircuit className="w-5 h-5 opacity-50" />
+                      </div>
+                      <p className="text-sm font-medium text-gray-900 dark:text-gray-200">No clear interests identified</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 max-w-sm">
+                        You answered "Nein" to all statements. Reviewing the test might help uncover more options.
+                      </p>
+                    </div>
+                  )}
+                  <div className="pt-5 mt-5 border-t border-gray-100 dark:border-neutral-800 flex justify-end">
+                    <button
+                      type="button"
+                      onClick={() => navigate('/onboarding', { state: { from: '/user/application' } })}
+                      className="flex items-center gap-2 text-sm font-semibold text-[#00A693] dark:text-[#2dd4bf] hover:text-[#008f7d] dark:hover:text-[#14b8a6] transition-colors bg-[#00A693]/5 dark:bg-[#2dd4bf]/10 px-4 py-2 rounded-xl hover:bg-[#00A693]/10 dark:hover:bg-[#2dd4bf]/20"
+                    >
+                      Review & Update Test <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-5">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 max-w-2xl leading-relaxed">
+                    Taking the vocational interest test helps us understand your strengths, preferences, and match you with the best suited career paths in Germany.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => navigate('/onboarding', { state: { from: '/user/application' } })}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#00A693] hover:bg-[#008f7d] dark:bg-[#2dd4bf] dark:hover:bg-[#14b8a6] text-white dark:text-neutral-900 rounded-xl font-semibold text-sm transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-[#00A693]/20 dark:shadow-[#2dd4bf]/20"
+                  >
+                    Take the Test <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Section 1: Personal Details */}
@@ -390,7 +539,7 @@ function ApplicationPage() {
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">2. Languages & Skills</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              
+
               {/* --- GERMAN LEVEL COMPONENT --- */}
               <div className="space-y-4 sm:col-span-2">
                 <div className="flex items-center justify-between">
@@ -401,21 +550,21 @@ function ApplicationPage() {
                     </span>
                   )}
                 </div>
-                
+
                 <div className="relative pt-2 pb-8 px-2 sm:px-4">
                   {/* Background Track */}
-                  <div className="absolute top-5 sm:top-6 left-5 right-5 sm:left-8 sm:right-8 h-1 bg-gray-200 dark:bg-neutral-800 rounded-full overflow-hidden z-0">
-                    <div 
+                  <div className="absolute top-[18px] sm:top-[22px] left-5 right-5 sm:left-8 sm:right-8 h-1 bg-gray-200 dark:bg-neutral-800 rounded-full overflow-hidden z-0">
+                    <div
                       className="absolute top-0 left-0 h-full bg-[#00A693] dark:bg-[#2dd4bf] transition-all duration-500 ease-out"
-                      style={{ 
-                        width: formData.germanLevel ? `${(['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].indexOf(formData.germanLevel) / 5) * 100}%` : '0%' 
+                      style={{
+                        width: formData.germanLevel ? `${(['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].indexOf(formData.germanLevel) / 5) * 100}%` : '0%'
                       }}
                     />
                   </div>
-                  
+
                   {/* Nodes */}
                   <div className="relative flex justify-between items-center z-10">
-                    <div 
+                    <div
                       className="absolute -top-4 -bottom-4 left-0 right-0 z-20 cursor-pointer touch-none"
                       onPointerDown={(e) => {
                         e.currentTarget.setPointerCapture(e.pointerId);
@@ -460,24 +609,24 @@ function ApplicationPage() {
                           className="relative flex flex-col items-center justify-center group outline-none w-6 h-6 sm:w-8 sm:h-8"
                         >
                           {/* Node Circle */}
-                          <div 
+                          <div
                             className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center transition-all duration-300 z-10
-                              ${isActive 
-                                ? 'bg-[#00A693] dark:bg-[#2dd4bf] ring-4 ring-[#00A693]/20 dark:ring-[#2dd4bf]/20 shadow-md scale-125' 
-                                : isPast 
-                                  ? 'opacity-0 scale-0' 
+                              ${isActive
+                                ? 'bg-[#00A693] dark:bg-[#2dd4bf] ring-4 ring-[#00A693]/20 dark:ring-[#2dd4bf]/20 shadow-md scale-125'
+                                : isPast
+                                  ? 'opacity-0 scale-0'
                                   : 'bg-white dark:bg-neutral-900 border-2 border-gray-300 dark:border-neutral-700 group-hover:border-gray-500 dark:group-hover:border-gray-500'
                               }
                             `}
                           >
                             {isActive && <div className="w-1.5 h-1.5 rounded-full bg-white dark:bg-gray-900" />}
                           </div>
-                          
+
                           {/* Node Label */}
-                          <span 
+                          <span
                             className={`absolute top-8 sm:top-10 text-xs sm:text-sm transition-all duration-300
-                              ${isActive 
-                                ? 'text-[#00A693] dark:text-[#2dd4bf] font-bold translate-y-0' 
+                              ${isActive
+                                ? 'text-[#00A693] dark:text-[#2dd4bf] font-bold translate-y-0'
                                 : isPast
                                   ? 'text-gray-600 dark:text-gray-400 font-medium'
                                   : 'text-gray-400 dark:text-gray-500 group-hover:text-gray-600 dark:group-hover:text-gray-300 font-medium translate-y-0.5'
@@ -584,14 +733,10 @@ function ApplicationPage() {
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">4. Job Choices & Qualifications</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Preferred Job Training (Erster Wunsch)</label>
-                <input type="text" name="preferredJob" value={formData.preferredJob} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="e.g. Nursing (Pflegefachkraft)" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Alternative Job Training 1 (Zweiter Wunsch)</label>
-                <input type="text" name="alternativeJob" value={formData.alternativeJob} onChange={handleInputChange} className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white" placeholder="e.g. IT Specialist" />
-              </div>
+              <JobTrainingSelector
+                selectedJobs={formData.preferredJobs || []}
+                onChange={(jobs) => setFormData(prev => ({ ...prev, preferredJobs: jobs }))}
+              />
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Driver's License (Führerschein)</label>
                 <select name="driversLicense" value={formData.driversLicense} onChange={handleInputChange} required className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-neutral-950 border border-gray-200 dark:border-neutral-800 focus:ring-2 focus:ring-[#00A693] dark:focus:ring-[#2dd4bf] focus:outline-none transition-all dark:text-white">
@@ -615,52 +760,52 @@ function ApplicationPage() {
               </div>
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">5. Documents & Uploads</h2>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-              <FileUploadField 
-                label="Candidate Photo (Foto)" 
-                name="photo" 
-                accept="image/jpeg, image/png" 
+              <FileUploadField
+                label="Candidate Photo (Foto)"
+                name="photo"
+                accept="image/jpeg, image/png"
                 description="JPEG or PNG only"
                 file={files.photo}
                 onChange={handleFileChange}
               />
-              <FileUploadField 
-                label="Language Certificate" 
-                name="languageCertificate" 
-                accept="application/pdf" 
+              <FileUploadField
+                label="Language Certificate"
+                name="languageCertificate"
+                accept="application/pdf"
                 description="PDF only"
                 file={files.languageCertificate}
                 onChange={handleFileChange}
               />
-              <FileUploadField 
-                label="Secondary School Degree (Abitur)" 
-                name="secondarySchoolDegree" 
-                accept="application/pdf" 
+              <FileUploadField
+                label="Secondary School Degree (Abitur)"
+                name="secondarySchoolDegree"
+                accept="application/pdf"
                 description="PDF only"
                 file={files.secondarySchoolDegree}
                 onChange={handleFileChange}
               />
-              <FileUploadField 
-                label="Job Training Certificate (Ausbildung)" 
-                name="jobTrainingCertificate" 
-                accept="application/pdf" 
+              <FileUploadField
+                label="Job Training Certificate (Ausbildung)"
+                name="jobTrainingCertificate"
+                accept="application/pdf"
                 description="PDF only"
                 file={files.jobTrainingCertificate}
                 onChange={handleFileChange}
               />
-              <FileUploadField 
-                label="University Degree (Studium)" 
-                name="universityDegree" 
-                accept="application/pdf" 
+              <FileUploadField
+                label="University Degree (Studium)"
+                name="universityDegree"
+                accept="application/pdf"
                 description="PDF only"
                 file={files.universityDegree}
                 onChange={handleFileChange}
               />
-              <FileUploadField 
-                label="CV (Lebenslauf)" 
-                name="cv" 
-                accept="application/pdf" 
+              <FileUploadField
+                label="CV (Lebenslauf)"
+                name="cv"
+                accept="application/pdf"
                 description="PDF only"
                 file={files.cv}
                 onChange={handleFileChange}
@@ -675,13 +820,13 @@ function ApplicationPage() {
                 <p className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white truncate">Ready to submit?</p>
                 <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400 truncate hidden sm:block">All fields will be securely saved.</p>
               </div>
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={isSubmitting}
                 className="group relative flex justify-center items-center gap-2 sm:gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-[#00A693] dark:bg-[#2dd4bf] text-white dark:text-neutral-900 rounded-full font-semibold text-sm sm:text-lg transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100 overflow-hidden shrink-0 whitespace-nowrap"
               >
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/20 dark:via-black/20 to-transparent z-0"></div>
-                
+
                 {isSubmitting ? (
                   <>
                     <span className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 dark:border-gray-900/30 border-t-white dark:border-t-gray-900 rounded-full animate-spin relative z-10"></span>

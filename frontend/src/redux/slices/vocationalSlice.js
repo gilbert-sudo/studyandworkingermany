@@ -64,6 +64,78 @@ const initialState = {
     "Ich mag Ordnung.",
     "Ich arbeite gerne mit Zahlen.",
     "Ich erledige Aufgaben zuverlässig."
+  ],
+  categories: [
+    {
+      category: "Handwerk (Crafts & Trades)",
+      jobs: [
+        "Tischler:in (Carpenter)",
+        "Maurer:in (Mason)",
+        "Zimmerer:in (Carpenter/Joiner)",
+        "Fliesenleger:in (Tiler)",
+        "Maler:in (Painter)",
+        "Bäcker:in (Baker)",
+        "Steinmetz:in (Stonemason)",
+        "Anlagenmechaniker:in für Sanitär-, Heizungs- und Klimatechnik (SHK) (HVAC Technician)"
+      ]
+    },
+    {
+      category: "Metall & Werkzeugmaschinenbau (Metalworking & Machine Construction)",
+      jobs: [
+        "Konstruktionsmechaniker/in (Construction Mechanic)",
+        "Metallbauer/in (Metalworker)",
+        "Maschinen- und Anlagenführer:in (Machine and Plant Operator)"
+      ]
+    },
+    {
+      category: "Elektrotechnik (Electrical Engineering)",
+      jobs: [
+        "Elektroniker (Electrician)",
+        "Industrieelektriker/in (Industrial Electrician)",
+        "Mechatroniker/in (Mechatronics Engineer)",
+        "Elektroniker:in für Energie- und Gebäudetechnik (Electronics Technician for Energy and Building Technology)"
+      ]
+    },
+    {
+      category: "Baugewerbe (Civil Engineering & Construction)",
+      jobs: [
+        "Straßenbauer (Road Builder)",
+        "Kanalbauer (Pipe Layer / Sewer Builder)",
+        "Beton- und Stahlbetonbauer/in (Concrete and Reinforced Concrete Worker)",
+        "Dachdecker:in (Roofer)"
+      ]
+    },
+    {
+      category: "Einzelhandel (Retail)",
+      jobs: ["Retail professions and specialists"]
+    },
+    {
+      category: "Hotellerie / Gastronomie (Hospitality & Catering)",
+      jobs: ["Hotel and culinary professions"]
+    },
+    {
+      category: "Pflegeberufe / Medizinischer Bereich (Healthcare & Nursing)",
+      jobs: [
+        "Pflegeberufe (Nursing professions)",
+        "Berufe im medizinischen Bereich (Medical sector professions)",
+        "Physiotherapeuten (Physiotherapists)"
+      ]
+    },
+    {
+      category: "Berufskraftfahrer/in (Professional Driver)",
+      jobs: ["Commercial and heavy vehicle drivers"]
+    },
+    {
+      category: "Kaufmännische Berufe (Commercial & Business Professions)",
+      jobs: ["Business administration, clerical, and office management roles"]
+    },
+    {
+      category: "Lagerlogistik (Warehouse Logistics)",
+      jobs: [
+        "Fachkraft für Lagerlogistik (Logistics Specialist)",
+        "Fachlagerist (Warehouse Operator)"
+      ]
+    }
   ]
 };
 
